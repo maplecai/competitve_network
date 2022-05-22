@@ -1,5 +1,3 @@
-import os
-import random
 import numpy as np
 import matplotlib.pyplot as plt
 import torch
@@ -8,14 +6,11 @@ from torch.utils.data import TensorDataset, DataLoader
 from utils import *
 from model import *
 
-# plt.ion()
-plt.rcParams['font.sans-serif']=['SimHei']
-plt.rcParams['axes.unicode_minus']=False
-plt.rcParams['font.sans-serif']=['Microsoft YaHei']
 np.set_printoptions(suppress=True)
 
 set_seed(42)
 
+# device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 device = torch.device("cpu")
 MAX_EPOCH = 10000
 BATCH_SIZE = 4
@@ -23,15 +18,8 @@ tol = 1e-3
 loss_func = nn.MSELoss()
 loss_list = []
 
-x = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
-for i in range(3):
-    plt.figure()
-    plt.plot(x)
-plt.show(block=True)
-
 
 if __name__ == '__main__':
-
     x = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
     y = np.array([0, 1, 1, 0])
     x = torch.Tensor(x)
@@ -61,12 +49,13 @@ if __name__ == '__main__':
             print(f'epoch = {epoch}, loss = {loss.item()}')
 
         if (loss.item() < 1e-3):
-            print('K', model.K.detach().numpy() ** 2)
-            print('u', model.u.detach().numpy())
-            print('b', model.b.detach().numpy())
-            print('y', out.detach().numpy())
             break
 
+    print('K', model.K.detach().numpy() ** 2)
+    print('u', model.u.detach().numpy())
+    print('b', model.b.detach().numpy())
+    print('y', out.detach().numpy())
+    
     plt.figure(figsize=(8,6), dpi=100)
     plt.plot(loss_list)
     plt.show()

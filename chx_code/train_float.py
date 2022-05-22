@@ -16,8 +16,7 @@ np.set_printoptions(suppress=True)
 
 set_seed(42)
 
-device = torch.device("cpu")
-device = torch.device("cuda:0" if torch.cuda.is_available() else "")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 MAX_EPOCH = 3000
 BATCH_SIZE = 128
 tol = 1e-3
