@@ -32,18 +32,31 @@ class Solver():
 
 
 if __name__ == '__main__':
-    solver = Solver(device=torch.device("cpu"), batch_size=1, max_iter=10, tol=1e-3)
+    solver = Solver(device=torch.device("cpu"), batch_size=1, max_iter=100, tol=1e-6)
 
     AT = torch.Tensor([[1]])
     BT = torch.Tensor([[1]])
     K  = torch.Tensor([[1]])
     AF, BF = solver.solve(AT, BT, K)
     print(AF, BF)
+    C = AF * BF * K
+
+    for dK in [1e-1, 1e-2, 1e-3, 1e-4]:
+        K1 = K + dK
+        AF1, BF1 = solver.solve(AT, BT, K1)
+        
+        C1 = AF1 * BF1 * K1
+        pC = (C1 - C) / dK
+        print(pC)
+
+    ans = AF * BF / (1 + K*AF +K*BF)
+    print(f'theoretical answer is {ans}'.format(ans=ans))
 
 
+'''
     AT = torch.Tensor([[1, 1]])
     BT = torch.Tensor([[1, 1]])
     K  = torch.Tensor([[1, 1], [1, 1]])
     AF, BF = solver.solve(AT, BT, K)
     print(AF, BF)
-    
+'''
