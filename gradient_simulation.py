@@ -45,7 +45,8 @@ class Solver():
                 AF_last = AF
                 BF_last = BF
                 AF = AT / ((K * BF).sum(axis=1, keepdims=True) + 1)
-                BF = BT / ((K * BF).sum(axis=0, keepdims=True) + 1)
+                BF = BT / ((K * AF).sum(axis=0, keepdims=True) + 1)
+                # print('iter', iter, AF, BF)
                 err = np.abs(AF-AF_last).sum() + np.abs(BF-BF_last).sum()
                 if (err < self.tol):
                     break
@@ -56,18 +57,20 @@ class Solver():
         return AF, BF, C
 
 
-
+# numpy version
 if __name__ == '__main__':
-    # numpy version
 
-    solver = Solver(device=torch.device("cpu"), batch_size=1, max_iter=100, tol=1e-9)
     # 2v2
+    
+    solver = Solver(device=torch.device("cpu"), batch_size=1, max_iter=100, tol=1e-6)
     AT = np.array([1., 1.]).reshape(2, 1)
     BT = np.array([1., 1.]).reshape(1, 2)
     K  = np.array([1., 1., 1., 1.]).reshape(2, 2)
     AF, BF, C = solver.np_solve(AT, BT, K)
-    print(AF, BF, C)
+    print('equilibrium state', AF, BF, C)
 
+
+    # numerical simulation
     for dK11 in [1e-1, 1e-2, 1e-3, 1e-4]:
         AT_ = AT
         BT_ = BT
@@ -77,16 +80,20 @@ if __name__ == '__main__':
         AF_, BF_, C_ = solver.np_solve(AT_, BT_, K_)
 
         # print(AF_, BF_, C_)
-        
-        C_ = K_ * AF_ * BF_
-        print(C_)
         pC = (C_ - C) / dK11
         print(f'numerical simulation partial C / partial K11 = ', pC)
 
 
+    # theoretical
 
 
-
+    W = np.array([[1 + K[0,0]*AF[0,0] + K[0,0]*BF[0,0], K[0,0]*BF[0,0], K[0,0]*AF[0,0], 0],
+                  [K[0,1]*BF[0,1], 1 + K[0,1]*BF[0,1] + K[0,1]*AF[0,0], 0, K[0,1]*AF[0,0]],
+                  [K[1,0]*AF[1,0], 0, 1 + K[1,0]*AF[1,0] + K[1,0]*BF[0,0], K[1,0]*BF[0,0]],
+                  [0, K[1,1]*AF[1,0], K[1,1]*BF[0,1], 1 + K[1,1]*AF[1,0] + K[1,1]*BF[0,1]]])
+    b = np.array([[AF[0,0]*BF[0,0]], [0], [0], [0]])
+    ans = np.linalg.solve(W, b)
+    print('theoretocal partial C / partial K11 = ', ans.reshape(2,2))
 
 
 '''
