@@ -3,6 +3,10 @@ import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 
+
+torch.set_printoptions(precision=16)
+np.set_printoptions(precision=16)
+
 # torch version
 class Solver():
     def __init__(self, device, batch_size, max_iter, tol):
@@ -44,9 +48,9 @@ class Solver():
             for iter in range(self.max_iter):
                 AF_last = AF
                 BF_last = BF
-                AF = AT / ((K * BF).sum(axis=1, keepdims=True) + 1)
-                BF = BT / ((K * AF).sum(axis=0, keepdims=True) + 1)
-                # print('iter', iter, AF, BF)
+                AF = AT / ((K * BF_last).sum(axis=1, keepdims=True) + 1)
+                BF = BT / ((K * AF_last).sum(axis=0, keepdims=True) + 1)
+                print('iter', iter, AF, BF)
                 err = np.abs(AF-AF_last).sum() + np.abs(BF-BF_last).sum()
                 if (err < self.tol):
                     break
@@ -58,18 +62,25 @@ class Solver():
 
 
     def torch_autogradient(self, AF, BF, K):
-        AF = AT / ((K * BF).sum(axis=1, keepdims=True) + 1)
-        BF = BT / ((K * AF).sum(axis=0, keepdims=True) + 1)
-        C = K * AF * BF
-        pC0 = torch.zeros(K.shape)
+        # alternative iteration
+        # AF = AT / ((K * BF).sum(axis=1, keepdims=True) + 1)
+        # BF = BT / ((K * AF).sum(axis=0, keepdims=True) + 1)
 
+        # simultaneous iteration
+        AF_last = AF
+        BF_last = BF
+        AF = AT / ((K * BF_last).sum(axis=1, keepdims=True) + 1)
+        BF = BT / ((K * AF_last).sum(axis=0, keepdims=True) + 1)
+        C = K * AF * BF
+
+        pC0 = torch.zeros(K.shape)
         for i in range(K.shape[0]):
             for j in range(K.shape[1]):
-                C[i, j].backward()
+                C[i, j].backward(retain_graph=True)
                 pC0[i, j] = K.grad[0, 0]
                 K.grad.detach_()
                 K.grad.zero_()
-                print(pC0[i, j])
+                # print(pC0[i, j])
 
         return pC0
 
@@ -164,7 +175,7 @@ if __name__ == '__main__':
     solver = Solver(device=torch.device("cpu"), batch_size=1, max_iter=100, tol=1e-6)
     AT = np.array([1., 1.])
     BT = np.array([1., 1.])
-    K  = np.array([1., 1., 1., 1.]).reshape(2, 2)
+    K  = np.array([1., 2., 3., 4.]).reshape(2, 2)
     AF, BF, C = solver.np_solve_(AT, BT, K)
     print('equilibrium state', AF, BF, C)
 
@@ -202,12 +213,12 @@ if __name__ == '__main__':
 
     # torch version
 
-    solver = Solver(device=torch.device("cpu"), batch_size=1, max_iter=100, tol=1e-6)
+    solver = Solver(device=torch.device("cpu"), batch_size=1, max_iter=100, tol=1e-12)
 
     # 1v1
     AT = torch.Tensor([1, 1]).reshape(2,1)
     BT = torch.Tensor([1, 1]).reshape(1,2)
-    K  = torch.Tensor([1, 1, 1, 1]).reshape(2,2)
+    K  = torch.Tensor([1, 2, 3, 4]).reshape(2,2)
     K.requires_grad = True
 
     #print(K.grad)
@@ -216,7 +227,8 @@ if __name__ == '__main__':
     #print(K.grad)
 
     AF, BF, C = solver.torch_solve(AT, BT, K)
-    print(AF, BF, C)
+    # print(AF, BF, C)
     
     pC0 = solver.torch_autogradient(AF, BF, K)
-    print('autograd answer partial C00 / partial K', pC0)
+    print('autograd partial C / partial K00', pC0)
+
