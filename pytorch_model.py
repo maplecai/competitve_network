@@ -33,115 +33,92 @@ class CompetitiveLayerFunction(torch.autograd.Function):
         return grad_AT, grad_BT, grad_K
 
 
+competitive_layer = CompetitiveLayerFunction.apply
 
-class CompetitiveLayer(nn.Module):
+
+class CompetitiveLayer(torch.nn.Module):
     def __init__(self, nA, nB):
         super(CompetitiveLayer, self).__init__()
         self.nA = nA
         self.nB = nB
         self.K = nn.Parameter(torch.empty(nA, nB))
-        self.K.data = torch.Tensor([1,2,3,4,5,6]).reshape(2, 3)
-        # nn.init.uniform_(self.K, 0, 1)
-
+        nn.init.uniform_(self.K, 0, 1)
 
     def forward(self, AT, BT):
-        return CompetitiveLayerFunction.apply(AT, BT, self.K)
+        return competitive_layer(AT, BT, self.K)
+
+
+# my network
+class CompetitiveNetwork(torch.nn.Module):
+    def __init__(self, nA, nB, nY, constrain_mode=None):
+        super(CompetitiveNetwork, self).__init__()
+        self.nA = nA
+        self.nB = nB
+        self.nY = nY
+        self.comp_layer = CompetitiveLayer(nA, nB)
+        #self.comp_layer.K.data = torch.Tensor([1,2,3,4,5,6]).reshape(2, 3)
+        self.linear = nn.Linear(nA*nB, nY)
+        self.constrain_mode = constrain_mode
+        
+    def forward(self, AT, BT):
+        #batch_size = len(AT)
+        C = self.comp_layer(AT, BT)
+        #C = C.reshape(batch_size, -1)
+        C = C.reshape(-1)
+        Y = self.linear(C)
+        return Y
+
+
+
 
 
 if __name__ == '__main__':
-    cl = CompetitiveLayer(2, 3)
 
-    AT = torch.Tensor([1., 1.])
+    # test my layer
+
+    '''AT = torch.Tensor([1., 1.])
     BT = torch.Tensor([1., 1., 1.])
     K  = torch.Tensor([1., 2., 3., 4., 5., 6.]).reshape(2, 3)
+    K.requires_grad = True
+
+    cl = CompetitiveLayer(2, 3)
+    cl.K.data = K
 
     C = cl(AT, BT)
-
     w = torch.Tensor([1,0,0,0,0,0]).reshape(2, 3)
+    
     y = (C*w).sum()
     y.backward(retain_graph=True)
     print('dC00/dK')
     print(cl.K.grad)
-    
+
+    input = (AT, BT, K)
+    test = torch.autograd.gradcheck(competitive_layer, input, eps=1e-3, atol=1e-3)
+    print(test)'''
 
 
 
 
-'''
-# an example of linear layer
 
-# Inherit from Function
-class LinearFunction(Function):
+    # test my network
 
-    # Note that both forward and backward are @staticmethods
-    @staticmethod
-    # bias is an optional argument
-    def forward(ctx, input, weight, bias=None):
-        ctx.save_for_backward(input, weight, bias)
-        output = input.mm(weight.t())
-        if bias is not None:
-            output += bias.unsqueeze(0).expand_as(output)
-        return output
+    model = CompetitiveNetwork(nA=2, nB=2, nY=1)
 
-    # This function has only a single output, so it gets only one gradient
-    @staticmethod
-    def backward(ctx, grad_output):
-        # This is a pattern that is very convenient - at the top of backward
-        # unpack saved_tensors and initialize all gradients w.r.t. inputs to
-        # None. Thanks to the fact that additional trailing Nones are
-        # ignored, the return statement is simple even when the function has
-        # optional inputs.
-        input, weight, bias = ctx.saved_tensors
-        grad_input = grad_weight = grad_bias = None
+    AT = torch.Tensor([1., 1.])
+    BT = torch.Tensor([1., 1.])
+    Y =  torch.Tensor([1.])
 
-        # These needs_input_grad checks are optional and there only to
-        # improve efficiency. If you want to make your code simpler, you can
-        # skip them. Returning gradients for inputs that don't require it is
-        # not an error.
-        if ctx.needs_input_grad[0]:
-            grad_input = grad_output.mm(weight)
-        if ctx.needs_input_grad[1]:
-            grad_weight = grad_output.t().mm(input)
-        if bias is not None and ctx.needs_input_grad[2]:
-            grad_bias = grad_output.sum(0)
+    #K  = torch.Tensor([1., 2., 3., 4., 5., 6.]).reshape(2, 3)
 
-        return grad_input, grad_weight, grad_bias
+    Y_pred = model(AT, BT)
+    print(Y)
+    print(Y_pred)
 
+    criterion = torch.nn.MSELoss()
+    optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
 
-class Linear(nn.Module):
-    def __init__(self, input_features, output_features, bias=True):
-        super(Linear, self).__init__()
-        self.input_features = input_features
-        self.output_features = output_features
+    loss = criterion(Y, Y_pred)
+    loss.backward()
+    optimizer.step()
+    optimizer.zero_grad()
 
-        # nn.Parameter is a special kind of Tensor, that will get
-        # automatically registered as Module's parameter once it's assigned
-        # as an attribute. Parameters and buffers need to be registered, or
-        # they won't appear in .parameters() (doesn't apply to buffers), and
-        # won't be converted when e.g. .cuda() is called. You can use
-        # .register_buffer() to register buffers.
-        # nn.Parameters require gradients by default.
-        self.weight = nn.Parameter(torch.empty(output_features, input_features))
-        if bias:
-            self.bias = nn.Parameter(torch.empty(output_features))
-        else:
-            # You should always register all possible parameters, but the
-            # optional ones can be None if you want.
-            self.register_parameter('bias', None)
-
-        # Not a very smart way to initialize weights
-        nn.init.uniform_(self.weight, -0.1, 0.1)
-        if self.bias is not None:
-            nn.init.uniform_(self.bias, -0.1, 0.1)
-
-    def forward(self, input):
-        # See the autograd section for explanation of what happens here.
-        return LinearFunction.apply(input, self.weight, self.bias)
-
-    def extra_repr(self):
-        # (Optional)Set the extra information about this module. You can test
-        # it by printing an object of this class.
-        return 'input_features={}, output_features={}, bias={}'.format(
-            self.input_features, self.output_features, self.bias is not None
-        )
-'''

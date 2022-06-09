@@ -175,7 +175,7 @@ if __name__ == '__main__':
 
         # print(AF_, BF_, C_)
         dC1 = (C_ - C) / dK00
-    print('numerical simulation dC/pK00')
+    print('numerical dC/pK00')
     print(dC1)
 
     # manual
@@ -185,7 +185,7 @@ if __name__ == '__main__':
 
     # theoretical
     dC3 = solver.np_gradient(AF, BF, K)
-    print('my linalg function dC/pK00')
+    print('analytical dC/pK00')
     print(dC3)
 
     
