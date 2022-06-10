@@ -24,13 +24,11 @@ print(C)
 
 
 import torch
-K = torch.zeros(1,2)
-K = np.array([1,2])
-print(K)
+K = torch.ones(2,2,2,2)
+a = torch.Tensor([1,2,3,4]).reshape(2,2)
+b = K * a
+print(b)
+print(b.sum(axis=[0,1]))
 
-print(type(K))
 
-if (type(K) is np.ndarray):
-    print('np')
-if (type(K) is torch.Tensor):
-    print('torch')
+print(K.numpy())

@@ -16,22 +16,15 @@ class CompetitiveLayerFunction(torch.autograd.Function):
     @staticmethod
     def backward(ctx, grad_output):
         AF, BF, K = ctx.saved_tensors
+        nA, nB = K.shape
         grad_AT, grad_BT, grad_K = None, None, None
 
-        pK = torch.zeros(K.shape)
-        nA = len(AF)
-        nB = len(BF)
-        # 求解pC/pKpq
-        for p in range(nA):
-            for q in range(nB):
-                with torch.no_grad():
-                    pC = CompetitiveLayerFunction.solver.np_gradient(AF, BF, K, p, q)
-                    pC = torch.Tensor(pC)
-                pK[p, q] = (pC * grad_output).sum()
-        grad_K = pK
-
+        pC_pK = CompetitiveLayerFunction.solver.np_gradient_all(AF.numpy(), BF.numpy(), K.numpy())
+        pC_pK = torch.from_numpy(pC_pK)
+        #print(pC_pK.shape)
+        grad_K = (pC_pK * grad_output.reshape(nA, nB, 1, 1)).sum(axis=[0,1])
+        #print(grad_K.shape)
         return grad_AT, grad_BT, grad_K
-
 
 competitive_layer = CompetitiveLayerFunction.apply
 
@@ -39,8 +32,7 @@ competitive_layer = CompetitiveLayerFunction.apply
 class CompetitiveLayer(torch.nn.Module):
     def __init__(self, nA, nB):
         super(CompetitiveLayer, self).__init__()
-        self.nA = nA
-        self.nB = nB
+        # 可训练的参数只有K
         self.K = nn.Parameter(torch.empty(nA, nB))
         nn.init.uniform_(self.K, 0, 1)
 
@@ -52,9 +44,6 @@ class CompetitiveLayer(torch.nn.Module):
 class CompetitiveNetwork(torch.nn.Module):
     def __init__(self, nA, nB, nY, constrain_mode=None):
         super(CompetitiveNetwork, self).__init__()
-        self.nA = nA
-        self.nB = nB
-        self.nY = nY
         self.comp_layer = CompetitiveLayer(nA, nB)
         #self.comp_layer.K.data = torch.Tensor([1,2,3,4,5,6]).reshape(2, 3)
         self.linear = nn.Linear(nA*nB, nY)
@@ -70,13 +59,11 @@ class CompetitiveNetwork(torch.nn.Module):
 
 
 
-
-
 if __name__ == '__main__':
 
     # test my layer
 
-    '''AT = torch.Tensor([1., 1.])
+    AT = torch.Tensor([1., 1.])
     BT = torch.Tensor([1., 1., 1.])
     K  = torch.Tensor([1., 2., 3., 4., 5., 6.]).reshape(2, 3)
     K.requires_grad = True
@@ -94,9 +81,7 @@ if __name__ == '__main__':
 
     input = (AT, BT, K)
     test = torch.autograd.gradcheck(competitive_layer, input, eps=1e-3, atol=1e-3)
-    print(test)'''
-
-
+    print(test)
 
 
 

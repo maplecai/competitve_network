@@ -40,14 +40,13 @@ class Solver():
         return AF, BF, C
 
 
-    def np_gradient(self, AF, BF, K, p=0, q=0):
-        # 求解dC/dKpq
+    def np_gradient(self, AF, BF, K, p, q):
+        # 求解dCij/dKpq
         # 先求解dAF/dKpq, dBF/dKpq, nA+nB维线性方程组
         nA = len(AF)
         nB = len(BF)
+        # 一行一行填W
         W = np.zeros((nA+nB, nA+nB))
-        b = np.zeros((nA+nB, 1))
-        # 一行一行填W b
         for m in range(nA):
             # 第m行
             for j in range(nB):
@@ -64,6 +63,8 @@ class Solver():
                 # 第nA+n列
                 W[nA+n, nA+n] += K[i, n] * AF[i]
             W[nA+n, nA+n] += 1
+
+        b = np.zeros((nA+nB, 1))
         b[p, 0] += - AF[p] * BF[q]
         b[nA+q, 0] += - AF[p] * BF[q]
         
@@ -81,18 +82,53 @@ class Solver():
         return dC
 
 
-    '''
-    def np_gradient_2v2_manual(self, AF, BF, K):
-        # 手推的直接解dC的方程
-        W = np.array([[1 + K[0,0]*AF[0] + K[0,0]*BF[0], K[0,0]*BF[0], K[0,0]*AF[0], 0],
-                    [K[0,1]*BF[1], 1 + K[0,1]*BF[1] + K[0,1]*AF[0], 0, K[0,1]*AF[0]],
-                    [K[1,0]*AF[1], 0, 1 + K[1,0]*AF[1] + K[1,0]*BF[0], K[1,0]*BF[0]],
-                    [0, K[1,1]*AF[1], K[1,1]*BF[1], 1 + K[1,1]*AF[1] + K[1,1]*BF[1]]])
-        b = np.array([[AF[0]*BF[0]], [0], [0], [0]])
-        dC = np.linalg.solve(W, b)
-        dC = dC.reshape(2,2)
-        return dC
-    '''
+
+    def np_gradient_all(self, AF, BF, K):
+        # 一次性求解dCij/dKpq
+        nA = len(AF)
+        nB = len(BF)
+        dC_dK = np.zeros((nA, nB, nA, nB))
+        dA_dK = np.zeros((nA, nA, nB))
+        dB_dK = np.zeros((nB, nA, nB))
+        
+        # 先求解dAF/dKpq, dBF/dKpq, nA+nB维线性方程组
+        W = np.zeros((nA+nB, nA+nB))
+        # 一行一行填W
+        for m in range(nA):
+            # 第m行
+            for j in range(nB):
+                # 第nA+j列
+                W[m, nA+j] += K[m, j] * AF[m]
+                # 第m列
+                W[m, m] += K[m, j] * BF[j]
+            W[m, m] += 1
+        for n in range(nB):
+            # 第nA+n行
+            for i in range(nA):
+                # 第i列
+                W[nA+n, i] += K[i, n] * BF[n]
+                # 第nA+n列
+                W[nA+n, nA+n] += K[i, n] * AF[i]
+            W[nA+n, nA+n] += 1
+        W_inv = np.linalg.inv(W)
+
+        # 对于给定的Kpq
+        for p in range(nA):
+            for q in range(nB):
+                b = np.zeros((nA+nB, 1))
+                b[p, 0] += - AF[p] * BF[q]
+                b[nA+q, 0] += - AF[p] * BF[q]
+                x = np.matmul(W_inv, b).reshape(-1)
+                dA_dK[:, p, q] = x[:nA]
+                dB_dK[:, p, q] = x[nA:]
+
+        # 然后求dC/pKpq
+        for i in range(nA):
+            for j in range(nB):
+                dC_dK[i, j] += K[i, j] * BF[j] * dA_dK[i] + K[i, j] * AF[i] * dB_dK[j]
+                dC_dK[i, j, i, j] += AF[i] * BF[j]
+
+        return dC_dK
 
 
     def torch_solve(self, AT: np.ndarray, BT: np.ndarray, K:np.ndarray):
@@ -118,6 +154,33 @@ class Solver():
             C = K * AF.reshape(nA, 1) * BF.reshape(1, nB)
 
         return AF, BF, C
+
+
+
+
+    '''def torch_solve(self, AT: np.ndarray, BT: np.ndarray, K:np.ndarray):
+        # 求解
+        nA = len(AT)
+        nB = len(BT)
+        AF = torch.zeros(AT.shape)
+        BF = torch.zeros(BT.shape)
+
+        with torch.no_grad():
+            err = 0
+            for iter in range(self.max_iter):
+                AF_last = AF
+                BF_last = BF
+                AF = AT / ((K * BF.reshape(1, nB)).sum(axis=1) + 1)
+                BF = BT / ((K * AF.reshape(nA, 1)).sum(axis=0) + 1)
+                # print('iter', iter, AF, BF)
+                err = np.abs(AF-AF_last).sum() + np.abs(BF-BF_last).sum()
+                if (err < self.tol):
+                    break
+            if (err > self.tol):
+                print(f'not converge in {iter} iterations')
+            C = K * AF.reshape(nA, 1) * BF.reshape(1, nB)
+
+        return AF, BF, C'''
 
 
 
@@ -178,19 +241,20 @@ if __name__ == '__main__':
     print('numerical dC/pK00')
     print(dC1)
 
-    # manual
-    # dC2 = solver.manual_2v2_dArtial_derivative(AF, BF, K)
-    # print('my manual dC/pK00')
-    # print(dC2)
-
     # theoretical
-    dC3 = solver.np_gradient(AF, BF, K)
+    dC3 = solver.np_gradient(AF, BF, K, p=0, q=0)
     print('analytical dC/pK00')
     print(dC3)
-
     
 
+    dC_dK = solver.np_gradient_all(AF, BF, K)
+    print('dC/dK')
+    print(dC_dK)
+    print('qqq dC/pK00')
+    print(dC_dK[:, :, 0, 0])
 
+
+'''
     # torch autograd
     AT = torch.Tensor([1, 1])
     BT = torch.Tensor([1, 1, 1])
@@ -209,3 +273,4 @@ if __name__ == '__main__':
         dC5 = solver.np_gradient(AF, BF, K)
         print(dC5)
 
+'''
