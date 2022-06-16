@@ -24,11 +24,10 @@ print(C)
 
 
 import torch
-K = torch.ones(2,2,2,2)
-a = torch.Tensor([1,2,3,4]).reshape(2,2)
-b = K * a
-print(b)
-print(b.sum(axis=[0,1]))
+K = torch.tensor([1.])
 
+print(K.shape)
+K.reshape(-1)
+print(K.shape)
 
-print(K.numpy())
+print(K[0].shape)

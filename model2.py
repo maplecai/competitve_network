@@ -1,10 +1,10 @@
 import numpy as np
 import torch
 from competitive_solver import *
+import time
 
 
 class CompetitiveLayerFunction(torch.autograd.Function):
-    
     @staticmethod
     def forward(ctx, AT, BT, K):
         # 求解稳态
@@ -29,23 +29,43 @@ class CompetitiveLayerFunction(torch.autograd.Function):
 competitive_layer_function = CompetitiveLayerFunction.apply
 
 
-# my layer and model
-class CompetitiveLayer(torch.nn.Module):
+# layer1
+class CompetitiveLayer_1(torch.nn.Module):
     def __init__(self, nA, nB):
-        super(CompetitiveLayer, self).__init__()
+        super(CompetitiveLayer_1, self).__init__()
         # 可训练的参数只有K
-        self.K = nn.Parameter(torch.empty(nA, nB))
-        nn.init.uniform_(self.K, 0, 1)
+        # self.K = nn.Parameter(torch.empty(nA, nB))
+        self.sqrt_K = nn.Parameter(torch.empty(nA, nB))
+        nn.init.uniform_(self.sqrt_K, 0, 1)
 
     def forward(self, AT, BT):
-        C = competitive_layer_function(AT, BT, self.K)
+        K = self.sqrt_K ** 2
+        C = competitive_layer_function(AT, BT, K)
         return C
 
 
-class CompetitiveNetwork(torch.nn.Module):
+# layer2
+class CompetitiveLayer_2(torch.nn.Module):
+    def __init__(self, nA, nB):
+        super(CompetitiveLayer_2, self).__init__()
+        # 可训练的参数只有K
+        # self.K = nn.Parameter(torch.empty(nA, nB))
+        self.sqrt_K = nn.Parameter(torch.empty(nA, nB))
+        nn.init.uniform_(self.sqrt_K, 0, 1)
+
+
+    def forward(self, AT, BT):
+        K = self.sqrt_K ** 2
+        with torch.no_grad():
+            AF, BF, C = solver.torch_solve(AT, BT, K)
+        AF, BF, C = solver.torch_iterate_once(AT, BT, K, AF, BF, C)
+        return C
+
+
+class CompetitiveNetwork_1(torch.nn.Module):
     def __init__(self, nA, nB, nY, constrain_mode=None):
-        super(CompetitiveNetwork, self).__init__()
-        self.comp_layer = CompetitiveLayer(nA, nB)
+        super(CompetitiveNetwork_1, self).__init__()
+        self.comp_layer = CompetitiveLayer_1(nA, nB)
         #self.comp_layer.K.data = torch.Tensor([1,2,3,4,5,6]).reshape(2, 3)
         self.linear = nn.Linear(nA*nB, nY)
         self.constrain_mode = constrain_mode
@@ -57,20 +77,6 @@ class CompetitiveNetwork(torch.nn.Module):
         C = C.reshape(-1)
         Y = self.linear(C)
         return Y
-
-
-# other layer and model
-class CompetitiveLayer_2(torch.nn.Module):
-    def __init__(self, nA, nB):
-        super(CompetitiveLayer_2, self).__init__()
-        self.K = nn.Parameter(torch.empty(nA, nB))
-        nn.init.uniform_(self.K, 0, 1)
-
-    def forward(self, AT, BT):
-        with torch.no_grad():
-            AF, BF, C = solver.torch_solve(AT, BT, self.K)
-        AF, BF, C = solver.torch_iterate_once(AT, BT, self.K, AF, BF, C)
-        return C
 
 
 class CompetitiveNetwork_2(torch.nn.Module):
@@ -88,7 +94,6 @@ class CompetitiveNetwork_2(torch.nn.Module):
 
 
 
-
 if __name__ == '__main__':
 
     '''
@@ -98,15 +103,18 @@ if __name__ == '__main__':
     print(test)
     '''
 
-    # test my layer
+
+    print('test my layer_1')
 
     AT = torch.Tensor([1., 1.])
     BT = torch.Tensor([1., 1., 1.])
     K  = torch.Tensor([1., 2., 3., 4., 5., 6.]).reshape(2, 3)
+    Y =  torch.Tensor([1.])
     nA = len(AT)
     nB = len(BT)
+    nY = len(Y)
 
-    layer = CompetitiveLayer(nA, nB)
+    layer = CompetitiveLayer_1(nA, nB)
     layer.K.data = K
 
     C = layer(AT, BT)
@@ -115,18 +123,16 @@ if __name__ == '__main__':
     for i in range(nA):
         for j in range(nB):
                 C[i, j].backward(retain_graph=True)
-                print(f'dC{i}{j}_dK'.format(i, j))
+                print(f'dC{i}{j}_dK')
                 print(layer.K.grad)
                 #K.grad.detach_()
                 layer.K.grad.zero_()
 
 
 
-    # test my network
-    Y =  torch.Tensor([1.])
-    nY = len(Y)
-    model = CompetitiveNetwork(nA, nB, nY)
+    print('test my network_1')
 
+    model = CompetitiveNetwork_1(nA, nB, nY)
     model.comp_layer.K.data  = torch.Tensor([1., 2., 3., 4., 5., 6.]).reshape(2, 3)
     model.linear.weight.data = torch.Tensor([1., 0., 0., 0., 0., 0.]).reshape(1, 6)
     model.linear.bias.data = torch.Tensor([0.])
@@ -134,62 +140,19 @@ if __name__ == '__main__':
     criterion = torch.nn.MSELoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
 
-    Y_pred = model(AT, BT)
-    Y_pred.backward()
-    print('model_1')
-    print(model.comp_layer.K.grad)
-    optimizer.step()
-    optimizer.zero_grad()
-
-
-
-    # test my layer 2
-
-    AT = torch.Tensor([1., 1.])
-    BT = torch.Tensor([1., 1., 1.])
-    K  = torch.Tensor([1., 2., 3., 4., 5., 6.]).reshape(2, 3)
-    nA = len(AT)
-    nB = len(BT)
-
-    layer = CompetitiveLayer_2(nA, nB)
-    layer.K.data = K
-
-    C = layer(AT, BT)
-    print(C)
+    t0 = time.perf_counter()
     
-    for i in range(nA):
-        for j in range(nB):
-                C[i, j].backward(retain_graph=True)
-                print(f'dC{i}{j}_dK'.format(i, j))
-                print(layer.K.grad)
-                #K.grad.detach_()
-                layer.K.grad.zero_()
-
-    # test my network 2
-    Y =  torch.Tensor([1.])
-    nY = len(Y)
-    model = CompetitiveNetwork_2(nA, nB, nY)
-
-    model.comp_layer.K.data  = torch.Tensor([1., 2., 3., 4., 5., 6.]).reshape(2, 3)
-    model.linear.weight.data = torch.Tensor([1., 0., 0., 0., 0., 0.]).reshape(1, 6)
-    model.linear.bias.data = torch.Tensor([0.])
-
-    criterion = torch.nn.MSELoss()
-    optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
-
     Y_pred = model(AT, BT)
+
+    t1 = time.perf_counter()
+
     Y_pred.backward()
-    print('model_2')
-    print(model.comp_layer.K.grad)
     optimizer.step()
     optimizer.zero_grad()
 
+    t2 = time.perf_counter()
+    
+    print(t1-t0)
+    print(t2-t0)
 
 
-
-'''
-    loss = criterion(Y, Y_pred)
-    loss.backward()
-    optimizer.step()
-    optimizer.zero_grad()
-'''
