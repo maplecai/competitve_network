@@ -1,12 +1,14 @@
 import os
 import sys
+import itertools
 import numpy as np
 import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader
 from utils import *
-from model2 import *
+from my_model import *
+import sklearn.neural_network
 
 np.set_printoptions(precision=6, suppress=True)
 torch.set_printoptions(precision=6, sci_mode=False)
@@ -14,28 +16,57 @@ torch.set_printoptions(precision=6, sci_mode=False)
 set_seed(42)
 
 device = torch.device("cpu")
-MAX_EPOCH = 10000
-# BATCH_SIZE = 1
+MAX_EPOCH = 1000
+
 
 if __name__ == '__main__':
-    ATs = np.array([[0, 0], [0, 1], [1, 0], [1, 1]], dtype=float)
-    BTs = np.array([[1, 1], [1, 1], [1, 1], [1, 1]], dtype=float)
+
+
+    a1 = np.array([0.1, 1, 10])
+    ATs = np.array(list(itertools.product(a1, a1)))
+    BTs = np.ones((3*3, 2))
+
     Xs = np.concatenate([ATs, BTs], axis=1)
-    Ys = np.array([0, 1, 1, 0], dtype=float)
+    Ys = np.array([1,0,0, 0,1,0, 0,0,1], dtype=float)
+
+    model = sklearn.neural_network.MLPRegressor(hidden_layer_sizes=100, activation='relu',)
+    model.fit(Xs, Ys)
+
+    y_pred_list = model.predict(Xs)
+
+    y_pred_mat = np.array(y_pred_list).reshape(3, 3)
+    print('output', y_pred_mat)
+    plot_heatmap(y_pred_mat)
+
+
+'''
+if __name__ == '__main__':
+
+    # ATs = np.array([[0.1, 0.1], [0.1, 1], [0.1, 10], [1, 0.1], [1, 1], [1, 10], [10, 0.1], [10, 1], [10, 10]], dtype=float)
+    # BTs = np.array([[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1,1]], dtype=float)
+
+    a1 = np.array([0.1, 1, 10])
+    ATs = np.array(list(itertools.product(a1, a1)))
+    BTs = np.ones((3*3, 2))
+
+    Xs = np.concatenate([ATs, BTs], axis=1)
+    Ys = np.array([1,0,0, 0,1,0, 0,0,1], dtype=float)
     Xs = torch.Tensor(Xs)
     Ys = torch.Tensor(Ys)
     train_ds = TensorDataset(Xs, Ys)
     # train_dl = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=False)
 
     # model = CompetitiveNetwork_1(2, 2, 1).to(device)
-    model = CompetitiveNetwork_1(2, 2, 1).to(device)
-    optimizer = torch.optim.SGD(model.parameters(), lr=1e-2, momentum=0.9)
+    # model = CompetitiveNetwork_2(2, 2, 1).to(device)
+    model = MLP(2, 2*2, 1).to(device)
+    optimizer = torch.optim.SGD(model.parameters(), lr=1e-3, momentum=0.9)
     # optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
     loss_func = nn.MSELoss()
 
     loss_list = []
     for epoch in range(MAX_EPOCH):
         loss_sum = 0
+        y_pred_list = []
         # 手动batch_size=4
         for i, (x, y) in enumerate(train_ds):
             #print(x, y)
@@ -49,6 +80,7 @@ if __name__ == '__main__':
             #print(y_pred)
             loss = loss_func(y, y_pred[0])
             loss_sum += loss
+            y_pred_list.append(y_pred.detach().numpy())
 
         optimizer.zero_grad()
         loss_sum.backward()
@@ -60,12 +92,17 @@ if __name__ == '__main__':
 
         if (epoch % 100 == 0):
             print(f'epoch = {epoch}, loss = {loss_sum.item():.6f}')
-            print(model.comp_layer.sqrt_K.data**2)
 
 
     print('training completed')
     print(f'epoch = {epoch}, loss = {loss_sum.item():.6f}')
-    print(model.comp_layer.sqrt_K.data**2)
+
     plt.figure(figsize=(8,6), dpi=100)
     plt.plot(loss_list)
     plt.show()
+
+
+    y_pred_mat = np.array(y_pred_list).reshape(3, 3)
+    print('output', y_pred_mat)
+    plot_heatmap(y_pred_mat)
+'''

@@ -16,6 +16,17 @@ def set_seed(seed):
 
 
 
+def plot_heatmap(y):
+    plt.imshow(y, cmap='Reds')
+    # 每个方格上标记数值
+    for i in range(y.shape[0]):
+        for j in range(y.shape[1]):
+            text = plt.text(j, i, '{:.3f}'.format(y[i, j]),
+                            ha="center", va="center", color="black", fontsize=8)
+    plt.show()
+
+
+'''
 def my_ssim(im1, im2, **kwargs):
     im1=im1.reshape(-1)
     im2=im2.reshape(-1)
@@ -48,7 +59,7 @@ def my_ssim(im1, im2, **kwargs):
 
     ssim_value = a1 * a2 / (b1 * b2)
     return ssim_value
-
+'''
 
 if __name__ == '__main__':
     print('test')

@@ -1,33 +1,15 @@
 import numpy as np
-
-'''
-AT = np.array([1., 1.]).reshape(2,1)
-BT = np.array([1., 1.]).reshape(1,2)
-K = np.array([1., 2., 3., 4.]).reshape(2,2)
-
-AF = np.array([0.5, 0.5]).reshape(2,1)
-BF = np.array([0.5, 0.5]).reshape(1,2)
-
-print(K*BF)
-print((K * BF).sum(axis=1, keepdims=True))
-
-AF = AT / ((K * BF).sum(axis=1, keepdims=True) + 1)
-BF = BT / ((K * AF).sum(axis=0, keepdims=True) + 1)
-
-print(AF)
-print(BF)
-
-C = K*AF*BF
-print(C)
-'''
+import matplotlib.pyplot as plt
 
 
+if __name__ == '__main__':
+    y_pred_mat = np.random.uniform(size=(3,3))
+    print(y_pred_mat)
 
-import torch
-K = torch.tensor([1.])
-
-print(K.shape)
-K.reshape(-1)
-print(K.shape)
-
-print(K[0].shape)
+    plt.imshow(y_pred_mat, cmap='Reds')
+    # 每个方格上标记数值
+    for i in range(3):
+        for j in range(3):
+            text = plt.text(j, i, '{:.3f}'.format(y_pred_mat[i, j]),
+                            ha="center", va="center", color="black", fontsize=8)
+    plt.show()
