@@ -14,10 +14,10 @@ class CompetitiveLayerFunction(torch.autograd.Function):
 
     @staticmethod
     def backward(ctx, grad_output):
+        # 求解梯度
         AF, BF, K = ctx.saved_tensors
         nA, nB = K.shape
         grad_AT, grad_BT, grad_K = None, None, None
-
         pC_pK = solver.np_gradient_all(AF.numpy(), BF.numpy(), K.numpy())
         pC_pK = torch.from_numpy(pC_pK)
         #print(pC_pK.shape)
@@ -30,69 +30,55 @@ competitive_layer_function = CompetitiveLayerFunction.apply
 
 
 # layer1
-class CompetitiveLayer_1(torch.nn.Module):
-    def __init__(self, nA, nB):
-        super(CompetitiveLayer_1, self).__init__()
+class CompetitiveLayer(torch.nn.Module):
+    def __init__(self, nA, nB, reparameterize, gradient):
+        super(CompetitiveLayer, self).__init__()
         # 可训练的参数只有K
-        # self.K = nn.Parameter(torch.empty(nA, nB))
-        self.sqrt_K = nn.Parameter(torch.empty(nA, nB))
-        nn.init.uniform_(self.sqrt_K, 0, 1)
+        self.nA = nA
+        self.nB = nB
+        self.reparameterize = reparameterize
+        self.gradient = gradient
+        self.param = nn.Parameter(torch.empty(nA, nB))
+        self.reset_parameters()
 
-    def forward(self, AT, BT):
-        K = self.sqrt_K ** 2
-        C = competitive_layer_function(AT, BT, K)
+    def reset_parameters(self):
+        if (self.reparameterize is 'none'):
+            nn.init.uniform_(self.param, 0, 1)
+        elif (self.reparameterize is 'square'):
+            nn.init.uniform_(self.param, 0, 1)
+        elif (self.reparameterize is 'exp'):
+            nn.init.uniform_(self.param, -1, 0)
+
+    def forward(self, AT, BT) -> torch.Tensor:
+        # 不同重参数化的方法
+        if (self.reparameterize is 'none'):
+            K = self.param
+        elif (self.reparameterize is 'square'):
+            K = torch.square(self.param)
+        elif (self.reparameterize is 'exp'):
+            K = torch.exp(self.param)
+        # 不同求梯度的方法
+        if self.gradient is 'linear_algebra':
+            C = competitive_layer_function(AT, BT, K)
+        elif self.gradient is 'last_iterate':
+            with torch.no_grad():
+                AF, BF, C = solver.torch_solve(AT, BT, K)
+            AF, BF, C = solver.torch_iterate_once(AT, BT, K, AF, BF, C)
         return C
 
 
-# layer2
-class CompetitiveLayer_2(torch.nn.Module):
-    def __init__(self, nA, nB):
-        super(CompetitiveLayer_2, self).__init__()
-        # 可训练的参数只有K
-        # self.K = nn.Parameter(torch.empty(nA, nB))
-        self.sqrt_K = nn.Parameter(torch.empty(nA, nB))
-        nn.init.uniform_(self.sqrt_K, 0, 1)
-
-
-    def forward(self, AT, BT):
-        K = self.sqrt_K ** 2
-        with torch.no_grad():
-            AF, BF, C = solver.torch_solve(AT, BT, K)
-        AF, BF, C = solver.torch_iterate_once(AT, BT, K, AF, BF, C)
-        return C
-
-
-class CompetitiveNetwork_1(torch.nn.Module):
-    def __init__(self, nA, nB, nY, constrain_mode=None):
-        super(CompetitiveNetwork_1, self).__init__()
-        self.comp_layer = CompetitiveLayer_1(nA, nB)
-        #self.comp_layer.K.data = torch.Tensor([1,2,3,4,5,6]).reshape(2, 3)
+class CompetitiveNetwork(torch.nn.Module):
+    def __init__(self, nA, nB, nY, reparameterize='none', gradient='linear_algebra', clip=False):
+        super(CompetitiveNetwork, self).__init__()
+        self.clip = clip
+        self.comp_layer = CompetitiveLayer(nA, nB, reparameterize=reparameterize, gradient=gradient)
         self.linear = nn.Linear(nA*nB, nY)
-        self.constrain_mode = constrain_mode
-        
-    def forward(self, AT, BT):
-        #batch_size = len(AT)
-        C = self.comp_layer(AT, BT)
-        #C = C.reshape(batch_size, -1)
-        C = C.reshape(-1)
-        Y = self.linear(C)
-        return Y
-
-
-class CompetitiveNetwork_2(torch.nn.Module):
-    def __init__(self, nA, nB, nY, constrain_mode=None):
-        super(CompetitiveNetwork_2, self).__init__()
-        self.comp_layer = CompetitiveLayer_2(nA, nB)
-        self.linear = nn.Linear(nA*nB, nY)
-        self.constrain_mode = constrain_mode
         
     def forward(self, AT, BT):
         C = self.comp_layer(AT, BT)
         C = C.reshape(-1)
         Y = self.linear(C)
         return Y
-
-
 
 
 class MLP(torch.nn.Module):
@@ -110,15 +96,10 @@ class MLP(torch.nn.Module):
 
 
 
+
+
+'''
 if __name__ == '__main__':
-
-    '''
-    # autograd_check
-    input = (AT, BT, K)
-    test = torch.autograd.gradcheck(competitive_layer_function, input, eps=1e-3, atol=1e-3)
-    print(test)
-    '''
-
 
     print('test my layer_1')
 
@@ -143,6 +124,12 @@ if __name__ == '__main__':
                 print(layer.K.grad)
                 #K.grad.detach_()
                 layer.K.grad.zero_()
+
+    # autograd_check
+    input = (AT, BT, K)
+    autocheck = torch.autograd.gradcheck(competitive_layer_function, input, eps=1e-3, atol=1e-3)
+    print(autocheck)
+
 
 
 
@@ -172,3 +159,4 @@ if __name__ == '__main__':
     print(t2-t0)
 
 
+'''

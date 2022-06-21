@@ -15,43 +15,42 @@ torch.set_printoptions(precision=6, sci_mode=False)
 set_seed(42)
 
 device = torch.device("cpu")
-MAX_EPOCH = 1000
+max_epoch = 1000
+figures_dir = 'figures'
 
 
-def generate_dataset(xmin, xmax, xstep):
-    pass
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
 
-    # ATs = np.array([[0.1, 0.1], [0.1, 1], [0.1, 10], [1, 0.1], [1, 1], [1, 10], [10, 0.1], [10, 1], [10, 10]], dtype=float)
-    # BTs = np.array([[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1,1]], dtype=float)
-
-    a1 = np.array([0.1, 1, 10])
-    ATs = np.array(list(itertools.product(a1, a1)))
+    at = np.array([0.1, 1, 10])
+    ATs = np.array(list(itertools.product(at, at)))
     BTs = np.ones((3*3, 2))
 
-    Xs = np.concatenate([ATs, BTs], axis=1)
-    Ys = np.array([1,0,0, 0,1,0, 0,0,1], dtype=float)
+    Xs = np.concatenate([ATs, BTs], axis=1).astype(float)
+    Ys = np.array([1,0,0, 0,1,0, 0,0,1]).astype(float)
     Xs = torch.Tensor(Xs)
     Ys = torch.Tensor(Ys)
     train_ds = TensorDataset(Xs, Ys)
     # train_dl = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=False)
 
-    # model = CompetitiveNetwork_1(2, 2, 1).to(device)
-    # model = CompetitiveNetwork_2(2, 2, 1).to(device)
-    model = MLP(2, 2*2, 1).to(device)
-    optimizer = torch.optim.SGD(model.parameters(), lr=2e-2, momentum=0.9)
+    model = CompetitiveNetwork(2, 2, 1, reparameterize='square', gradient='linear_algebra').to(device)
+    optimizer = torch.optim.SGD(model.parameters(), lr=1e-2, momentum=0.9)
     # optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
     loss_func = nn.MSELoss()
 
     loss_list = []
-    for epoch in range(MAX_EPOCH):
+    for epoch in range(max_epoch):
         loss_sum = 0
         y_pred_list = []
-        # 手动batch_size=4
+        # 手动batch
         for i, (x, y) in enumerate(train_ds):
-            #print(x, y)
             x = x.to(device)
             y = y.to(device)
             AT = x[:2]
@@ -69,33 +68,35 @@ if __name__ == '__main__':
         optimizer.step()
         loss_list.append(loss_sum.item())
 
-        K = model.comp_layer.sqrt_K.data**2
+        K = model.comp_layer.param
         W = model.linear.weight.data
         B = model.linear.bias.data
 
-        if (loss_sum.item() < 1e-3):
-            break
+        # print(loss_sum.item())
 
-        if (torch.max(K) > 100):
-            break
+        if (epoch > 100):
+            if (np.mean(loss_list[-20:-10]) - np.mean(loss_list[-10:]) < 1e-3):
+                break
 
         if (epoch % 100 == 0):
             print(f'epoch = {epoch}, loss = {loss_sum.item():.6f}')
-            print(K)
+            print('K', K)
 
 
     print('training completed')
     print(f'epoch = {epoch}, loss = {loss_sum.item():.6f}')
 
-    plt.figure(figsize=(8,6), dpi=100)
-    plt.plot(loss_list)
-    plt.show()
 
     print('K', K)
     print('W', W)
     print('B', B)
 
 
+    plt.figure(figsize=(8,6), dpi=100)
+    plt.plot(loss_list)
+    plt.show()
+
+
     y_pred_mat = np.array(y_pred_list).reshape(3, 3)
     print('output', y_pred_mat)
-    plot_heatmap(y_pred_mat)
+    plot_heatmap(y_pred_mat, x=at)

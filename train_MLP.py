@@ -21,7 +21,6 @@ MAX_EPOCH = 1000
 
 if __name__ == '__main__':
 
-
     a1 = np.array([0.1, 1, 10])
     ATs = np.array(list(itertools.product(a1, a1)))
     BTs = np.ones((3*3, 2))

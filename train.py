@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader
 from utils import *
-from model import *
+from models import *
 
 np.set_printoptions(suppress=True)
 
