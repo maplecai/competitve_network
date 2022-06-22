@@ -20,7 +20,7 @@ def set_seed(seed):
 def plot_heatmap(y, x=None, fig_name='temp'):
     # 热图
     plt.figure(figsize=(5, 5), dpi=100)
-    plt.imshow(y, cmap='Reds', origin='lower')
+    plt.imshow(y, cmap='Reds', origin='lower', vmin=-0.1, vmax=1.1)
 
     m, n = y.shape
     if (x is None):
@@ -36,8 +36,11 @@ def plot_heatmap(y, x=None, fig_name='temp'):
             text = plt.text(j, i, '{:.3f}'.format(y[i, j]),
                             ha="center", va="center", color="black", fontsize=10)
 
+    plt.title(fig_name)
+    #plt.colorbar()
     plt.savefig('figures/' + fig_name + '.png')
-    plt.show()
+    # plt.show()
+    plt.close()
 
 
 if __name__ == '__main__':
