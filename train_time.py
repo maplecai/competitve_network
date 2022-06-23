@@ -11,7 +11,6 @@ from tqdm import tqdm
 
 from utils import *
 from models.competitive_network import *
-from models.mlp import *
 
 
 np.set_printoptions(precision=6, suppress=True)
@@ -58,9 +57,9 @@ def train(model, device, criterion, optimizer, dataloader, dataset, max_epochs, 
         if (epoch % log_steps == 0):
             print(f'epoch = {epoch}, loss = {loss_sum.item():.6f}')
 
-    #print('K', model.comp_layer.param.data)
-    #print('W', model.linear.weight.data)
-    #print('B', model.linear.bias.data)
+    print('K', model.comp_layer.param.data)
+    print('W', model.linear.weight.data)
+    print('B', model.linear.bias.data)
 
     return loss_list, y_pred_list
 
@@ -83,16 +82,14 @@ def main():
     y_pred_array = []
     at = np.array([0.1, 1, 10])
     ATs = np.array(list(itertools.product(at, at)))
-    BTs = np.ones((3*3, 6))
+    BTs = np.ones((3*3, 3))
 
     Xs = np.concatenate([ATs, BTs], axis=1).astype(float)
     #possible_Ys = list(itertools.product([0, 1], repeat=9))
 
     possible_Ys = np.array([[1,0,0, 0,1,0, 0,0,1],
                             [0,0,1, 0,1,0, 1,0,0],
-                            [0,1,0, 1,0,1, 1,0,1],
-                            [1,0,1, 1,0,1, 0,1,0]])
-
+                            [0,1,0, 0,1,0, 1,0,1]])
 
     for Ys in tqdm(possible_Ys):
         print(Ys)
@@ -105,17 +102,63 @@ def main():
         train_ds = TensorDataset(Xs, Ys)
         train_dl = DataLoader(train_ds, batch_size=1, shuffle=False)
 
-        model = MLP(2, 6 ,1)
+        model = CompetitiveNetwork(2, 3, 1, reparameterize='square', gradient='linear_algebra')
         device = torch.device("cpu")
         criterion = nn.MSELoss()
-        optimizer = torch.optim.SGD(model.parameters(), lr=5e-4, momentum=0.9)
-        max_epochs = 2000
+        optimizer = torch.optim.SGD(model.parameters(), lr=1e-2, momentum=0.9)
+        max_epochs = 1000
         log_steps = 100
 
         loss_list, y_pred_list = train(model, device, criterion, optimizer, train_dl, train_ds, max_epochs, log_steps)
 
-        print(model.linear1.weight)
-        print(model.linear2.weight)
+        plt.figure(figsize=(8,6), dpi=100)
+        plt.plot(loss_list)
+        #plt.show()
+
+        y_pred_mat = np.array(y_pred_list).reshape(3, 3)
+        print('output', y_pred_mat)
+        #plot_heatmap(y_pred_mat, x=at, fig_name=fig_name)
+
+        y_pred_array.append(y_pred_mat.reshape(-1))
+
+    y_pred_array = np.array(y_pred_array)
+    #np.save('y_pred_array.npy', y_pred_array)
+
+
+
+def main2():
+
+    y_pred_array = []
+    at = np.array([0.1, 1, 10])
+    ATs = np.array(list(itertools.product(at, at)))
+    BTs = np.ones((3*3, 3))
+
+    Xs = np.concatenate([ATs, BTs], axis=1).astype(float)
+    # possible_Ys = list(itertools.product([0, 1], repeat=9))
+
+    possible_Ys = np.array([[1,0,0, 0,1,0, 0,0,1],
+                            [0,0,1, 0,1,0, 1,0,0],
+                            [0,1,0, 0,1,0, 1,0,1]])
+
+    for Ys in tqdm(possible_Ys):
+        print(Ys)
+        fig_name = [str(i) for i in Ys]
+        fig_name = ''.join(fig_name)
+
+        Ys = np.array(Ys).astype(float)
+        Xs = torch.Tensor(Xs)
+        Ys = torch.Tensor(Ys)
+        train_ds = TensorDataset(Xs, Ys)
+        train_dl = DataLoader(train_ds, batch_size=1, shuffle=False)
+
+        model = CompetitiveNetwork(2, 3, 1, reparameterize='square', gradient='linear_algebra')
+        device = torch.device("cpu")
+        criterion = nn.MSELoss()
+        optimizer = torch.optim.SGD(model.parameters(), lr=1e-2, momentum=0.9)
+        max_epochs = 1000
+        log_steps = 100
+
+        loss_list, y_pred_list = train(model, device, criterion, optimizer, train_dl, train_ds, max_epochs, log_steps, train=False)
 
         plt.figure(figsize=(8,6), dpi=100)
         plt.plot(loss_list)
@@ -134,5 +177,17 @@ def main():
 
 
 
+
+
+
+
 if __name__ == '__main__':
+    t0 = time.perf_counter()
     main()
+    t1 = time.perf_counter()
+    print('train time', t1-t0)
+
+    t0 = time.perf_counter()
+    main2()
+    t1 = time.perf_counter()
+    print('valid time', t1-t0)

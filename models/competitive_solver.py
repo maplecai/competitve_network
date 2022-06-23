@@ -1,15 +1,14 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import torch
-import torch.nn as nn
+import time
 
 
 torch.set_printoptions(precision=16)
 np.set_printoptions(precision=16)
 
-# torch version
-class Solver():
-    def __init__(self, device="cpu", max_iter=100, tol=1e-6):
+
+class CompetitiveSolver(object):
+    def __init__(self, device="cpu", max_iter=10, tol=1e-3):
         self.device = device
         self.max_iter = max_iter
         self.tol = tol
@@ -33,7 +32,7 @@ class Solver():
             if (err < self.tol):
                 break
         if (err > self.tol):
-            print(f'not converge in {iter} iterations')
+            print(f'not converge in {self.max_iter} iterations')
         C = K * AF.reshape(nA, 1) * BF.reshape(1, nB)
 
         return AF, BF, C
@@ -195,8 +194,6 @@ class Solver():
         return AF, BF, C
 
 
-solver = Solver()
-
 
 if __name__ == '__main__':
 
@@ -204,7 +201,7 @@ if __name__ == '__main__':
     '''AT = np.array([1., 1.])
     BT = np.array([1., 1., 1.])
     K  = np.array([1., 2., 3., 4., 5., 6.]).reshape(2, 3)
-    AF, BF, C = solver.np_solve(AT, BT, K)
+    AF, BF, C = CompetitiveSolver.np_solve(AT, BT, K)
     print('AT, BT, K')
     print(AT, BT, K)
     print('AF, BF, C')
@@ -217,7 +214,7 @@ if __name__ == '__main__':
         K_ = K.copy()
         K_[0, 0] = K[0, 0]+ dK00
         # print('K = ', K_)
-        AF_, BF_, C_ = solver.np_solve(AT_, BT_, K_)
+        AF_, BF_, C_ = CompetitiveSolver.np_solve(AT_, BT_, K_)
 
         # print(AF_, BF_, C_)
         dC1 = (C_ - C) / dK00
@@ -225,18 +222,18 @@ if __name__ == '__main__':
     print(dC1)
 
     # theoretical
-    dC3 = solver.np_gradient(AF, BF, K, p=0, q=0)
+    dC3 = CompetitiveSolver.np_gradient(AF, BF, K, p=0, q=0)
     print('analytical dC/pK00')
     print(dC3)
     
 
-    dC_dK = solver.np_gradient_all(AF, BF, K)
+    dC_dK = CompetitiveSolver.np_gradient_all(AF, BF, K)
     print('dC/dK')
     print(dC_dK)
     print('dC/pK00')
     print(dC_dK[:, :, 0, 0])'''
 
-
+    CompetitiveSolver = CompetitiveSolver(device="cpu", max_iter=20, tol=1e-3)
 
     # torch autograd
     AT = torch.Tensor([1, 1])
@@ -244,11 +241,18 @@ if __name__ == '__main__':
     K  = torch.Tensor([1, 2, 3, 4, 5, 6]).reshape(2,3)
     K.requires_grad = True
 
-    with torch.no_grad():
-        AF, BF, C = solver.torch_solve(AT, BT, K)
-        print(AF, BF, C)
 
-    AF, BF, C = solver.torch_iterate_once(AT, BT, K, AF, BF, C)
+    t0 = time.perf_counter()
+    for i in range(1000):
+        with torch.no_grad():
+            AF, BF, C = CompetitiveSolver.torch_solve(AT, BT, K)
+            #print(AF, BF, C)
+
+    t1 = time.perf_counter()
+    print('total time', t1-t0)
+
+
+    '''AF, BF, C = CompetitiveSolver.torch_iterate_once(AT, BT, K, AF, BF, C)
     C[0, 0].backward(retain_graph=True)
     print('last iter grad (simultaneous) dC00/pK')
-    print(K.grad)
+    print(K.grad)'''

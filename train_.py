@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 import itertools
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,8 +8,9 @@ import torch
 import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader
 from tqdm import tqdm
+
 from utils import *
-from models import *
+from models.competitive_network import *
 
 
 np.set_printoptions(precision=6, suppress=True)
@@ -17,7 +19,7 @@ torch.set_printoptions(precision=6, sci_mode=False)
 set_seed(42)
 
 
-def train(model, device, criterion, optimizer, dataloader, dataset, max_epochs, log_steps):
+def train(model, device, criterion, optimizer, dataloader, dataset, max_epochs, log_steps, train=True):
 
     model.to(device)
     model.train()
@@ -38,33 +40,28 @@ def train(model, device, criterion, optimizer, dataloader, dataset, max_epochs, 
             loss_sum += loss
             y_pred_list.append(y_pred.detach().numpy())
 
-        optimizer.zero_grad()
-        loss_sum.backward()
-        optimizer.step()
+        if (train == True):
+            optimizer.zero_grad()
+            loss_sum.backward()
+            optimizer.step()
 
         loss_list.append(loss_sum.item())
 
-        K = model.comp_layer.param
-        W = model.linear.weight.data
-        B = model.linear.bias.data
-
         # print(loss_sum.item())
 
-        #if (epoch > log_steps):
-        #    if (np.mean(loss_list[-2*log_steps:-log_steps]) - np.mean(loss_list[-log_steps:]) < 1e-3):
-        #        break
+        if (epoch > log_steps):
+            if (np.mean(loss_list[-2*log_steps:-log_steps]) - np.mean(loss_list[-log_steps:]) < 1e-3):
+                #break
+                pass
 
         if (epoch % log_steps == 0):
             print(f'epoch = {epoch}, loss = {loss_sum.item():.6f}')
-            #print('K', K.data)
-            #print('W', W.data)
-            #print('B', B.data)
 
-    # plt.figure(figsize=(8,6), dpi=100)
-    # plt.plot(loss_list)
-    # plt.show()
+    print('K', model.comp_layer.param.data)
+    print('W', model.linear.weight.data)
+    print('B', model.linear.bias.data)
 
-    return y_pred_list
+    return loss_list, y_pred_list
 
 
 
@@ -85,10 +82,15 @@ def main():
     y_pred_array = []
     at = np.array([0.1, 1, 10])
     ATs = np.array(list(itertools.product(at, at)))
-    BTs = np.ones((3*3, 2))
+    BTs = np.ones((3*3, 6))
 
     Xs = np.concatenate([ATs, BTs], axis=1).astype(float)
-    possible_Ys = list(itertools.product([0, 1], repeat=9))
+    #possible_Ys = list(itertools.product([0, 1], repeat=9))
+
+    possible_Ys = np.array([[1,0,0, 0,1,0, 0,0,1],
+                            [0,0,1, 0,1,0, 1,0,0],
+                            [0,1,0, 1,0,1, 1,0,1],
+                            [1,0,1, 1,0,1, 0,1,0]])
 
     for Ys in tqdm(possible_Ys):
         print(Ys)
@@ -101,23 +103,32 @@ def main():
         train_ds = TensorDataset(Xs, Ys)
         train_dl = DataLoader(train_ds, batch_size=1, shuffle=False)
 
-        model = CompetitiveNetwork(2, 2, 1, reparameterize='square', gradient='linear_algebra')
+        model = CompetitiveNetwork(2, 6, 1, reparameterize='square', gradient='linear_algebra')
         device = torch.device("cpu")
         criterion = nn.MSELoss()
         optimizer = torch.optim.SGD(model.parameters(), lr=1e-2, momentum=0.9)
-        max_epochs = 1000
+        max_epochs = 2000
         log_steps = 100
 
-        y_pred_list = train(model, device, criterion, optimizer, train_dl, train_ds, max_epochs, log_steps)
+        loss_list, y_pred_list = train(model, device, criterion, optimizer, train_dl, train_ds, max_epochs, log_steps)
+
+        plt.figure(figsize=(8,6), dpi=100)
+        plt.plot(loss_list)
+        plt.show()
 
         y_pred_mat = np.array(y_pred_list).reshape(3, 3)
         print('output', y_pred_mat)
-        plot_heatmap(y_pred_mat, x=at, fig_name=fig_name)
+        plot_heatmap(y_pred_mat, x=at, fig_name=fig_name+f'_{loss_list[-1]:.3f}')
 
-        y_pred_array.append(y_pred_list.reshape(-1))
+        y_pred_array.append(y_pred_mat.reshape(-1))
 
     y_pred_array = np.array(y_pred_array)
-    np.save('y_pred_array.npy', y_pred_array)
+    #np.save('y_pred_array.npy', y_pred_array)
+
+
+
+
+
 
 
 if __name__ == '__main__':

@@ -1,7 +1,11 @@
 import numpy as np
 import torch
-from competitive_solver import *
+import torch.nn as nn
 import time
+from .competitive_solver import *
+
+
+solver = CompetitiveSolver(device="cpu", max_iter=20, tol=1e-3)
 
 
 class CompetitiveLayerFunction(torch.autograd.Function):
@@ -30,7 +34,7 @@ competitive_layer_function = CompetitiveLayerFunction.apply
 
 
 # layer1
-class CompetitiveLayer(torch.nn.Module):
+class CompetitiveLayer(nn.Module):
     def __init__(self, nA, nB, reparameterize, gradient):
         super(CompetitiveLayer, self).__init__()
         # 可训练的参数只有K
@@ -42,32 +46,32 @@ class CompetitiveLayer(torch.nn.Module):
         self.reset_parameters()
 
     def reset_parameters(self):
-        if (self.reparameterize is 'none'):
+        if (self.reparameterize == 'none'):
             nn.init.uniform_(self.param, 0, 1)
-        elif (self.reparameterize is 'square'):
+        elif (self.reparameterize == 'square'):
             nn.init.uniform_(self.param, 0, 1)
-        elif (self.reparameterize is 'exp'):
+        elif (self.reparameterize == 'exp'):
             nn.init.uniform_(self.param, -1, 0)
 
-    def forward(self, AT, BT) -> torch.Tensor:
+    def forward(self, AT, BT):
         # 不同重参数化的方法
-        if (self.reparameterize is 'none'):
+        if (self.reparameterize == 'none'):
             K = self.param
-        elif (self.reparameterize is 'square'):
+        elif (self.reparameterize == 'square'):
             K = torch.square(self.param)
-        elif (self.reparameterize is 'exp'):
+        elif (self.reparameterize == 'exp'):
             K = torch.exp(self.param)
         # 不同求梯度的方法
-        if self.gradient is 'linear_algebra':
+        if (self.gradient == 'linear_algebra'):
             C = competitive_layer_function(AT, BT, K)
-        elif self.gradient is 'last_iterate':
+        elif (self.gradient == 'last_iterate'):
             with torch.no_grad():
                 AF, BF, C = solver.torch_solve(AT, BT, K)
             AF, BF, C = solver.torch_iterate_once(AT, BT, K, AF, BF, C)
         return C
 
 
-class CompetitiveNetwork(torch.nn.Module):
+class CompetitiveNetwork(nn.Module):
     def __init__(self, nA, nB, nY, reparameterize='none', gradient='linear_algebra', clip=False):
         super(CompetitiveNetwork, self).__init__()
         self.clip = clip
@@ -81,7 +85,7 @@ class CompetitiveNetwork(torch.nn.Module):
         return Y
 
 
-class MLP(torch.nn.Module):
+class MLP(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
         super(MLP, self).__init__()
         self.linear1 = nn.Linear(input_size, hidden_size)
@@ -96,12 +100,9 @@ class MLP(torch.nn.Module):
 
 
 
-
-
-'''
 if __name__ == '__main__':
-
-    print('test my layer_1')
+    '''
+    print('test my layer')
 
     AT = torch.Tensor([1., 1.])
     BT = torch.Tensor([1., 1., 1.])
@@ -111,7 +112,7 @@ if __name__ == '__main__':
     nB = len(BT)
     nY = len(Y)
 
-    layer = CompetitiveLayer_1(nA, nB)
+    layer = CompetitiveLayer(nA, nB)
     layer.K.data = K
 
     C = layer(AT, BT)
@@ -129,34 +130,36 @@ if __name__ == '__main__':
     input = (AT, BT, K)
     autocheck = torch.autograd.gradcheck(competitive_layer_function, input, eps=1e-3, atol=1e-3)
     print(autocheck)
+    '''
 
+    print('test my network')
 
+    AT = torch.Tensor([1., 1.])
+    BT = torch.Tensor([1., 1., 1.])
+    K  = torch.Tensor([1., 2., 3., 4., 5., 6.]).reshape(2, 3)
+    Y =  torch.Tensor([1.])
+    nA = len(AT)
+    nB = len(BT)
+    nY = len(Y)
 
-
-    print('test my network_1')
-
-    model = CompetitiveNetwork_1(nA, nB, nY)
-    model.comp_layer.K.data  = torch.Tensor([1., 2., 3., 4., 5., 6.]).reshape(2, 3)
-    model.linear.weight.data = torch.Tensor([1., 0., 0., 0., 0., 0.]).reshape(1, 6)
-    model.linear.bias.data = torch.Tensor([0.])
-
+    model = CompetitiveNetwork(nA, nB, nY)
     criterion = torch.nn.MSELoss()
-    optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
+    optimizer = torch.optim.SGD(model.parameters(), lr=1e-2, momentum=0.9)
 
     t0 = time.perf_counter()
-    
-    Y_pred = model(AT, BT)
-
+    for i in range(100):
+        model = CompetitiveNetwork(nA, nB, nY)
+        Y_pred = model(AT, BT)
     t1 = time.perf_counter()
+    print(t1-t0)
 
-    Y_pred.backward()
-    optimizer.step()
-    optimizer.zero_grad()
-
-    t2 = time.perf_counter()
+    t0 = time.perf_counter()
+    for i in range(100):
+        model = CompetitiveNetwork(nA, nB, nY)
+        Y_pred = model(AT, BT)
+        #Y_pred.backward()
+        #optimizer.step()
+        #optimizer.zero_grad()
+    t1 = time.perf_counter()
     
     print(t1-t0)
-    print(t2-t0)
-
-
-'''

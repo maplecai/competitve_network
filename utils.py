@@ -37,9 +37,8 @@ def plot_heatmap(y, x=None, fig_name='temp'):
                             ha="center", va="center", color="black", fontsize=10)
 
     plt.title(fig_name)
-    #plt.colorbar()
-    plt.savefig('figures/' + fig_name + '.png')
-    # plt.show()
+    plt.savefig('figures22/' + fig_name + '.png')
+    plt.show()
     plt.close()
 
 

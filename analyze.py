@@ -39,12 +39,12 @@ if __name__ == '__main__':
 
 
         pred_Ys = np.array(pred_Ys).reshape(3, 3)
-        # print('output', pred_Ys)
-        plot_heatmap(pred_Ys, x=at, fig_name=Ys_str+f'_{loss:.3f}')
+        # plot_heatmap(pred_Ys, x=at, fig_name=Ys_str+f'_{loss:.3f}')
 
 
     loss_list = np.array(loss_list)
 
+    print(np.sum(loss_list>0.05))
     print(np.sum(loss_list>0.1))
     print(np.sum(loss_list>0.15))
     print(np.quantile(loss_list, q=np.arange(0, 1, 0.1)))
