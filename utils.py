@@ -7,6 +7,8 @@ import torch
 import torch.nn as nn
 
 
+
+
 def set_seed(seed):
     random.seed(seed)
     np.random.seed(seed)
@@ -15,31 +17,6 @@ def set_seed(seed):
     torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
-
-
-def plot_heatmap(y, x=None, fig_name='temp'):
-    # 热图
-    plt.figure(figsize=(5, 5), dpi=100)
-    plt.imshow(y, cmap='Reds', origin='lower', vmin=-0.1, vmax=1.1)
-
-    m, n = y.shape
-    if (x is None):
-        plt.xticks(np.arange(m), np.arange(m), fontsize=10)
-        plt.yticks(np.arange(n), np.arange(m), fontsize=10)
-    else:
-        plt.xticks(np.arange(m), x, fontsize=10)
-        plt.yticks(np.arange(n), x, fontsize=10)
-
-    # 每个方格上标记数值
-    for i in range(m):
-        for j in range(n):
-            text = plt.text(j, i, '{:.3f}'.format(y[i, j]),
-                            ha="center", va="center", color="black", fontsize=10)
-
-    plt.title(fig_name)
-    plt.savefig('figures22/' + fig_name + '.png')
-    plt.show()
-    plt.close()
 
 
 if __name__ == '__main__':
