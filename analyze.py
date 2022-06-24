@@ -3,10 +3,8 @@ import itertools
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error as mse
 
-from utils import *
 from tqdm import tqdm
-
-# import matplotlib.cm
+from utils import *
 
 color_list = plt.cm.Pastel1(np.arange(9))
 
@@ -31,15 +29,11 @@ if __name__ == '__main__':
         pred_Ys = pred_Ys_list[i]
         Ys_str = ''.join([str(i) for i in Ys])
 
-        #print(Ys)
-        #print(pred_Ys)
-
         loss = mse(Ys, pred_Ys)
         loss_list.append(loss)
 
 
         pred_Ys = np.array(pred_Ys).reshape(3, 3)
-        # plot_heatmap(pred_Ys, x=at, fig_name=Ys_str+f'_{loss:.3f}')
 
 
     loss_list = np.array(loss_list)
