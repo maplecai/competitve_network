@@ -7,8 +7,6 @@ import torch
 import torch.nn as nn
 
 
-
-
 def set_seed(seed):
     random.seed(seed)
     np.random.seed(seed)
@@ -26,4 +24,4 @@ if __name__ == '__main__':
 
     y_pred_mat = np.array([1,0,0, 0,0.8,0, 0,0,0.6]).reshape(3, 3)
     print('output', y_pred_mat)
-    plot_heatmap(y=y_pred_mat, x=at)
+    
