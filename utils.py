@@ -17,6 +17,10 @@ def set_seed(seed):
     torch.backends.cudnn.deterministic = True
 
 
+np.set_printoptions(precision=6, suppress=True)
+torch.set_printoptions(precision=6, sci_mode=False)
+
+
 if __name__ == '__main__':
 
     at = np.array([0.1, 1, 10])

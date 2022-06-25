@@ -18,8 +18,8 @@ class CompetitiveSolver(object):
         # 求解
         nA = len(AT)
         nB = len(BT)
-        AF = np.zeros(AT.shape)
-        BF = np.zeros(BT.shape)
+        AF = np.zeros(AT.shape, dtype=np.float32)
+        BF = np.zeros(BT.shape, dtype=np.float32)
 
         err = 0
         for iter in range(self.max_iter):
@@ -38,7 +38,7 @@ class CompetitiveSolver(object):
         return AF, BF, C
 
 
-    def np_gradient(self, AF, BF, K, p, q):
+    '''def np_gradient(self, AF, BF, K, p, q):
         # 求解dCij/dKpq
         # 先求解dAF/dKpq, dBF/dKpq, nA+nB维线性方程组
         nA = len(AF)
@@ -77,19 +77,21 @@ class CompetitiveSolver(object):
                 dC[i, j] += K[i, j] * BF[j] * dA[i] + K[i, j] * AF[i] * dB[j]
         dC[p, q] += AF[p] * BF[q]
 
-        return dC
+        return dC'''
 
 
     def np_gradient_all(self, AF, BF, K):
+        
         # 一次性求解dCij/dKpq
         nA = len(AF)
         nB = len(BF)
-        dC_dK = np.zeros((nA, nB, nA, nB))
-        dA_dK = np.zeros((nA, nA, nB))
-        dB_dK = np.zeros((nB, nA, nB))
+        dC_dK = np.zeros((nA, nB, nA, nB), dtype=np.float32)
+        dA_dK = np.zeros((nA, nA, nB), dtype=np.float32)
+        dB_dK = np.zeros((nB, nA, nB), dtype=np.float32)
+        
         
         # 先求解dAF/dKpq, dBF/dKpq, nA+nB维线性方程组
-        W = np.zeros((nA+nB, nA+nB))
+        W = np.zeros((nA+nB, nA+nB), dtype=np.float32)
         # 一行一行填W
         for m in range(nA):
             # 第m行
@@ -107,7 +109,15 @@ class CompetitiveSolver(object):
                 # 第nA+n列
                 W[nA+n, nA+n] += K[i, n] * AF[i]
             W[nA+n, nA+n] += 1
+
         W_inv = np.linalg.inv(W)
+        
+        # t0 = time.perf_counter()
+        # for i in range(1000):
+        #     W_inv = np.linalg.inv(W)
+        # t1 = time.perf_counter()
+        # print('process time', t1-t0)
+
 
         # 对于给定的Kpq
         for p in range(nA):
@@ -150,31 +160,6 @@ class CompetitiveSolver(object):
         C = K * AF.reshape(nA, 1) * BF.reshape(1, nB)
 
         return AF, BF, C
-
-
-    '''def torch_autograd(self, AT, BT, K, AF, BF, C):
-        # pytorch 自动求导最后一步迭代
-        nA = len(AF)
-        nB = len(BF)
-        AF_last = AF
-        BF_last = BF
-        # simultaneous iteration
-        AF = AT / ((K * BF_last.reshape(1, nB)).sum(axis=1) + 1)
-        BF = BT / ((K * AF_last.reshape(nA, 1)).sum(axis=0) + 1)
-        # or alternative iteration
-        # AF = AT / ((K * BF).sum(axis=1, keepdims=True) + 1)
-        # BF = BT / ((K * AF).sum(axis=0, keepdims=True) + 1)
-        C = K * AF.reshape(nA, 1) * BF.reshape(1, nB)
-
-        dC = torch.zeros(K.shape)
-        for i in range(nA):
-            for j in range(nB):
-                C[i, j].backward(retain_graph=True)
-                dC[i, j] = K.grad[0, 0]
-                K.grad.detach_()
-                K.grad.zero_()
-                # print(dC[i, j])
-        return dC'''
 
 
     def torch_iterate_once(self, AT, BT, K, AF, BF, C):
@@ -233,7 +218,16 @@ if __name__ == '__main__':
     print('dC/pK00')
     print(dC_dK[:, :, 0, 0])'''
 
-    CompetitiveSolver = CompetitiveSolver(device="cpu", max_iter=20, tol=1e-3)
+
+    
+    '''AF, BF, C = CompetitiveSolver.torch_iterate_once(AT, BT, K, AF, BF, C)
+    C[0, 0].backward(retain_graph=True)
+    print('last iter grad (simultaneous) dC00/pK')
+    print(K.grad)'''
+
+
+
+    solver = CompetitiveSolver(device="cpu", max_iter=20, tol=1e-3)
 
     # torch autograd
     AT = torch.Tensor([1, 1])
@@ -245,14 +239,29 @@ if __name__ == '__main__':
     t0 = time.perf_counter()
     for i in range(1000):
         with torch.no_grad():
-            AF, BF, C = CompetitiveSolver.torch_solve(AT, BT, K)
-            #print(AF, BF, C)
-
+            AF, BF, C = solver.torch_solve(AT, BT, K)
     t1 = time.perf_counter()
-    print('total time', t1-t0)
+    print('torch_solve time', t1-t0)
 
 
-    '''AF, BF, C = CompetitiveSolver.torch_iterate_once(AT, BT, K, AF, BF, C)
-    C[0, 0].backward(retain_graph=True)
-    print('last iter grad (simultaneous) dC00/pK')
-    print(K.grad)'''
+    AT, BT, K = AT.numpy(), BT.numpy(), K.detach().numpy()
+
+    t0 = time.perf_counter()
+    for i in range(1000):
+        AF, BF, C = solver.np_solve(AT, BT, K)
+    t1 = time.perf_counter()
+    print('np_solve time', t1-t0)
+
+
+    t0 = time.perf_counter()
+    for i in range(1000):
+        dC_dK = solver.np_gradient_all(AF, BF, K)
+    t1 = time.perf_counter()
+    print('np_gradient_all time', t1-t0)
+
+
+'''
+torch_solve time 0.82
+np_solve time 0.17
+np_gradient_all time 0.092
+'''

@@ -12,7 +12,12 @@ class CompetitiveLayerFunction(torch.autograd.Function):
     @staticmethod
     def forward(ctx, AT, BT, K):
         # 求解稳态
-        AF, BF, C = solver.torch_solve(AT, BT, K)
+        # AF, BF, C = solver.torch_solve(AT, BT, K)
+        # ctx.save_for_backward(AF, BF, K)
+
+        # 这里不知道为什么K不需要detach
+        AF, BF, C = solver.np_solve(AT.numpy(), BT.numpy(), K.numpy())
+        AF, BF, C = torch.from_numpy(AF), torch.from_numpy(BF), torch.from_numpy(C)
         ctx.save_for_backward(AF, BF, K)
         return C
 
@@ -22,11 +27,12 @@ class CompetitiveLayerFunction(torch.autograd.Function):
         AF, BF, K = ctx.saved_tensors
         nA, nB = K.shape
         grad_AT, grad_BT, grad_K = None, None, None
+
         pC_pK = solver.np_gradient_all(AF.numpy(), BF.numpy(), K.numpy())
         pC_pK = torch.from_numpy(pC_pK)
-        #print(pC_pK.shape)
+        # print(pC_pK.shape)
         grad_K = (pC_pK * grad_output.reshape(nA, nB, 1, 1)).sum(axis=[0,1])
-        #print(grad_K.shape)
+        # print(grad_K)
         return grad_AT, grad_BT, grad_K
 
 
@@ -85,81 +91,80 @@ class CompetitiveNetwork(nn.Module):
         return Y
 
 
-class MLP(nn.Module):
-    def __init__(self, input_size, hidden_size, output_size):
-        super(MLP, self).__init__()
-        self.linear1 = nn.Linear(input_size, hidden_size)
-        self.linear2 = nn.Linear(hidden_size, output_size)
-        self.relu = nn.ReLU()
-
-    def forward(self, AT, BT):
-        C = self.linear1(AT)
-        C = self.relu(C)
-        Y = self.linear2(C)
-        return Y
-
-
 
 if __name__ == '__main__':
-    '''
+    
     print('test my layer')
 
     AT = torch.Tensor([1., 1.])
     BT = torch.Tensor([1., 1., 1.])
     K  = torch.Tensor([1., 2., 3., 4., 5., 6.]).reshape(2, 3)
     Y =  torch.Tensor([1.])
+    K.requires_grad = True
     nA = len(AT)
     nB = len(BT)
     nY = len(Y)
 
-    layer = CompetitiveLayer(nA, nB)
-    layer.K.data = K
+    layer = CompetitiveLayer(nA, nB, reparameterize='square', gradient='linear_algebra')
 
-    C = layer(AT, BT)
-    print(C)
-    
-    for i in range(nA):
-        for j in range(nB):
-                C[i, j].backward(retain_graph=True)
-                print(f'dC{i}{j}_dK')
-                print(layer.K.grad)
-                #K.grad.detach_()
-                layer.K.grad.zero_()
 
     # autograd_check
     input = (AT, BT, K)
     autocheck = torch.autograd.gradcheck(competitive_layer_function, input, eps=1e-3, atol=1e-3)
     print(autocheck)
-    '''
+
+
+    t0 = time.perf_counter()
+    for i in range(1000):
+        C = layer(AT, BT)
+    t1 = time.perf_counter()
+    print('layer forward time', t1-t0)
+
+
+    t0 = time.perf_counter()
+    for i in range(1000):
+        C = layer(AT, BT)
+        C.sum().backward()
+    t1 = time.perf_counter()
+    print('layer forward and backward time', t1-t0)
+
+
+    
+ 
 
     print('test my network')
-
-    AT = torch.Tensor([1., 1.])
-    BT = torch.Tensor([1., 1., 1.])
-    K  = torch.Tensor([1., 2., 3., 4., 5., 6.]).reshape(2, 3)
-    Y =  torch.Tensor([1.])
-    nA = len(AT)
-    nB = len(BT)
-    nY = len(Y)
 
     model = CompetitiveNetwork(nA, nB, nY)
     criterion = torch.nn.MSELoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=1e-2, momentum=0.9)
 
-    t0 = time.perf_counter()
-    for i in range(100):
-        model = CompetitiveNetwork(nA, nB, nY)
-        Y_pred = model(AT, BT)
-    t1 = time.perf_counter()
-    print(t1-t0)
 
     t0 = time.perf_counter()
-    for i in range(100):
+    for i in range(1000):
         model = CompetitiveNetwork(nA, nB, nY)
         Y_pred = model(AT, BT)
         #Y_pred.backward()
         #optimizer.step()
         #optimizer.zero_grad()
     t1 = time.perf_counter()
+    print('forward time', t1-t0)
+
     
-    print(t1-t0)
+    t0 = time.perf_counter()
+    for i in range(1000):
+        model = CompetitiveNetwork(nA, nB, nY)
+        Y_pred = model(AT, BT)
+        Y_pred.backward()
+        optimizer.step()
+        optimizer.zero_grad()
+    t1 = time.perf_counter()
+    print('forward and backward time', t1-t0)
+
+
+'''
+
+
+forward time 0.21
+forward and backward time 0.54
+构造计算图 1s
+'''
