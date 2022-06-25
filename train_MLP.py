@@ -8,129 +8,107 @@ import torch
 import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader
 from tqdm import tqdm
+import argparse
 
 from utils import *
-from models.competitive_network import *
 from models.mlp import *
 
 
-np.set_printoptions(precision=6, suppress=True)
-torch.set_printoptions(precision=6, sci_mode=False)
-
 set_seed(42)
+nA = 2
+nB = 3
+nY = 1
 
 
 def train(model, device, criterion, optimizer, dataloader, dataset, max_epochs, log_steps, train=True):
 
     model.to(device)
     model.train()
-    loss_list = []
+    losses = []
 
     for epoch in range(max_epochs+1):
-        loss_sum = 0
-        y_pred_list = []
-        # 手动batch
+        loss_batch = 0
+        Ys_pred = []
+        # 手动 dataloader
         for i, (x, y) in enumerate(dataset):
             x = x.to(device)
             y = y.to(device)
             y_pred = model(x[:2], x[2:])
 
-            #print(y)
-            #print(y_pred)
             loss = criterion(y, y_pred[0])
-            loss_sum += loss
-            y_pred_list.append(y_pred.detach().numpy())
+            loss_batch += loss
+            Ys_pred.append(y_pred.detach().numpy())
 
         if (train == True):
             optimizer.zero_grad()
-            loss_sum.backward()
+            loss_batch.backward()
             optimizer.step()
 
-        loss_list.append(loss_sum.item())
-
-        # print(loss_sum.item())
-
-        if (epoch > log_steps):
-            if (np.mean(loss_list[-2*log_steps:-log_steps]) - np.mean(loss_list[-log_steps:]) < 1e-3):
-                #break
-                pass
+        losses.append(loss_batch.item())
+        # print(loss_batch.item())
 
         if (epoch % log_steps == 0):
-            print(f'epoch = {epoch}, loss = {loss_sum.item():.6f}')
+            print(f'epoch = {epoch}, loss = {losses[-1]:.6f}')
 
-    #print('K', model.comp_layer.param.data)
-    #print('W', model.linear.weight.data)
-    #print('B', model.linear.bias.data)
+        if (epoch > 2*log_steps):
+            if (np.mean(losses[-2*log_steps:-log_steps]) - np.mean(losses[-log_steps:]) < 1e-3):
+                break
 
-    return loss_list, y_pred_list
+    Ys_pred = np.array(Ys_pred).reshape(-1)
 
-
-
-
-def generate_data():
-
-    possible_Ys = list(itertools.product([0,1], repeat=3))
-    a = possible_Ys[0]
-    print(a)
-    b = [str(i) for i in a]
-    b=''.join(b)
-    print(b)
+    return losses, Ys_pred
 
 
 
-def main():
+def main(args):
 
-    y_pred_array = []
-    at = np.array([0.1, 1, 10])
-    ATs = np.array(list(itertools.product(at, at)))
-    BTs = np.ones((3*3, 6))
+    AT = np.array([0.1, 1, 10])
+    ATs = np.array(list(itertools.product(AT, AT)))
+    BTs = np.ones((3*3, nB))
+    Xs = np.concatenate([ATs, BTs], axis=1)
+    #Ys_list = list(itertools.product([0, 1], repeat=9))
+    Ys_list = np.array([[1,0,0, 0,1,0, 0,0,1],
+                        [0,0,1, 0,1,0, 1,0,0],
+                        [0,1,0, 1,0,1, 1,0,1],
+                        [1,0,1, 1,0,1, 0,1,0]])
+    Ys_pred_list = []
 
-    Xs = np.concatenate([ATs, BTs], axis=1).astype(float)
-    #possible_Ys = list(itertools.product([0, 1], repeat=9))
+    for i in tqdm(range(3)):
+        Ys = Ys_list[2]
+        print('')
 
-    possible_Ys = np.array([[1,0,0, 0,1,0, 0,0,1],
-                            [0,0,1, 0,1,0, 1,0,0],
-                            [0,1,0, 1,0,1, 1,0,1],
-                            [1,0,1, 1,0,1, 0,1,0]])
-
-
-    for Ys in tqdm(possible_Ys):
-        print(Ys)
-        fig_name = [str(i) for i in Ys]
-        fig_name = ''.join(fig_name)
-
-        Ys = np.array(Ys).astype(float)
         Xs = torch.Tensor(Xs)
         Ys = torch.Tensor(Ys)
         train_ds = TensorDataset(Xs, Ys)
-        train_dl = DataLoader(train_ds, batch_size=1, shuffle=False)
+        # train_dl = DataLoader(train_ds, batch_size=1, shuffle=False)
 
-        model = MLP(2, 6 ,1)
-        device = torch.device("cpu")
-        criterion = nn.MSELoss()
-        optimizer = torch.optim.SGD(model.parameters(), lr=5e-4, momentum=0.9)
-        max_epochs = 2000
-        log_steps = 100
+        for j in range(3):
+            # 避免初始化的影响，重复训练3次
+            model = MLP(nA, nB, nY)
+            device = torch.device("cpu")
+            criterion = nn.MSELoss()
+            optimizer = torch.optim.SGD(model.parameters(), lr=1e-3, momentum=0.9)
+            # optimizer = torch.optim.Adam(model.parameters(), lr=1e-2) #参数稀疏性不好
+            max_epochs = 2000
+            log_steps = 100
 
-        loss_list, y_pred_list = train(model, device, criterion, optimizer, train_dl, train_ds, max_epochs, log_steps)
-
-        print(model.linear1.weight)
-        print(model.linear2.weight)
+            losses, Ys_pred = train(model, device, criterion, optimizer, None, train_ds, max_epochs, log_steps)
+            loss = losses[-1]
+            if (loss < 0.1):
+                break
 
         plt.figure(figsize=(8,6), dpi=100)
-        plt.plot(loss_list)
+        plt.plot(losses)
+        #plt.savefig(figures_dir + 'losses.png')
         #plt.show()
+        plt.close()
 
-        y_pred_mat = np.array(y_pred_list).reshape(3, 3)
-        print('output', y_pred_mat)
-        #plot_heatmap(y_pred_mat, x=at, fig_name=fig_name)
+        print('Ys', Ys)
+        print('Ys_pred', Ys_pred)
+        Ys_pred_list.append(Ys_pred)
 
-        y_pred_array.append(y_pred_mat.reshape(-1))
-
-    y_pred_array = np.array(y_pred_array)
-    #np.save('y_pred_array.npy', y_pred_array)
-
-
+    Ys_pred_list = np.array(Ys_pred_list)
+    np.save(f'MLP_{nB}_Ys_pred_list.npy', Ys_pred_list)
 
 
 

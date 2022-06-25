@@ -22,10 +22,5 @@ torch.set_printoptions(precision=6, sci_mode=False)
 
 
 if __name__ == '__main__':
-
-    at = np.array([0.1, 1, 10])
-    ATs = np.array(list(itertools.product(at, at)))
-
-    y_pred_mat = np.array([1,0,0, 0,0.8,0, 0,0,0.6]).reshape(3, 3)
-    print('output', y_pred_mat)
+    pass
     

@@ -15,10 +15,11 @@ from models.competitive_network import *
 
 
 set_seed(42)
-figures_dir = 'figures/'
 nA = 2
 nB = 3
 nY = 1
+figures_dir = f'figures/2v{nB}/'
+print(figures_dir)
 
 
 def train(model, device, criterion, optimizer, dataloader, dataset, max_epochs, log_steps, train=True):
@@ -76,7 +77,6 @@ def main(args):
 
     for i in tqdm(range(3)):
         Ys = Ys_list[2]
-        Ys_str = ''.join([str(i) for i in Ys])
         print('')
 
         Xs = torch.Tensor(Xs)
@@ -101,7 +101,7 @@ def main(args):
 
         plt.figure(figsize=(8,6), dpi=100)
         plt.plot(losses)
-        plt.savefig(figures_dir + 'losses.png')
+        #plt.savefig(figures_dir + 'losses.png')
         #plt.show()
         plt.close()
 
@@ -111,39 +111,12 @@ def main(args):
 
         print('Ys', Ys)
         print('Ys_pred', Ys_pred)
-        plot_heatmap(y=Ys_pred.reshape(3, 3), x=AT, title=Ys_str+f'_{loss:.3f}')
-
         Ys_pred_list.append(Ys_pred)
 
     Ys_pred_list = np.array(Ys_pred_list)
-    np.save(str(nB)+'Ys_pred_list.npy', Ys_pred_list)
+    np.save(f'{nB}_Ys_pred_list.npy', Ys_pred_list)
 
 
-
-def plot_heatmap(y, x=None, title='temp', show=True):
-    # 热图
-    m, n = y.shape
-
-    plt.figure(figsize=(6, 6), dpi=100)
-    plt.imshow(y, cmap='Reds', origin='lower', vmin=-0.1, vmax=1.1)
-    if (x is None):
-        plt.xticks(np.arange(m), np.arange(m), fontsize=10)
-        plt.yticks(np.arange(n), np.arange(m), fontsize=10)
-    else:
-        plt.xticks(np.arange(m), x, fontsize=10)
-        plt.yticks(np.arange(n), x, fontsize=10)
-
-    # 每个方格上标记数值
-    for i in range(m):
-        for j in range(n):
-            plt.text(j, i, '{:.3f}'.format(y[i, j]),
-                            ha="center", va="center", color="black", fontsize=10)
-
-    plt.title(title)
-    plt.savefig(figures_dir + title + '.png')
-    if (show==True):
-        plt.show()
-    plt.close()
 
 
 

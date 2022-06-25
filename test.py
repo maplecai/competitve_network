@@ -5,8 +5,6 @@ import torch
 
 a = np.array([1.0, 2, 3])
 b = torch.tensor([1.0, 2, 3])
-
-
 aa = np.array([1.0, 2, 3])
 
 
