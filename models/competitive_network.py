@@ -78,7 +78,7 @@ class CompetitiveLayer(nn.Module):
 
 
 class CompetitiveNetwork(nn.Module):
-    def __init__(self, nA, nB, nY, reparameterize='none', gradient='linear_algebra', clip=False):
+    def __init__(self, nA, nB, nY, reparameterize='square', gradient='linear_algebra', clip=False):
         super(CompetitiveNetwork, self).__init__()
         self.clip = clip
         self.comp_layer = CompetitiveLayer(nA, nB, reparameterize=reparameterize, gradient=gradient)
