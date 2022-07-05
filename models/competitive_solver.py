@@ -152,7 +152,7 @@ class CompetitiveSolver(object):
             AF = AT / ((K * BF.reshape(1, nB)).sum(axis=1) + 1)
             BF = BT / ((K * AF.reshape(nA, 1)).sum(axis=0) + 1)
             # print('iter', iter, AF, BF)
-            err = np.abs(AF-AF_last).sum() + np.abs(BF-BF_last).sum()
+            err = torch.abs(AF-AF_last).sum() + torch.abs(BF-BF_last).sum()
             if (err < self.tol):
                 break
         if (err > self.tol):
@@ -227,7 +227,7 @@ if __name__ == '__main__':
 
 
 
-    solver = CompetitiveSolver(device="cpu", max_iter=20, tol=1e-3)
+    solver = CompetitiveSolver(device="cpu", max_iter=20, tol=1e-2)
 
     # torch autograd
     AT = torch.Tensor([1, 1])
@@ -258,6 +258,26 @@ if __name__ == '__main__':
         dC_dK = solver.np_gradient_all(AF, BF, K)
     t1 = time.perf_counter()
     print('np_gradient_all time', t1-t0)
+
+
+
+
+    t0 = time.perf_counter()
+    for i in range(1000):
+        AF, BF, C = solver.np_solve(AT, BT, K)
+        dC_dK = solver.np_gradient_all(AF, BF, K)
+    t1 = time.perf_counter()
+    print('np_solve + np_gradient_all time', t1-t0)
+
+
+    t0 = time.perf_counter()
+    for i in range(1000):
+        AF, BF, C = solver.np_solve(AT, BT, K)
+        dC_dK = solver.torch_iterate_once(AT, BT, K, AF, BF, C)
+    t1 = time.perf_counter()
+    print('np_solve + torch_iterate_once time', t1-t0)
+
+
 
 
 '''
