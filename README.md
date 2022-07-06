@@ -1,1 +1,3 @@
-# competitve_network
+# Competitve Network
+
+This is a README.

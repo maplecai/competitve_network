@@ -11,7 +11,7 @@ from tqdm import tqdm
 import argparse
 
 from utils import *
-from models.competitive_network import *
+from models.networks import *
 
 
 set_seed(42)

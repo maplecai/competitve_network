@@ -10,7 +10,7 @@ from torch.utils.data import TensorDataset, DataLoader
 from tqdm import tqdm
 
 from utils import *
-from models.competitive_network import *
+from models.networks import *
 
 
 np.set_printoptions(precision=6, suppress=True)
