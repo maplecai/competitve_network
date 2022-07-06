@@ -8,7 +8,7 @@ torch.set_printoptions(precision=16)
 np.set_printoptions(precision=16)
 
 
-def numpy_solve(AT, BT, K, max_iter=20, tol=1e-3):
+def numpy_solve(AT, BT, K, max_iter=30, tol=1e-3):
     '''
     Using numpy to solve the equilibrium
     '''

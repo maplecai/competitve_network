@@ -63,60 +63,11 @@ def train(model, device, criterion, optimizer, dataloader, max_epochs, log_steps
 
 
 
-'''
-# train by dataset
-def train_dataset(model, device, criterion, optimizer, dataset, max_epochs, log_steps, train=True):
-
-    model.to(device)
-    model.train()
-    loss_epochs = []
-
-    for epoch in range(max_epochs+1):
-        loss_batch = 0
-        Ys_pred = []
-        # 手动 dataloader
-        for i, (x, y) in enumerate(dataset):
-            x = x.to(device)
-            y = y.to(device)
-            y_pred = model(x[:2], x[2:])[0]
-            loss = criterion(y, y_pred)
-            loss_batch += loss
-            Ys_pred.append(y_pred.detach().numpy())
-
-        loss_batch = loss_batch / len(dataset)
-        if (train == True):
-            # 每个dataset反向传播一次
-            optimizer.zero_grad()
-            loss_batch.backward()
-            optimizer.step()
-
-        loss_epochs.append(loss_batch.item())
-        
-        if (epoch % log_steps == 0):
-            print(f'epoch = {epoch}, loss = {loss_epochs[-1]:.6f}')
-
-        if (epoch > 2*log_steps):
-            if (np.mean(loss_epochs[-2*log_steps:-log_steps]) - np.mean(loss_epochs[-log_steps:]) < 1e-3):
-                continue
-                break
-
-    Ys_pred = np.array(Ys_pred).reshape(-1)
-
-    return loss_epochs, Ys_pred
-'''
-
-
-
-
-
 def main(args=None):
 
-    AT = np.array([0.1, 1, 10])
-    ATs = np.array(list(itertools.product(AT, AT)))
-    BTs = np.ones((3*3, nB))
-    Xs = np.concatenate([ATs, BTs], axis=1)
-    # Ys_list = list(itertools.product([0, 1], repeat=9))
-    Ys_list = np.array([[1,0,0, 0,1,0, 0,0,1]])
+    Xs, Ys_list = generate_patterns(nA=nA, nB=nB, AT_optionals=np.array([0.1, 1, 10]))
+    Ys_list = np.array([[1,0,0, 0,1,0, 0,0,1],
+                        [0,0,1, 0,1,0, 1,0,0]])
     Ys_pred_list = []
 
     for i in tqdm(range(len(Ys_list))):
@@ -150,11 +101,11 @@ def main(args=None):
         # 选择最佳的模型
         Ys_pred = Ys_pred_3[np.argmin(loss_3)]
 
-        #plt.figure(figsize=(8,6), dpi=100)
-        #plt.plot(loss_epochs)
+        plt.figure(figsize=(8,6), dpi=100)
+        plt.plot(loss_epochs)
         #plt.savefig(figures_dir + 'loss_epochs.png')
-        #plt.show()
-        #plt.close()
+        plt.show()
+        plt.close()
         
         #print('K', model.comp_layer.param.data)
         #print('W', model.linear.weight.data)
