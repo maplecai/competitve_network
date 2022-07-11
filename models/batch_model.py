@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 import torch.nn.functional as F
-from utils import *
+from utils.utils import *
 
 class TwoLayerNet(torch.nn.Module):
     def __init__(self, A_dim, B_dim, y_dim, max_iter=16, tol=1e-3, constrain='reparam'):

@@ -1,26 +1,41 @@
 import os
 import sys
 import time
+import yaml
+import argparse
 import itertools
+import logging
+import logging.config
 import numpy as np
+
 import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader
 from tqdm import tqdm
-import argparse
 
-from utils import *
+from utils.utils import *
 from models.networks import *
 
 
-set_seed(42)
-nA = 2
-nB = 3
-nY = 1
 
-# train by dataloader
-def train(model, device, criterion, optimizer, dataloader, max_epochs, log_steps, train=True):
+with open('config.yaml', 'r') as f:
+    config = yaml.safe_load(f)
+
+# config['logger']['handlers']['file_handler']['filename'] = f'{os.path.basename(__file__)}.log'
+logging.config.dictConfig(config['logger'])
+logger = logging.getLogger()
+
+set_seed(config['seed'])
+nA = config['nA']
+nB = config['nB']
+nY = config['nY']
+max_epochs = config['max_epochs']
+log_epochs = config['log_epochs']
+
+
+# train
+def train(model, device, criterion, optimizer, dataloader, max_epochs, log_epochs, train=True):
 
     model.to(device)
     model.train()
@@ -35,10 +50,11 @@ def train(model, device, criterion, optimizer, dataloader, max_epochs, log_steps
             y = y.to(device)
             y_pred = torch.Tensor(y.shape).to(device)
             for j in range(len(x)):
+                # 模型只能输入一个样本
                 y_pred[j] = model(x[j, :2], x[j, 2:])[0]
 
             loss = criterion(y, y_pred)
-            loss_epoch += loss
+            loss_epoch += loss.item()
             Ys_pred.append(y_pred.detach().numpy())
 
             if (train == True):
@@ -47,13 +63,13 @@ def train(model, device, criterion, optimizer, dataloader, max_epochs, log_steps
                 loss.backward()
                 optimizer.step()
 
-        loss_epochs.append(loss_epoch.item())
+        loss_epochs.append(loss_epoch)
 
-        if (epoch % log_steps == 0):
-            print(f'epoch = {epoch}, loss = {loss_epochs[-1]:.6f}')
+        if (epoch % log_epochs == 0):
+            logger.info(f'epoch = {epoch}, loss = {loss_epochs[-1]:.8f}')
 
-        if (epoch > 2*log_steps):
-            if (np.mean(loss_epochs[-2*log_steps:-log_steps]) - np.mean(loss_epochs[-log_steps:]) < 1e-3):
+        if (epoch > 2*log_epochs):
+            if (np.mean(loss_epochs[-2*log_epochs:-log_epochs]) - np.mean(loss_epochs[-log_epochs:]) < 1e-3):
                 continue
                 break
 
@@ -63,34 +79,32 @@ def train(model, device, criterion, optimizer, dataloader, max_epochs, log_steps
 
 
 
-def main(args=None):
-
-    Xs, Ys_list = generate_patterns(nA=nA, nB=nB, AT_optionals=np.array([0.1, 1, 10]))
+def main(config=None):
+    Xs = generate_Xs(nA=nA, nB=nB, AT_optionals=np.array([0.1, 1, 10]))
+    #Ys_list = generate_Ys_list(dim=3)
     Ys_list = np.array([[1,0,0, 0,1,0, 0,0,1],
                         [0,0,1, 0,1,0, 1,0,0]])
     Ys_pred_list = []
 
     for i in tqdm(range(len(Ys_list))):
-        print('')
         Ys = Ys_list[i]
 
         Xs = torch.Tensor(Xs)
         Ys = torch.Tensor(Ys)
         train_ds = TensorDataset(Xs, Ys)
-        train_dl = DataLoader(train_ds, batch_size=9, shuffle=False)
+        train_dl = DataLoader(train_ds, batch_size=9, shuffle=False, drop_last=True)
 
         loss_3 = []
         Ys_pred_3 = []
-        for j in range(3):
+        for j in range(1):
             # 避免初始化的影响，重复训练3次
             model = CompetitiveNetwork(nA, nB, nY, reparameterize='square', gradient='linear_algebra')
             device = torch.device("cpu")
             criterion = nn.MSELoss()
             optimizer = torch.optim.SGD(model.parameters(), lr=1e-1, momentum=0.9)
-            max_epochs = 2000
-            log_steps = 100
+            # optimizer = torch.optim.Adam(model.parameters(), lr=2e-2)
 
-            loss_epochs, Ys_pred = train(model, device, criterion, optimizer, train_dl, max_epochs, log_steps)
+            loss_epochs, Ys_pred = train(model, device, criterion, optimizer, train_dl, max_epochs, log_epochs)
             
             loss_3.append(loss_epochs[-1])
             Ys_pred_3.append(Ys_pred)
@@ -101,19 +115,18 @@ def main(args=None):
         # 选择最佳的模型
         Ys_pred = Ys_pred_3[np.argmin(loss_3)]
 
-        plt.figure(figsize=(8,6), dpi=100)
-        plt.plot(loss_epochs)
-        #plt.savefig(figures_dir + 'loss_epochs.png')
-        plt.show()
-        plt.close()
-        
+        #plt.figure(figsize=(8,6), dpi=100)
+        #plt.plot(loss_epochs)
+        #plt.show()
+        #plt.close()
+
         #print('K', model.comp_layer.param.data)
         #print('W', model.linear.weight.data)
         #print('B', model.linear.bias.data)
 
-        print(f'final loss = {loss_epochs[-1]:.6f}')
-        print('Ys', Ys)
-        print('Ys_pred', Ys_pred)
+        logger.info(f'final loss = {loss_epochs[-1]:.8f}')
+        logger.info(f'Ys = {Ys}')
+        logger.info(f'Ys_pred = {Ys_pred}')
         
         Ys_pred_list.append(Ys_pred)
 
@@ -123,10 +136,12 @@ def main(args=None):
 
 
 if __name__ == '__main__':
-    '''args = argparse.ArgumentParser(description='PyTorch Template')
-    args.add_argument('--nA', default=2, type=int)
-    args.add_argument('--nB', default=2, type=int)
-    args.add_argument('--nY', default=1, type=int)
-    args = args.parse_args()'''
+    '''args = argparse.ArgumentParser()
+    args.add_argument('-c', '--config', default='config.yaml', type=str,
+                      help='config file path (default: config.yaml)')
+    args = args.parse_args()
+    with open('config.yaml', 'r') as f:
+        config = yaml.safe_load(f)
+    main(config)'''
 
     main()

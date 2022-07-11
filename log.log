@@ -1,0 +1,50 @@
+2022-07-11 16:55:37,702 - train_dataloader - INFO - epoch = 0, loss = 0.25351000
+2022-07-11 16:55:38,178 - train_dataloader - INFO - epoch = 100, loss = 0.11170345
+2022-07-11 16:55:38,661 - train_dataloader - INFO - epoch = 200, loss = 0.10041595
+2022-07-11 16:55:39,176 - train_dataloader - INFO - epoch = 300, loss = 0.07796977
+2022-07-11 16:55:39,693 - train_dataloader - INFO - epoch = 400, loss = 0.06430951
+2022-07-11 16:55:40,250 - train_dataloader - INFO - epoch = 500, loss = 0.05599548
+2022-07-11 16:55:40,748 - train_dataloader - INFO - epoch = 600, loss = 0.05034797
+2022-07-11 16:55:41,258 - train_dataloader - INFO - epoch = 700, loss = 0.04626670
+2022-07-11 16:55:41,763 - train_dataloader - INFO - epoch = 800, loss = 0.04322322
+2022-07-11 16:55:42,279 - train_dataloader - INFO - epoch = 900, loss = 0.04085568
+2022-07-11 16:55:42,835 - train_dataloader - INFO - epoch = 1000, loss = 0.03893190
+2022-07-11 16:55:43,367 - train_dataloader - INFO - epoch = 1100, loss = 0.03736382
+2022-07-11 16:55:43,895 - train_dataloader - INFO - epoch = 1200, loss = 0.03602603
+2022-07-11 16:55:44,416 - train_dataloader - INFO - epoch = 1300, loss = 0.03491247
+2022-07-11 16:55:44,939 - train_dataloader - INFO - epoch = 1400, loss = 0.03392159
+2022-07-11 16:55:45,457 - train_dataloader - INFO - epoch = 1500, loss = 0.03305595
+2022-07-11 16:55:45,975 - train_dataloader - INFO - epoch = 1600, loss = 0.03231082
+2022-07-11 16:55:46,495 - train_dataloader - INFO - epoch = 1700, loss = 0.03162324
+2022-07-11 16:55:47,010 - train_dataloader - INFO - epoch = 1800, loss = 0.03100364
+2022-07-11 16:55:47,534 - train_dataloader - INFO - epoch = 1900, loss = 0.03046764
+2022-07-11 16:55:48,063 - train_dataloader - INFO - epoch = 2000, loss = 0.02995684
+2022-07-11 16:55:48,064 - train_dataloader - INFO - final loss = 0.02995684
+2022-07-11 16:55:48,066 - train_dataloader - INFO - Ys = tensor([1., 0., 0., 0., 1., 0., 0., 0., 1.])
+2022-07-11 16:55:48,067 - train_dataloader - INFO - Ys_pred = [ 0.95283055   0.080476284 -0.15896225   0.10082662   0.6924887
+  0.2209642   -0.16868305   0.22498298   1.054913   ]
+2022-07-11 16:55:48,074 - train_dataloader - INFO - epoch = 0, loss = 0.32771873
+2022-07-11 16:55:48,558 - train_dataloader - INFO - epoch = 100, loss = 0.13493970
+2022-07-11 16:55:49,053 - train_dataloader - INFO - epoch = 200, loss = 0.12789595
+2022-07-11 16:55:49,534 - train_dataloader - INFO - epoch = 300, loss = 0.12138922
+2022-07-11 16:55:50,031 - train_dataloader - INFO - epoch = 400, loss = 0.11838085
+2022-07-11 16:55:50,521 - train_dataloader - INFO - epoch = 500, loss = 0.11679011
+2022-07-11 16:55:51,017 - train_dataloader - INFO - epoch = 600, loss = 0.11584437
+2022-07-11 16:55:51,520 - train_dataloader - INFO - epoch = 700, loss = 0.11516941
+2022-07-11 16:55:52,027 - train_dataloader - INFO - epoch = 800, loss = 0.11471942
+2022-07-11 16:55:52,523 - train_dataloader - INFO - epoch = 900, loss = 0.11436064
+2022-07-11 16:55:53,026 - train_dataloader - INFO - epoch = 1000, loss = 0.11405308
+2022-07-11 16:55:53,551 - train_dataloader - INFO - epoch = 1100, loss = 0.11383724
+2022-07-11 16:55:54,080 - train_dataloader - INFO - epoch = 1200, loss = 0.11365649
+2022-07-11 16:55:54,599 - train_dataloader - INFO - epoch = 1300, loss = 0.11349574
+2022-07-11 16:55:55,103 - train_dataloader - INFO - epoch = 1400, loss = 0.11333366
+2022-07-11 16:55:55,637 - train_dataloader - INFO - epoch = 1500, loss = 0.11321214
+2022-07-11 16:55:56,143 - train_dataloader - INFO - epoch = 1600, loss = 0.11313286
+2022-07-11 16:55:56,666 - train_dataloader - INFO - epoch = 1700, loss = 0.11304006
+2022-07-11 16:55:57,196 - train_dataloader - INFO - epoch = 1800, loss = 0.11295721
+2022-07-11 16:55:57,720 - train_dataloader - INFO - epoch = 1900, loss = 0.11288275
+2022-07-11 16:55:58,236 - train_dataloader - INFO - epoch = 2000, loss = 0.11281541
+2022-07-11 16:55:58,237 - train_dataloader - INFO - final loss = 0.11281541
+2022-07-11 16:55:58,238 - train_dataloader - INFO - Ys = tensor([0., 0., 1., 0., 1., 0., 1., 0., 0.])
+2022-07-11 16:55:58,239 - train_dataloader - INFO - Ys_pred = [-0.062019743  0.47652587   0.5896604    0.0849753    0.41960236
+  0.48981032   0.96674025   0.14049819  -0.10580388 ]

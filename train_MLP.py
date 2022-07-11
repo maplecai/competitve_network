@@ -10,7 +10,7 @@ from torch.utils.data import TensorDataset, DataLoader
 from tqdm import tqdm
 import argparse
 
-from utils import *
+from utils.utils import *
 from models.mlp import *
 
 

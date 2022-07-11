@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader
-from utils import *
+from utils.utils import *
 from models import *
 
 plt.rcParams['font.sans-serif']=['SimHei']

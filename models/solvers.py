@@ -1,11 +1,7 @@
 import numpy as np
 import torch
 import time
-import eqtk
-
-
-torch.set_printoptions(precision=16)
-np.set_printoptions(precision=16)
+# import eqtk
 
 
 def numpy_solve(AT, BT, K, max_iter=30, tol=1e-3):
@@ -164,6 +160,10 @@ def eqtk_solve(AT, BT, K):
 
 
 if __name__ == '__main__':
+
+    torch.set_printoptions(precision=16)
+    np.set_printoptions(precision=16)
+
 
     AT = torch.Tensor([1, 1])
     BT = torch.Tensor([1, 1, 1])
