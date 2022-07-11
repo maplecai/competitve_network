@@ -1,26 +1,23 @@
 import os
 import sys
 import time
-import yaml
 import argparse
 import itertools
 import logging
 import logging.config
-import numpy as np
 
+import yaml
 import matplotlib.pyplot as plt
+import numpy as np
 import torch
 import torch.nn as nn
-from torch.utils.data import TensorDataset, DataLoader
+from torch.utils.data import DataLoader, TensorDataset
 from tqdm import tqdm
 
-from utils.utils import *
 from models.networks import *
+from utils.utils import *
 
-
-
-with open('config.yaml', 'r') as f:
-    config = yaml.safe_load(f)
+config = parse_config('config.yaml')
 
 # config['logger']['handlers']['file_handler']['filename'] = f'{os.path.basename(__file__)}.log'
 logging.config.dictConfig(config['logger'])

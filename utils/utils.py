@@ -5,7 +5,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
-from skimage.metrics import structural_similarity as sk_ssim
+import yaml
+
 
 
 np.set_printoptions(precision=8, suppress=True)
@@ -22,6 +23,30 @@ def set_seed(seed):
     torch.backends.cudnn.deterministic = True
 
 
+def init_obj(obj_dict:dict, module, *args, **kwargs):
+        """
+        Finds a function handle with the name given as 'type' in config, and returns the
+        instance initialized with corresponding arguments given.
+
+        `object = init_obj(obj_dict, module, a, b=1)`
+        is equivalent to
+        `object = module.obj_dict['type'](a, b=1)`
+        """
+        assert isinstance(obj_dict, dict), "invalid init object dict"
+            
+        module_name = obj_dict['type']
+        module_args = dict(obj_dict.get('args', {}))
+        assert all([k not in module_args for k in kwargs]), 'Overwriting kwargs given in config file is not allowed'
+        module_args.update(kwargs)
+        return getattr(module, module_name)(*args, **module_args)
+
+
+
+def parse_config(config_file_path: str) -> dict:
+    with open(config_file_path, 'r') as f:
+        config = yaml.safe_load(f)
+    # change something manually
+    return config
 
 
 '''
@@ -70,8 +95,12 @@ def config_dir(config_file_path:str) -> dict:
 '''
 
 
+def my_mse(y_true, y_pred):
+    mse_value = np.average((y_true - y_pred) ** 2, axis=0)
+    return mse_value
+
+
 def my_ssim(im1, im2):
-    
     K1 = 0.01
     K2 = 0.03
     n = len(im1)    
