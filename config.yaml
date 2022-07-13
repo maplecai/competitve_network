@@ -6,7 +6,7 @@ output_dir: "results/"
 seed: 42
 
 nA: 2
-nB: 2
+nB: 3
 nY: 1
 
 max_epochs: 2000
@@ -41,7 +41,7 @@ logger:
 model:
   type: CompetitiveNetwork
   args:
-    reparameterize: "square"
+    reparameterize: square
 
 data_loader:
   type: DataLoader

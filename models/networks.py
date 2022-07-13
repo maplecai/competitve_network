@@ -1,3 +1,4 @@
+import sys
 import numpy as np
 import torch
 import torch.nn as nn
@@ -12,8 +13,8 @@ class CompetitiveLayerFunction(torch.autograd.Function):
         # AF, BF, C = solver.torch_solve(AT, BT, K)
         # ctx.save_for_backward(AF, BF, K)
 
-        # 不知道为什么K不需要.detach()
-        AF, BF, C = solvers.numpy_solve(AT.numpy(), BT.numpy(), K.numpy())
+        # 不并行的情况下numpy计算更快  不知道为什么K不需要.detach()
+        AF, BF, C = solvers.numpy_solve(AT.numpy(), BT.numpy(), K.detach().numpy())
         AF, BF, C = torch.from_numpy(AF), torch.from_numpy(BF), torch.from_numpy(C)
         ctx.save_for_backward(AF, BF, K)
         
@@ -37,13 +38,12 @@ competitive_layer_function = CompetitiveLayerFunction.apply
 
 
 class CompetitiveLayer(nn.Module):
-    def __init__(self, nA, nB, reparameterize, gradient):
+    def __init__(self, nA, nB, reparameterize):
         super(CompetitiveLayer, self).__init__()
         # 可训练的参数只有K
         self.nA = nA
         self.nB = nB
         self.reparameterize = reparameterize
-        self.gradient = gradient
         self.param = nn.Parameter(torch.empty(nA, nB))
         self.reset_parameters()
 
@@ -63,21 +63,29 @@ class CompetitiveLayer(nn.Module):
             K = torch.square(self.param)
         elif (self.reparameterize == 'exp'):
             K = torch.exp(self.param)
-        # 不同求梯度的方法
-        if (self.gradient == 'linear_algebra'):
-            C = competitive_layer_function(AT, BT, K)
-        elif (self.gradient == 'iterate_last'):
-            with torch.no_grad():
-                AF, BF, C = solvers.torch_solve(AT, BT, K)
-            AF, BF, C = solvers.torch_iterate_last(AT, BT, K, AF, BF, C)
+
+        # 固定B的浓度，导致退化成线性层
+        '''C = (AT.reshape(-1, 1)*K*BT.reshape(1, -1)) / ((K*BT.reshape(1, -1)).sum(axis=1, keepdims=True) + 1)'''
+
+        # 固定A的浓度，计算能力保持
+        '''C = (AT.reshape(-1, 1)*K*BT.reshape(1, -1)) / ((K*AT.reshape(-1, 1)).sum(axis=0, keepdims=True) + 1)'''
+
+        # 不固定A和B
+        # 用矩阵求逆求梯度
+        C = competitive_layer_function(AT, BT, K)
+
+        # 用最后一次torch迭代近似 并没有变快
+        '''AF, BF, C = solvers.numpy_solve(AT.numpy(), BT.numpy(), K.detach().numpy())
+        AF, BF, C = torch.from_numpy(AF), torch.from_numpy(BF), torch.from_numpy(C)
+        AF, BF, C = solvers.torch_iterate_last(AT, BT, K, AF, BF, C)'''
+
         return C
 
 
 class CompetitiveNetwork(nn.Module):
-    def __init__(self, nA, nB, nY, reparameterize='square', gradient='linear_algebra', clip=False):
+    def __init__(self, nA, nB, nY, reparameterize='exp'):
         super(CompetitiveNetwork, self).__init__()
-        self.clip = clip
-        self.comp_layer = CompetitiveLayer(nA, nB, reparameterize=reparameterize, gradient=gradient)
+        self.comp_layer = CompetitiveLayer(nA, nB, reparameterize=reparameterize)
         self.linear = nn.Linear(nA*nB, nY)
         
     def forward(self, AT, BT):
@@ -103,7 +111,15 @@ if __name__ == '__main__':
     print(autocheck)
 
     print('test my layer')
-    layer = CompetitiveLayer(nA, nB, reparameterize='square', gradient='linear_algebra')
+    layer = CompetitiveLayer(nA, nB, reparameterize='none')
+    layer.param.data = K
+
+    C = layer(AT, BT)
+    print(C)
+    
+
+
+
 
     t0 = time.perf_counter()
     for i in range(1000):
@@ -118,11 +134,9 @@ if __name__ == '__main__':
     t1 = time.perf_counter()
     print('forward and backward time', t1-t0)
 
-
-
     print('test my network')
 
-    model = CompetitiveNetwork(nA, nB, nY, reparameterize='square', gradient='linear_algebra')
+    model = CompetitiveNetwork(nA, nB, nY, reparameterize='exp')
     criterion = torch.nn.MSELoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=1e-2, momentum=0.9)
 
@@ -143,11 +157,16 @@ if __name__ == '__main__':
     print('forward and backward time', t1-t0)
 
 
+
+
+
 '''
 test my layer
-forward time 0.15
-forward and backward time 0.45
+tensor([[0.1543, 0.2517, 0.3188],
+        [0.2858, 0.2915, 0.2954]], grad_fn=<CompetitiveLayerFunctionBackward>)
+forward time 0.24688729998888448
+forward and backward time 0.46601119998376817
 test my network
-forward time 0.20
-forward and backward time 0.75 (backward一句0.35s)
+forward time 0.2172947000071872
+forward and backward time 0.6603156000201125
 '''
