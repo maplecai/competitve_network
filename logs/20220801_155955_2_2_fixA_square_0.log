@@ -1,0 +1,15 @@
+2022-08-01 15:59:55,878 - INFO - running /home/hxcai/competitive_network/0728_train_BT.py
+2022-08-01 15:59:55,878 - INFO - parent pid = 62744, start task 2_2_fixA_square_0
+2022-08-01 15:59:56,003 - DEBUG - {'data_dir': 'data', 'figure_dir': 'figures', 'output_dir': 'results/temp', 'log_dir': 'logs', 'seed': 0, 'nA': 2, 'nB': 2, 'nY': 1, 'max_epochs': 2000, 'log_epochs': 100, 'tol': 0.0001, 'model': {'type': 'CompetitiveNetwork', 'args': {'reparam': 'square', 'mode': 'fixA'}}, 'logger': {'version': 1, 'formatters': {'default': {'format': '%(asctime)s - %(levelname)s - %(message)s'}}, 'handlers': {'stream_handler': {'class': 'logging.StreamHandler', 'level': 'INFO', 'formatter': 'default', 'stream': 'ext://sys.stdout'}, 'file_handler': {'class': 'logging.handlers.RotatingFileHandler', 'level': 'DEBUG', 'formatter': 'default', 'filename': 'logs/20220801_155955_2_2_fixA_square_0.log', 'maxBytes': 10485760, 'backupCount': 5, 'encoding': 'utf-8'}}, 'root': {'level': 'DEBUG', 'handlers': ['stream_handler', 'file_handler']}}, 'data_loader': {'type': 'DataLoader', 'args': {'batch_size': 9, 'shuffle': False}}, 'optimizer': {'type': 'SGD', 'args': {'lr': 0.1, 'momentum': 0.9, 'weight_decay': 0}}, 'loss': {'type': 'MSELoss()'}}
+2022-08-01 15:59:56,198 - INFO - child pid = 62777, start training [0. 0. 0. 1. 1. 0. 0. 0. 1.]
+2022-08-01 15:59:56,573 - DEBUG - child pid = 62777, epoch = 0, loss = 0.36142373
+2022-08-01 15:59:56,576 - DEBUG - child pid = 62777, K = tensor([[0.24627060, 0.59016472],
+        [0.00782826, 0.01743205]]), BT = tensor([1., 1.])
+2022-08-01 15:59:56,863 - DEBUG - child pid = 62777, epoch = 100, loss = 0.19921677
+2022-08-01 15:59:56,865 - DEBUG - child pid = 62777, K = tensor([[1.01877236, 3.46516848],
+        [2.06018734, 0.74730158]]), BT = tensor([0.24712384, 0.37722522])
+2022-08-01 15:59:57,145 - DEBUG - child pid = 62777, epoch = 200, loss = 0.01986380
+2022-08-01 15:59:57,147 - DEBUG - child pid = 62777, K = tensor([[0.62028772, 4.27090788],
+        [1.14665568, 2.42667961]]), BT = tensor([2.68929935, 2.77038765])
+2022-08-01 15:59:57,420 - DEBUG - child pid = 62777, finish training [0. 0. 0. 1. 1. 0. 0. 0. 1.], loss = 0.04795084
+2022-08-01 15:59:57,561 - INFO - parent pid = 62744, finish task 2_2_fixA_square_0

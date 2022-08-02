@@ -1,33 +1,41 @@
 ---
-data_dir: "data/"
-figure_dir: "figures/"
-output_dir: "results/"
+data_dir: 'data'
+figure_dir: 'figures'
+output_dir: 'results/temp'
+log_dir: 'logs'
 
-seed: 42
+seed: 0
 
 nA: 2
-nB: 3
+nB: 2
 nY: 1
 
 max_epochs: 2000
 log_epochs: 100
+tol: 1.0e-4
+
+model:
+  type: CompetitiveNetwork
+  args:
+    reparam: square
+    mode: notfix
 
 logger:
   version: 1
   formatters:
     default:
-      format: "%(asctime)s - %(module)s - %(levelname)s - %(message)s"
+      format: '%(asctime)s - %(levelname)s - %(message)s'
   handlers:
     stream_handler:
       class: logging.StreamHandler
-      level: DEBUG
+      level: INFO
       formatter: default
       stream: ext://sys.stdout
     file_handler:
       class: logging.handlers.RotatingFileHandler
       level: DEBUG
       formatter: default
-      filename: log.log
+      filename: test.log
       maxBytes: 10485760 # 10MB
       backupCount: 5
       encoding: utf-8
@@ -38,10 +46,7 @@ logger:
       - file_handler
 
 # following not used
-model:
-  type: CompetitiveNetwork
-  args:
-    reparameterize: square
+
 
 data_loader:
   type: DataLoader
@@ -52,7 +57,7 @@ data_loader:
 optimizer:
   type: SGD
   args:
-    lr: 1e-1
+    lr: 1.0e-1
     momentum: 0.9
     weight_decay: 0
 loss:

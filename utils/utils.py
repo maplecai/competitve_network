@@ -1,13 +1,10 @@
-import os
 import random
 import itertools
 import numpy as np
 import matplotlib.pyplot as plt
 import torch
-import torch.nn as nn
 import yaml
-
-
+from pathlib import Path
 
 np.set_printoptions(precision=8, suppress=True)
 torch.set_printoptions(precision=8, sci_mode=False)
@@ -24,21 +21,22 @@ def set_seed(seed):
 
 
 def init_obj(obj_dict:dict, module, *args, **kwargs):
-        """
-        Finds a function handle with the name given as 'type' in config, and returns the
-        instance initialized with corresponding arguments given.
+    """
+    Finds a function handle with the name given as 'type' in config, and returns the
+    instance initialized with corresponding arguments given.
 
-        `object = init_obj(obj_dict, module, a, b=1)`
-        is equivalent to
-        `object = module.obj_dict['type'](a, b=1)`
-        """
-        assert isinstance(obj_dict, dict), "invalid init object dict"
-            
-        module_name = obj_dict['type']
-        module_args = dict(obj_dict.get('args', {}))
-        assert all([k not in module_args for k in kwargs]), 'Overwriting kwargs given in config file is not allowed'
-        module_args.update(kwargs)
-        return getattr(module, module_name)(*args, **module_args)
+    `object = init_obj(obj_dict, module, a, b=1)`
+    is equivalent to
+    `object = module.obj_dict['type'](a, b=1)`
+    """
+    assert isinstance(obj_dict, dict), "invalid init object dict"
+    
+    module_name = obj_dict['type']
+    module_args = dict(obj_dict.get('args', {}))
+    assert all([k not in module_args for k in kwargs]), 'Overwriting kwargs given in config file is not allowed'
+    module_args.update(kwargs)
+    
+    return getattr(module, module_name)(*args, **module_args)
 
 
 
@@ -124,31 +122,34 @@ def my_ssim(im1, im2):
     return ssim_value
 
 
-
-def generate_Xs(nA=2, nB=2, AT_optionals=np.array([0.1, 1, 10])):
-    dim = len(AT_optionals)
-    ATs = np.array(list(itertools.product(AT_optionals, AT_optionals)))
-    BTs = np.ones((dim*dim, nB))
-    Xs = np.concatenate([ATs, BTs], axis=1)
-    return Xs
+def generate_ATs(nA=2, AT_init=np.array([0.1, 1, 10])):
+    ATs = np.array(list(itertools.product(AT_init, AT_init)))
+    return ATs
 
 
-def generate_Ys_list(dim=3, no_repeat=True):
+def generate_BTs(nB=2, BT_init=1.0):
+    BTs = np.zeros((9, nB))
+    BTs = BTs + BT_init
+    return BTs
+
+
+def generate_Ys_list(dim=3):
     Ys_list = np.array(list(itertools.product([0, 1], repeat=dim*dim)))
     no_repeat_Ys_list = []
-    if (no_repeat == False):
-        return Ys_list
-    else:
-        for Ys in Ys_list:
-            Ys_T = Ys.reshape(dim, dim).T.reshape(-1)
-            flag = False
-            for no_repeat_Ys in no_repeat_Ys_list:
-                if ((no_repeat_Ys == Ys_T).all()):
-                    flag = True
-                    break
-            if (flag == False):
-                no_repeat_Ys_list.append(Ys)
+    index_list = []
+    for i in range(len(Ys_list)):
+        Ys = Ys_list[i]
+        Ys_T = Ys.reshape(dim, dim).T.reshape(-1)
+        flag = False
+        for no_repeat_Ys in no_repeat_Ys_list:
+            if ((no_repeat_Ys == Ys_T).all()):
+                flag = True
+                break
+        if (flag == False):
+            no_repeat_Ys_list.append(Ys)
+            index_list.append(i)
     return no_repeat_Ys_list
+
 
 
 if __name__ == '__main__':

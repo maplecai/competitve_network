@@ -4,7 +4,7 @@ import time
 # import eqtk
 
 
-def numpy_solve(AT, BT, K, max_iter=30, tol=1e-3):
+def numpy_solve(AT, BT, K, max_iter=50, tol=1e-3):
     '''
     Using numpy to solve the equilibrium
     '''
@@ -86,7 +86,7 @@ def numpy_gradient(AF, BF, K):
             dC_dK[i, j] += K[i, j] * BF[j] * dA_dK[i] + K[i, j] * AF[i] * dB_dK[j]
             dC_dK[i, j, i, j] += AF[i] * BF[j]
 
-    return dC_dK
+    return dA_dK, dB_dK, dC_dK
 
 
 

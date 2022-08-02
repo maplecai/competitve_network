@@ -1,0 +1,1023 @@
+2022-08-01 16:06:05,195 - INFO - running /home/hxcai/competitive_network/0728_train_BT.py
+2022-08-01 16:06:05,195 - INFO - parent pid = 63172, start task 2_2_fixA_square_0
+2022-08-01 16:06:05,234 - DEBUG - {'data_dir': 'data', 'figure_dir': 'figures', 'output_dir': 'results/temp', 'log_dir': 'logs', 'seed': 0, 'nA': 2, 'nB': 2, 'nY': 1, 'max_epochs': 2000, 'log_epochs': 100, 'tol': 0.0001, 'model': {'type': 'CompetitiveNetwork', 'args': {'reparam': 'square', 'mode': 'fixA'}}, 'logger': {'version': 1, 'formatters': {'default': {'format': '%(asctime)s - %(levelname)s - %(message)s'}}, 'handlers': {'stream_handler': {'class': 'logging.StreamHandler', 'level': 'INFO', 'formatter': 'default', 'stream': 'ext://sys.stdout'}, 'file_handler': {'class': 'logging.handlers.RotatingFileHandler', 'level': 'DEBUG', 'formatter': 'default', 'filename': 'logs/20220801_160605_2_2_fixA_square_0.log', 'maxBytes': 10485760, 'backupCount': 5, 'encoding': 'utf-8'}}, 'root': {'level': 'DEBUG', 'handlers': ['stream_handler', 'file_handler']}}, 'data_loader': {'type': 'DataLoader', 'args': {'batch_size': 9, 'shuffle': False}}, 'optimizer': {'type': 'SGD', 'args': {'lr': 0.1, 'momentum': 0.9, 'weight_decay': 0}}, 'loss': {'type': 'MSELoss()'}}
+2022-08-01 16:06:05,423 - INFO - child pid = 63213, start training [0 0 0 0 0 0 1 1 1]
+2022-08-01 16:06:05,422 - INFO - child pid = 63206, start training [0 0 0 0 0 0 0 0 0]
+2022-08-01 16:06:05,422 - INFO - child pid = 63207, start training [0 0 0 0 0 0 0 0 1]
+2022-08-01 16:06:05,422 - INFO - child pid = 63208, start training [0 0 0 0 0 0 0 1 0]
+2022-08-01 16:06:05,422 - INFO - child pid = 63209, start training [0 0 0 0 0 0 0 1 1]
+2022-08-01 16:06:05,422 - INFO - child pid = 63210, start training [0 0 0 0 0 0 1 0 0]
+2022-08-01 16:06:05,423 - INFO - child pid = 63214, start training [0 0 0 0 0 1 0 1 0]
+2022-08-01 16:06:05,423 - INFO - child pid = 63211, start training [0 0 0 0 0 0 1 0 1]
+2022-08-01 16:06:05,423 - INFO - child pid = 63212, start training [0 0 0 0 0 0 1 1 0]
+2022-08-01 16:06:05,424 - INFO - child pid = 63216, start training [0 0 0 0 0 1 1 0 0]
+2022-08-01 16:06:05,424 - INFO - child pid = 63215, start training [0 0 0 0 0 1 0 1 1]
+2022-08-01 16:06:05,425 - INFO - child pid = 63220, start training [0 0 0 0 1 0 0 0 0]
+2022-08-01 16:06:05,425 - INFO - child pid = 63221, start training [0 0 0 0 1 0 0 0 1]
+2022-08-01 16:06:05,424 - INFO - child pid = 63217, start training [0 0 0 0 0 1 1 0 1]
+2022-08-01 16:06:05,424 - INFO - child pid = 63218, start training [0 0 0 0 0 1 1 1 0]
+2022-08-01 16:06:05,424 - INFO - child pid = 63219, start training [0 0 0 0 0 1 1 1 1]
+2022-08-01 16:06:05,426 - INFO - child pid = 63224, start training [0 0 0 0 1 0 1 0 0]
+2022-08-01 16:06:05,426 - INFO - child pid = 63226, start training [0 0 0 0 1 0 1 1 0]
+2022-08-01 16:06:05,427 - INFO - child pid = 63230, start training [0 0 0 0 1 1 1 0 0]
+2022-08-01 16:06:05,428 - INFO - child pid = 63235, start training [0 0 0 1 0 0 0 0 1]
+2022-08-01 16:06:05,427 - INFO - child pid = 63228, start training [0 0 0 0 1 1 0 1 0]
+2022-08-01 16:06:05,425 - INFO - child pid = 63223, start training [0 0 0 0 1 0 0 1 1]
+2022-08-01 16:06:05,426 - INFO - child pid = 63225, start training [0 0 0 0 1 0 1 0 1]
+2022-08-01 16:06:05,426 - INFO - child pid = 63227, start training [0 0 0 0 1 0 1 1 1]
+2022-08-01 16:06:05,427 - INFO - child pid = 63232, start training [0 0 0 0 1 1 1 1 0]
+2022-08-01 16:06:05,427 - INFO - child pid = 63229, start training [0 0 0 0 1 1 0 1 1]
+2022-08-01 16:06:05,427 - INFO - child pid = 63231, start training [0 0 0 0 1 1 1 0 1]
+2022-08-01 16:06:05,428 - INFO - child pid = 63234, start training [0 0 0 1 0 0 0 0 0]
+2022-08-01 16:06:05,428 - INFO - child pid = 63233, start training [0 0 0 0 1 1 1 1 1]
+2022-08-01 16:06:05,425 - INFO - child pid = 63222, start training [0 0 0 0 1 0 0 1 0]
+2022-08-01 16:06:05,981 - DEBUG - child pid = 63235, epoch = 140, loss = 1.83621299
+2022-08-01 16:06:05,983 - DEBUG - child pid = 63235, K = tensor([[0.34393555, 0.58731776],
+        [1.06076753, 0.27391288]]), BT = tensor([4.39088631, 2.66354370])
+2022-08-01 16:06:05,987 - DEBUG - child pid = 63235, epoch = 141, loss = 4.73056364
+2022-08-01 16:06:05,989 - DEBUG - child pid = 63235, K = tensor([[0.05301317, 0.80868685],
+        [1.12929261, 0.29300568]]), BT = tensor([2.32773089, 3.76483941])
+2022-08-01 16:06:06,006 - DEBUG - child pid = 63234, epoch = 155, loss = 1.37292910
+2022-08-01 16:06:06,022 - DEBUG - child pid = 63234, K = tensor([[0.16719539, 1.94112396],
+        [1.85063159, 1.40495241]]), BT = tensor([4.13547897, 2.51256442])
+2022-08-01 16:06:06,029 - DEBUG - child pid = 63234, epoch = 156, loss = 2.57783175
+2022-08-01 16:06:06,031 - DEBUG - child pid = 63234, K = tensor([[0.02898557, 1.97157097],
+        [1.75284660, 1.47005296]]), BT = tensor([2.52937770, 3.34364772])
+2022-08-01 16:06:06,054 - DEBUG - child pid = 63235, epoch = 148, loss = 3.20178533
+2022-08-01 16:06:06,056 - DEBUG - child pid = 63235, K = tensor([[2.57427573, 0.14506878],
+        [1.49535096, 0.25204742]]), BT = tensor([0.62774897, 4.50705671])
+2022-08-01 16:06:06,063 - DEBUG - child pid = 63235, epoch = 150, loss = 3.70011616
+2022-08-01 16:06:06,065 - DEBUG - child pid = 63235, K = tensor([[3.50023293, 3.76884079],
+        [1.44446099, 1.44522333]]), BT = tensor([2.45680618, 0.97227240])
+2022-08-01 16:06:06,069 - DEBUG - child pid = 63235, epoch = 151, loss = 2.48023152
+2022-08-01 16:06:06,071 - DEBUG - child pid = 63235, K = tensor([[3.36864662, 8.55132008],
+        [1.86771846, 2.19237375]]), BT = tensor([1.94021726, 0.54777741])
+2022-08-01 16:06:06,153 - DEBUG - child pid = 63206, finish training [0 0 0 0 0 0 0 0 0], loss = 0.00001535
+2022-08-01 16:06:06,156 - INFO - child pid = 63206, start training [0 0 0 1 0 0 0 1 0]
+2022-08-01 16:06:06,164 - DEBUG - child pid = 63234, finish training [0 0 0 1 0 0 0 0 0], loss = 0.06934424
+2022-08-01 16:06:06,166 - INFO - child pid = 63234, start training [0 0 0 1 0 0 0 1 1]
+2022-08-01 16:06:06,213 - DEBUG - child pid = 63235, finish training [0 0 0 1 0 0 0 0 1], loss = 0.14698355
+2022-08-01 16:06:06,168 - DEBUG - child pid = 63228, epoch = 213, loss = 1.82688141
+2022-08-01 16:06:06,235 - INFO - child pid = 63235, start training [0 0 0 1 0 0 1 0 0]
+2022-08-01 16:06:06,236 - DEBUG - child pid = 63228, K = tensor([[    1.70475900,     3.47480083],
+        [    0.10576636,     0.00000000]]), BT = tensor([2.72656131, 2.22830272])
+2022-08-01 16:06:06,245 - DEBUG - child pid = 63228, epoch = 214, loss = 1.60345447
+2022-08-01 16:06:06,248 - DEBUG - child pid = 63228, K = tensor([[    1.41320264,     3.56523585],
+        [    0.17350219,     0.00000000]]), BT = tensor([1.39356649, 3.06783247])
+2022-08-01 16:06:06,250 - DEBUG - child pid = 63228, finish training [0 0 0 0 1 1 0 1 0], loss = 1.60345447
+2022-08-01 16:06:06,253 - INFO - child pid = 63228, start training [0 0 0 1 0 0 1 0 1]
+2022-08-01 16:06:06,286 - DEBUG - child pid = 63227, finish training [0 0 0 0 1 0 1 1 1], loss = 0.06719492
+2022-08-01 16:06:06,289 - INFO - child pid = 63227, start training [0 0 0 1 0 0 1 1 0]
+2022-08-01 16:06:06,291 - DEBUG - child pid = 63226, finish training [0 0 0 0 1 0 1 1 0], loss = 0.05104708
+2022-08-01 16:06:06,292 - INFO - child pid = 63226, start training [0 0 0 1 0 0 1 1 1]
+2022-08-01 16:06:06,301 - DEBUG - child pid = 63221, epoch = 259, loss = 1.15890288
+2022-08-01 16:06:06,303 - DEBUG - child pid = 63221, K = tensor([[1.91436613, 2.66727066],
+        [3.65421629, 1.64496779]]), BT = tensor([2.65390134, 3.61257482])
+2022-08-01 16:06:06,311 - DEBUG - child pid = 63233, finish training [0 0 0 0 1 1 1 1 1], loss = 0.07407407
+2022-08-01 16:06:06,313 - INFO - child pid = 63233, start training [0 0 0 1 0 1 0 0 0]
+2022-08-01 16:06:06,326 - DEBUG - child pid = 63215, finish training [0 0 0 0 0 1 0 1 1], loss = 0.07407409
+2022-08-01 16:06:06,328 - INFO - child pid = 63215, start training [0 0 0 1 0 1 0 0 1]
+2022-08-01 16:06:06,345 - DEBUG - child pid = 63221, finish training [0 0 0 0 1 0 0 0 1], loss = 0.17100380
+2022-08-01 16:06:06,347 - INFO - child pid = 63221, start training [0 0 0 1 0 1 0 1 0]
+2022-08-01 16:06:06,353 - DEBUG - child pid = 63216, epoch = 278, loss = 2.01518273
+2022-08-01 16:06:06,356 - DEBUG - child pid = 63216, K = tensor([[    0.00620215,     0.44589794],
+        [    0.00233841,     2.58675003]]), BT = tensor([1.91269696, 3.54183102])
+2022-08-01 16:06:06,356 - DEBUG - child pid = 63230, finish training [0 0 0 0 1 1 1 0 0], loss = 0.14814815
+2022-08-01 16:06:06,357 - DEBUG - child pid = 63213, finish training [0 0 0 0 0 0 1 1 1], loss = 0.02623970
+2022-08-01 16:06:06,373 - DEBUG - child pid = 63216, finish training [0 0 0 0 0 1 1 0 0], loss = 2.01518273
+2022-08-01 16:06:06,374 - INFO - child pid = 63230, start training [0 0 0 1 0 1 0 1 1]
+2022-08-01 16:06:06,375 - INFO - child pid = 63216, start training [0 0 0 1 0 1 1 0 1]
+2022-08-01 16:06:06,374 - INFO - child pid = 63213, start training [0 0 0 1 0 1 1 0 0]
+2022-08-01 16:06:06,412 - DEBUG - child pid = 63224, epoch = 299, loss = 5.04699183
+2022-08-01 16:06:06,415 - DEBUG - child pid = 63224, K = tensor([[    0.00000000,     0.21325451],
+        [    1.02366292,     2.50850129]]), BT = tensor([2.43938637, 4.53319597])
+2022-08-01 16:06:06,416 - DEBUG - child pid = 63224, finish training [0 0 0 0 1 0 1 0 0], loss = 5.04699183
+2022-08-01 16:06:06,418 - INFO - child pid = 63224, start training [0 0 0 1 0 1 1 1 0]
+2022-08-01 16:06:06,492 - DEBUG - child pid = 63220, finish training [0 0 0 0 1 0 0 0 0], loss = 0.06339708
+2022-08-01 16:06:06,495 - INFO - child pid = 63220, start training [0 0 0 1 0 1 1 1 1]
+2022-08-01 16:06:06,513 - DEBUG - child pid = 63208, epoch = 333, loss = 2.77056932
+2022-08-01 16:06:06,516 - DEBUG - child pid = 63208, K = tensor([[    0.21699309,     0.00000001],
+        [    2.20460200,     2.25220919]]), BT = tensor([3.64687538, 2.52377653])
+2022-08-01 16:06:06,517 - DEBUG - child pid = 63208, finish training [0 0 0 0 0 0 0 1 0], loss = 2.77056932
+2022-08-01 16:06:06,519 - INFO - child pid = 63208, start training [0 0 0 1 1 0 0 0 0]
+2022-08-01 16:06:06,581 - DEBUG - child pid = 63222, finish training [0 0 0 0 1 0 0 1 0], loss = 0.12251394
+2022-08-01 16:06:06,583 - INFO - child pid = 63222, start training [0 0 0 1 1 0 0 0 1]
+2022-08-01 16:06:06,613 - DEBUG - child pid = 63225, finish training [0 0 0 0 1 0 1 0 1], loss = 0.14409523
+2022-08-01 16:06:06,614 - DEBUG - child pid = 63217, finish training [0 0 0 0 0 1 1 0 1], loss = 0.11262422
+2022-08-01 16:06:06,615 - INFO - child pid = 63225, start training [0 0 0 1 1 0 0 1 1]
+2022-08-01 16:06:06,615 - INFO - child pid = 63217, start training [0 0 0 1 1 0 0 1 0]
+2022-08-01 16:06:06,813 - DEBUG - child pid = 63207, finish training [0 0 0 0 0 0 0 0 1], loss = 0.05001866
+2022-08-01 16:06:06,816 - INFO - child pid = 63207, start training [0 0 0 1 1 0 1 0 0]
+2022-08-01 16:06:06,896 - DEBUG - child pid = 63233, finish training [0 0 0 1 0 1 0 0 0], loss = 0.18286817
+2022-08-01 16:06:06,898 - INFO - child pid = 63233, start training [0 0 0 1 1 0 1 0 1]
+2022-08-01 16:06:06,900 - DEBUG - child pid = 63214, finish training [0 0 0 0 0 1 0 1 0], loss = 0.79932809
+2022-08-01 16:06:06,940 - DEBUG - child pid = 63222, epoch = 120, loss = 2.02884960
+2022-08-01 16:06:06,902 - INFO - child pid = 63214, start training [0 0 0 1 1 0 1 1 0]
+2022-08-01 16:06:06,943 - DEBUG - child pid = 63218, finish training [0 0 0 0 0 1 1 1 0], loss = 0.10556310
+2022-08-01 16:06:06,916 - DEBUG - child pid = 63210, finish training [0 0 0 0 0 0 1 0 0], loss = 0.04084903
+2022-08-01 16:06:06,947 - INFO - child pid = 63218, start training [0 0 0 1 1 0 1 1 1]
+2022-08-01 16:06:06,947 - DEBUG - child pid = 63222, K = tensor([[0.32739401, 1.96455002],
+        [0.47749102, 1.04027915]]), BT = tensor([3.71621180, 2.02780461])
+2022-08-01 16:06:06,947 - INFO - child pid = 63210, start training [0 0 0 1 1 1 0 0 0]
+2022-08-01 16:06:06,951 - DEBUG - child pid = 63222, epoch = 121, loss = 3.42648101
+2022-08-01 16:06:06,953 - DEBUG - child pid = 63222, K = tensor([[0.01696517, 2.18214107],
+        [0.75987405, 0.96737611]]), BT = tensor([1.89569497, 3.12028384])
+2022-08-01 16:06:06,959 - DEBUG - child pid = 63212, finish training [0 0 0 0 0 0 1 1 0], loss = 0.03969427
+2022-08-01 16:06:06,961 - INFO - child pid = 63212, start training [0 0 0 1 1 1 0 0 1]
+2022-08-01 16:06:06,969 - DEBUG - child pid = 63215, epoch = 223, loss = 1.30094409
+2022-08-01 16:06:06,991 - DEBUG - child pid = 63215, K = tensor([[    0.11757882,     0.77231598],
+        [    0.25418684,     0.00000000]]), BT = tensor([1.87396181, 3.01638055])
+2022-08-01 16:06:06,992 - DEBUG - child pid = 63222, epoch = 134, loss = 4.92420006
+2022-08-01 16:06:06,993 - DEBUG - child pid = 63222, K = tensor([[1.63570786, 0.74235177],
+        [3.03824449, 2.92186546]]), BT = tensor([3.73411250, 6.05287886])
+2022-08-01 16:06:06,997 - DEBUG - child pid = 63222, epoch = 135, loss = 38.60489273
+2022-08-01 16:06:06,999 - DEBUG - child pid = 63222, K = tensor([[    2.39377761,     0.00374303],
+        [    2.62115240,     3.85836697]]), BT = tensor([5.53098869, 1.35497630])
+2022-08-01 16:06:07,001 - DEBUG - child pid = 63215, finish training [0 0 0 1 0 1 0 0 1], loss = 0.54532844
+2022-08-01 16:06:07,003 - INFO - child pid = 63215, start training [0 0 0 1 1 1 0 1 0]
+2022-08-01 16:06:07,004 - DEBUG - child pid = 63222, epoch = 136, loss = 10.32163334
+2022-08-01 16:06:07,005 - DEBUG - child pid = 63222, K = tensor([[0.05596031, 0.06741911],
+        [5.50482655, 4.31418228]]), BT = tensor([3.46789360, 0.66965491])
+2022-08-01 16:06:07,009 - DEBUG - child pid = 63222, epoch = 137, loss = 188.19218445
+2022-08-01 16:06:07,011 - DEBUG - child pid = 63222, K = tensor([[1.36965060, 0.25580162],
+        [7.74765015, 4.80488253]]), BT = tensor([8.30822563, 7.87969160])
+2022-08-01 16:06:07,015 - DEBUG - child pid = 63222, epoch = 138, loss = 14888756.00000000
+2022-08-01 16:06:07,017 - DEBUG - child pid = 63222, K = tensor([[135.22114563,   3.66192150],
+        [ 36.18257141,   8.31717300]]), BT = tensor([734.26831055,  71.33949280])
+2022-08-01 16:06:07,021 - DEBUG - child pid = 63222, epoch = 139, loss = 88837730097656443479648788021248.00000000
+2022-08-01 16:06:07,023 - DEBUG - child pid = 63222, K = tensor([[   3359674880.,     149359360.],
+        [  14313424896.,     697771648.]]), BT = tensor([  35717242880.,    9625069568.])
+2022-08-01 16:06:07,069 - DEBUG - child pid = 63211, finish training [0 0 0 0 0 0 1 0 1], loss = 0.07072648
+2022-08-01 16:06:07,110 - INFO - child pid = 63211, start training [0 0 0 1 1 1 0 1 1]
+2022-08-01 16:06:07,181 - DEBUG - child pid = 63223, finish training [0 0 0 0 1 0 0 1 1], loss = 0.14473496
+2022-08-01 16:06:07,185 - INFO - child pid = 63223, start training [0 0 0 1 1 1 1 0 0]
+2022-08-01 16:06:07,185 - DEBUG - child pid = 63230, finish training [0 0 0 1 0 1 0 1 1], loss = 0.09709475
+2022-08-01 16:06:07,187 - INFO - child pid = 63230, start training [0 0 0 1 1 1 1 0 1]
+2022-08-01 16:06:07,190 - DEBUG - child pid = 63213, finish training [0 0 0 1 0 1 1 0 0], loss = 0.14814813
+2022-08-01 16:06:07,192 - INFO - child pid = 63213, start training [0 0 0 1 1 1 1 1 0]
+2022-08-01 16:06:07,201 - DEBUG - child pid = 63220, finish training [0 0 0 1 0 1 1 1 1], loss = 0.07407722
+2022-08-01 16:06:07,203 - INFO - child pid = 63220, start training [0 0 0 1 1 1 1 1 1]
+2022-08-01 16:06:07,261 - DEBUG - child pid = 63226, finish training [0 0 0 1 0 0 1 1 1], loss = 0.03210374
+2022-08-01 16:06:07,263 - INFO - child pid = 63226, start training [0 0 1 0 0 0 1 0 0]
+2022-08-01 16:06:07,296 - DEBUG - child pid = 63217, epoch = 240, loss = 1.11570382
+2022-08-01 16:06:07,299 - DEBUG - child pid = 63217, K = tensor([[    0.57145011,     2.56799316],
+        [    0.00000191,     0.47799093]]), BT = tensor([2.73985195, 2.26126027])
+2022-08-01 16:06:07,316 - DEBUG - child pid = 63217, finish training [0 0 0 1 1 0 0 1 0], loss = 0.15799408
+2022-08-01 16:06:07,318 - INFO - child pid = 63217, start training [0 0 1 0 0 0 1 0 1]
+2022-08-01 16:06:07,344 - DEBUG - child pid = 63210, epoch = 105, loss = 1.59619665
+2022-08-01 16:06:07,346 - DEBUG - child pid = 63210, K = tensor([[1.00928879, 2.55783987],
+        [0.28513059, 0.03559981]]), BT = tensor([2.64752531, 0.06112557])
+2022-08-01 16:06:07,385 - DEBUG - child pid = 63228, finish training [0 0 0 1 0 0 1 0 1], loss = 0.42895138
+2022-08-01 16:06:07,388 - INFO - child pid = 63228, start training [0 0 1 0 0 0 1 1 0]
+2022-08-01 16:06:07,454 - DEBUG - child pid = 63235, finish training [0 0 0 1 0 0 1 0 0], loss = 0.06335959
+2022-08-01 16:06:07,458 - INFO - child pid = 63235, start training [0 0 1 0 0 0 1 1 1]
+2022-08-01 16:06:07,765 - DEBUG - child pid = 63221, finish training [0 0 0 1 0 1 0 1 0], loss = 0.26270643
+2022-08-01 16:06:07,773 - DEBUG - child pid = 63210, finish training [0 0 0 1 1 1 0 0 0], loss = 0.20163253
+2022-08-01 16:06:07,792 - DEBUG - child pid = 63216, finish training [0 0 0 1 0 1 1 0 1], loss = 0.82090408
+2022-08-01 16:06:07,811 - INFO - child pid = 63216, start training [0 0 1 0 1 0 1 0 0]
+2022-08-01 16:06:07,812 - INFO - child pid = 63210, start training [0 0 1 0 0 1 1 1 1]
+2022-08-01 16:06:07,811 - INFO - child pid = 63221, start training [0 0 1 0 0 1 1 1 0]
+2022-08-01 16:06:07,831 - DEBUG - child pid = 63208, finish training [0 0 0 1 1 0 0 0 0], loss = 0.01481956
+2022-08-01 16:06:07,837 - INFO - child pid = 63208, start training [0 0 1 0 1 0 1 0 1]
+2022-08-01 16:06:07,854 - DEBUG - child pid = 63219, finish training [0 0 0 0 0 1 1 1 1], loss = 0.04319005
+2022-08-01 16:06:07,858 - INFO - child pid = 63219, start training [0 0 1 0 1 0 1 1 0]
+2022-08-01 16:06:07,870 - DEBUG - child pid = 63212, finish training [0 0 0 1 1 1 0 0 1], loss = 0.03116843
+2022-08-01 16:06:07,873 - INFO - child pid = 63212, start training [0 0 1 0 1 0 1 1 1]
+2022-08-01 16:06:08,007 - DEBUG - child pid = 63233, finish training [0 0 0 1 1 0 1 0 1], loss = 0.09553127
+2022-08-01 16:06:08,011 - INFO - child pid = 63233, start training [0 0 1 0 1 1 1 1 0]
+2022-08-01 16:06:08,046 - DEBUG - child pid = 63217, finish training [0 0 1 0 0 0 1 0 1], loss = 0.12853190
+2022-08-01 16:06:08,050 - INFO - child pid = 63217, start training [0 0 1 0 1 1 1 1 1]
+2022-08-01 16:06:08,080 - DEBUG - child pid = 63211, finish training [0 0 0 1 1 1 0 1 1], loss = 0.00642994
+2022-08-01 16:06:08,084 - INFO - child pid = 63211, start training [0 0 1 1 0 0 0 0 0]
+2022-08-01 16:06:08,118 - DEBUG - child pid = 63235, finish training [0 0 1 0 0 0 1 1 1], loss = 0.06553905
+2022-08-01 16:06:08,122 - INFO - child pid = 63235, start training [0 0 1 1 0 0 0 0 1]
+2022-08-01 16:06:08,151 - DEBUG - child pid = 63230, finish training [0 0 0 1 1 1 1 0 1], loss = 0.06375398
+2022-08-01 16:06:08,156 - INFO - child pid = 63230, start training [0 0 1 1 0 0 0 1 0]
+2022-08-01 16:06:08,220 - DEBUG - child pid = 63209, finish training [0 0 0 0 0 0 0 1 1], loss = 0.06342140
+2022-08-01 16:06:08,223 - INFO - child pid = 63209, start training [0 0 1 1 0 0 0 1 1]
+2022-08-01 16:06:08,234 - DEBUG - child pid = 63231, finish training [0 0 0 0 1 1 1 0 1], loss = 0.34292436
+2022-08-01 16:06:08,237 - INFO - child pid = 63231, start training [0 0 1 1 0 0 1 0 0]
+2022-08-01 16:06:08,260 - DEBUG - child pid = 63214, finish training [0 0 0 1 1 0 1 1 0], loss = 0.08044188
+2022-08-01 16:06:08,275 - INFO - child pid = 63214, start training [0 0 1 1 0 0 1 0 1]
+2022-08-01 16:06:08,305 - DEBUG - child pid = 63216, epoch = 173, loss = 3.00667357
+2022-08-01 16:06:08,308 - DEBUG - child pid = 63216, K = tensor([[    1.00219560,     0.87210530],
+        [    0.38577166,     0.00000000]]), BT = tensor([2.78472781, 3.75605416])
+2022-08-01 16:06:08,312 - DEBUG - child pid = 63216, epoch = 174, loss = 12.41607189
+2022-08-01 16:06:08,314 - DEBUG - child pid = 63216, K = tensor([[    1.35223794,     0.31264398],
+        [    0.34033403,     0.00000001]]), BT = tensor([4.77348900, 1.21868169])
+2022-08-01 16:06:08,318 - DEBUG - child pid = 63216, epoch = 175, loss = 1.43616819
+2022-08-01 16:06:08,320 - DEBUG - child pid = 63216, K = tensor([[    0.15283830,     0.29835460],
+        [    0.70686686,     0.00000001]]), BT = tensor([0.03020310, 0.73008853])
+2022-08-01 16:06:08,325 - DEBUG - child pid = 63216, epoch = 176, loss = 6.75134897
+2022-08-01 16:06:08,327 - DEBUG - child pid = 63216, K = tensor([[    0.09264056,     0.23927410],
+        [    1.15120304,     0.00000001]]), BT = tensor([5.30253410, 0.30419040])
+2022-08-01 16:06:08,332 - DEBUG - child pid = 63216, epoch = 177, loss = 293.87164307
+2022-08-01 16:06:08,334 - DEBUG - child pid = 63216, K = tensor([[    3.49893332,     0.16584776],
+        [    2.16598749,     0.00000001]]), BT = tensor([12.60089493,  0.04144364])
+2022-08-01 16:06:08,357 - DEBUG - child pid = 63216, epoch = 178, loss = 91021024.00000000
+2022-08-01 16:06:08,360 - DEBUG - child pid = 63216, K = tensor([[   69.82582855,     0.10415277],
+        [  127.21664429,     0.00000000]]), BT = tensor([  747.11499023,     0.02578522])
+2022-08-01 16:06:08,369 - DEBUG - child pid = 63216, epoch = 179, loss = 1317029552515244649901879472422912000.00000000
+2022-08-01 16:06:08,371 - DEBUG - child pid = 63216, K = tensor([[460680593408.00000000,    36.89981842],
+        [231275184128.00000000,     0.00000025]]), BT = tensor([1773512425472.00000000,   536.33154297])
+2022-08-01 16:06:08,373 - DEBUG - child pid = 63228, finish training [0 0 1 0 0 0 1 1 0], loss = 0.05771179
+2022-08-01 16:06:08,375 - INFO - child pid = 63228, start training [0 0 1 1 0 0 1 1 0]
+2022-08-01 16:06:08,416 - DEBUG - child pid = 63213, finish training [0 0 0 1 1 1 1 1 0], loss = 0.32853669
+2022-08-01 16:06:08,419 - INFO - child pid = 63213, start training [0 0 1 1 0 0 1 1 1]
+2022-08-01 16:06:08,535 - DEBUG - child pid = 63221, finish training [0 0 1 0 0 1 1 1 0], loss = 0.16347134
+2022-08-01 16:06:08,538 - INFO - child pid = 63221, start training [0 0 1 1 0 1 0 0 0]
+2022-08-01 16:06:08,622 - DEBUG - child pid = 63210, finish training [0 0 1 0 0 1 1 1 1], loss = 0.01475526
+2022-08-01 16:06:08,625 - INFO - child pid = 63210, start training [0 0 1 1 0 1 0 0 1]
+2022-08-01 16:06:08,644 - DEBUG - child pid = 63231, epoch = 124, loss = 1.20874929
+2022-08-01 16:06:08,647 - DEBUG - child pid = 63231, K = tensor([[ 8.41843414,  0.01970265],
+        [ 1.82033002, 10.18663788]]), BT = tensor([2.20642662, 3.43484974])
+2022-08-01 16:06:08,882 - DEBUG - child pid = 63231, finish training [0 0 1 1 0 0 1 0 0], loss = 0.13244519
+2022-08-01 16:06:08,884 - INFO - child pid = 63231, start training [0 0 1 1 0 1 0 1 0]
+2022-08-01 16:06:08,934 - DEBUG - child pid = 63214, epoch = 184, loss = 4.48308897
+2022-08-01 16:06:08,937 - DEBUG - child pid = 63214, K = tensor([[3.77842641, 3.39586973],
+        [0.40192646, 0.16266297]]), BT = tensor([3.89712596, 2.66725683])
+2022-08-01 16:06:08,942 - DEBUG - child pid = 63214, epoch = 185, loss = 9.49641037
+2022-08-01 16:06:08,943 - DEBUG - child pid = 63214, K = tensor([[3.04079700, 3.65537643],
+        [0.75635374, 0.03227994]]), BT = tensor([0.54054540, 3.16256261])
+2022-08-01 16:06:08,953 - DEBUG - child pid = 63214, epoch = 188, loss = 10.04059696
+2022-08-01 16:06:08,955 - DEBUG - child pid = 63214, K = tensor([[1.72518623, 2.18040323],
+        [1.92132592, 1.42630506]]), BT = tensor([2.53769636, 4.10218763])
+2022-08-01 16:06:08,959 - DEBUG - child pid = 63214, epoch = 189, loss = 270.06234741
+2022-08-01 16:06:08,961 - DEBUG - child pid = 63214, K = tensor([[2.27921915, 0.69196194],
+        [1.92595863, 2.41209221]]), BT = tensor([11.39963055,  0.05423327])
+2022-08-01 16:06:08,966 - DEBUG - child pid = 63214, epoch = 190, loss = 90795616.00000000
+2022-08-01 16:06:08,968 - DEBUG - child pid = 63214, K = tensor([[77.69513702,  0.09944404],
+        [25.22999001,  3.45045662]]), BT = tensor([  707.48937988,     0.56784260])
+2022-08-01 16:06:08,973 - DEBUG - child pid = 63214, epoch = 191, loss = 1443305774775354579088597626786938880.00000000
+2022-08-01 16:06:08,974 - DEBUG - child pid = 63214, K = tensor([[64099401728.00000000, 267950.37500000],
+        [112074825728.00000000, 21507.93945312]]), BT = tensor([1863288487936.00000000, 1004502.25000000])
+2022-08-01 16:06:09,042 - DEBUG - child pid = 63230, epoch = 300, loss = 1.33531952
+2022-08-01 16:06:09,048 - DEBUG - child pid = 63230, K = tensor([[7.93720007, 1.73694980],
+        [0.51356995, 1.06264842]]), BT = tensor([3.01055217, 2.97748566])
+2022-08-01 16:06:09,068 - DEBUG - child pid = 63230, epoch = 301, loss = 2.78538346
+2022-08-01 16:06:09,070 - DEBUG - child pid = 63230, K = tensor([[7.84397650, 1.81330407],
+        [0.74435270, 0.80048424]]), BT = tensor([3.95872760, 1.75458443])
+2022-08-01 16:06:09,073 - DEBUG - child pid = 63230, finish training [0 0 1 1 0 0 0 1 0], loss = 2.78538346
+2022-08-01 16:06:09,095 - DEBUG - child pid = 63224, finish training [0 0 0 1 0 1 1 1 0], loss = 0.07812420
+2022-08-01 16:06:09,097 - INFO - child pid = 63224, start training [0 0 1 1 0 1 0 1 1]
+2022-08-01 16:06:09,097 - INFO - child pid = 63230, start training [0 0 1 1 0 1 1 0 0]
+2022-08-01 16:06:09,152 - DEBUG - child pid = 63233, epoch = 392, loss = 1.86796737
+2022-08-01 16:06:09,155 - DEBUG - child pid = 63233, K = tensor([[    0.40498227,     0.00569633],
+        [    0.82188219,     0.00003273]]), BT = tensor([3.63966465, 2.84024930])
+2022-08-01 16:06:09,160 - DEBUG - child pid = 63233, epoch = 393, loss = 3.04047799
+2022-08-01 16:06:09,161 - DEBUG - child pid = 63226, finish training [0 0 1 0 0 0 1 0 0], loss = 0.13869128
+2022-08-01 16:06:09,162 - INFO - child pid = 63226, start training [0 0 1 1 0 1 1 0 1]
+2022-08-01 16:06:09,162 - DEBUG - child pid = 63233, K = tensor([[    0.09507740,     0.27738038],
+        [    0.86714369,     0.00000266]]), BT = tensor([1.92277038, 2.64764881])
+2022-08-01 16:06:09,164 - DEBUG - child pid = 63233, finish training [0 0 1 0 1 1 1 1 0], loss = 3.04047799
+2022-08-01 16:06:09,180 - INFO - child pid = 63233, start training [0 0 1 1 0 1 1 1 0]
+2022-08-01 16:06:09,353 - DEBUG - child pid = 63232, finish training [0 0 0 0 1 1 1 1 0], loss = 0.19887045
+2022-08-01 16:06:09,356 - INFO - child pid = 63232, start training [0 0 1 1 0 1 1 1 1]
+2022-08-01 16:06:09,565 - DEBUG - child pid = 63210, finish training [0 0 1 1 0 1 0 0 1], loss = 0.10371694
+2022-08-01 16:06:09,568 - INFO - child pid = 63210, start training [0 0 1 1 1 0 0 0 0]
+2022-08-01 16:06:09,885 - DEBUG - child pid = 63225, finish training [0 0 0 1 1 0 0 1 1], loss = 0.00384660
+2022-08-01 16:06:09,879 - DEBUG - child pid = 63219, epoch = 605, loss = 2.00885177
+2022-08-01 16:06:09,894 - INFO - child pid = 63225, start training [0 0 1 1 1 0 0 0 1]
+2022-08-01 16:06:09,894 - DEBUG - child pid = 63219, K = tensor([[    0.89113307,     0.00000000],
+        [    0.14859250,     0.21812634]]), BT = tensor([2.49233341, 3.47729349])
+2022-08-01 16:06:09,897 - DEBUG - child pid = 63219, finish training [0 0 1 0 1 0 1 1 0], loss = 2.00885177
+2022-08-01 16:06:09,901 - INFO - child pid = 63219, start training [0 0 1 1 1 0 0 1 0]
+2022-08-01 16:06:09,949 - DEBUG - child pid = 63235, finish training [0 0 1 1 0 0 0 0 1], loss = 0.17399369
+2022-08-01 16:06:09,951 - INFO - child pid = 63235, start training [0 0 1 1 1 0 0 1 1]
+2022-08-01 16:06:09,958 - DEBUG - child pid = 63226, finish training [0 0 1 1 0 1 1 0 1], loss = 0.13193296
+2022-08-01 16:06:09,977 - INFO - child pid = 63226, start training [0 0 1 1 1 0 1 0 0]
+2022-08-01 16:06:10,011 - DEBUG - child pid = 63231, finish training [0 0 1 1 0 1 0 1 0], loss = 0.13918605
+2022-08-01 16:06:10,014 - INFO - child pid = 63231, start training [0 0 1 1 1 0 1 0 1]
+2022-08-01 16:06:10,086 - DEBUG - child pid = 63221, finish training [0 0 1 1 0 1 0 0 0], loss = 0.06461705
+2022-08-01 16:06:10,089 - INFO - child pid = 63221, start training [0 0 1 1 1 0 1 1 0]
+2022-08-01 16:06:10,104 - DEBUG - child pid = 63211, finish training [0 0 1 1 0 0 0 0 0], loss = 0.25686619
+2022-08-01 16:06:10,107 - INFO - child pid = 63211, start training [0 0 1 1 1 0 1 1 1]
+2022-08-01 16:06:10,151 - DEBUG - child pid = 63209, finish training [0 0 1 1 0 0 0 1 1], loss = 0.40705171
+2022-08-01 16:06:10,154 - INFO - child pid = 63209, start training [0 0 1 1 1 1 0 0 0]
+2022-08-01 16:06:10,164 - DEBUG - child pid = 63234, finish training [0 0 0 1 0 0 0 1 1], loss = 0.13425018
+2022-08-01 16:06:10,167 - INFO - child pid = 63234, start training [0 0 1 1 1 1 0 0 1]
+2022-08-01 16:06:10,432 - DEBUG - child pid = 63230, finish training [0 0 1 1 0 1 1 0 0], loss = 0.14006500
+2022-08-01 16:06:10,475 - INFO - child pid = 63230, start training [0 0 1 1 1 1 0 1 0]
+2022-08-01 16:06:10,503 - DEBUG - child pid = 63225, epoch = 191, loss = 1.13365126
+2022-08-01 16:06:10,508 - DEBUG - child pid = 63225, K = tensor([[0.02852329, 1.71217299],
+        [0.34910294, 1.40115750]]), BT = tensor([3.21231151, 2.83152604])
+2022-08-01 16:06:10,512 - DEBUG - child pid = 63225, epoch = 192, loss = 7.19289160
+2022-08-01 16:06:10,531 - DEBUG - child pid = 63225, K = tensor([[0.93129271, 1.49505210],
+        [0.25940791, 1.56629050]]), BT = tensor([3.27678132, 1.79926229])
+2022-08-01 16:06:10,536 - DEBUG - child pid = 63225, epoch = 193, loss = 2.11453819
+2022-08-01 16:06:10,539 - DEBUG - child pid = 63225, K = tensor([[0.70616281, 1.87212801],
+        [1.07876194, 1.38714135]]), BT = tensor([0.07920945, 2.72680092])
+2022-08-01 16:06:10,544 - DEBUG - child pid = 63219, epoch = 177, loss = 4.51983595
+2022-08-01 16:06:10,545 - DEBUG - child pid = 63225, epoch = 194, loss = 1.04008818
+2022-08-01 16:06:10,564 - DEBUG - child pid = 63219, K = tensor([[    0.63368851,     2.22479033],
+        [    0.00000000,     0.38641721]]), BT = tensor([2.86729312, 4.94758129])
+2022-08-01 16:06:10,565 - DEBUG - child pid = 63225, K = tensor([[0.53750366, 1.93451726],
+        [2.28812408, 1.36369658]]), BT = tensor([1.10107017, 1.82327425])
+2022-08-01 16:06:10,576 - DEBUG - child pid = 63225, epoch = 195, loss = 3.83340883
+2022-08-01 16:06:10,576 - DEBUG - child pid = 63219, epoch = 178, loss = 61.94765091
+2022-08-01 16:06:10,588 - DEBUG - child pid = 63225, K = tensor([[0.42240396, 1.87757587],
+        [3.70835662, 1.39064467]]), BT = tensor([4.73132372, 0.62510991])
+2022-08-01 16:06:10,588 - DEBUG - child pid = 63219, K = tensor([[    1.47679842,     1.24341512],
+        [    0.00000000,     0.64609838]]), BT = tensor([5.95631361, 0.33308491])
+2022-08-01 16:06:10,599 - DEBUG - child pid = 63225, epoch = 196, loss = 8.20865250
+2022-08-01 16:06:10,600 - DEBUG - child pid = 63219, epoch = 179, loss = 6119.73193359
+2022-08-01 16:06:10,601 - DEBUG - child pid = 63219, K = tensor([[    2.49741745,     0.65381181],
+        [    0.00000000,     0.95808291]]), BT = tensor([29.40238571,  0.15506776])
+2022-08-01 16:06:10,601 - DEBUG - child pid = 63225, K = tensor([[0.13640471, 1.77870941],
+        [5.11724091, 1.42678034]]), BT = tensor([    6.04251385,     0.00220230])
+2022-08-01 16:06:10,605 - DEBUG - child pid = 63225, epoch = 197, loss = 4.44686317
+2022-08-01 16:06:10,606 - DEBUG - child pid = 63219, epoch = 180, loss = 3714179001221120.00000000
+2022-08-01 16:06:10,607 - DEBUG - child pid = 63225, K = tensor([[0.11480231, 1.69207716],
+        [5.87581539, 1.45976019]]), BT = tensor([3.21620798, 0.37662679])
+2022-08-01 16:06:10,607 - DEBUG - child pid = 63219, K = tensor([[48586.12500000,     0.82999325],
+        [    0.00009682,     0.77394140]]), BT = tensor([194301.04687500,     3.57651997])
+2022-08-01 16:06:10,611 - DEBUG - child pid = 63225, epoch = 198, loss = 1.93797171
+2022-08-01 16:06:10,612 - DEBUG - child pid = 63219, epoch = 181, loss = inf
+2022-08-01 16:06:10,621 - DEBUG - child pid = 63225, K = tensor([[0.04695983, 1.63159788],
+        [6.17129564, 1.46807730]]), BT = tensor([0.00661017, 1.39572155])
+2022-08-01 16:06:10,621 - DEBUG - child pid = 63219, K = tensor([[263585578929356800., 437418159243264.],
+        [16944216354376908800., 16445228449792.]]), BT = tensor([11359786313437465955794944., 1572067954655232.])
+2022-08-01 16:06:10,627 - DEBUG - child pid = 63225, epoch = 199, loss = 13.29966736
+2022-08-01 16:06:10,629 - DEBUG - child pid = 63225, K = tensor([[0.01142628, 1.45992267],
+        [6.44463873, 1.55475509]]), BT = tensor([3.29561996, 2.48797107])
+2022-08-01 16:06:10,635 - DEBUG - child pid = 63225, epoch = 200, loss = 27.74866676
+2022-08-01 16:06:10,637 - DEBUG - child pid = 63225, K = tensor([[    0.00356916,     1.85976720],
+        [    5.60556459,     1.18408191]]), BT = tensor([0.18237959, 4.44717979])
+2022-08-01 16:06:10,663 - DEBUG - child pid = 63225, epoch = 201, loss = 29.99224472
+2022-08-01 16:06:10,666 - DEBUG - child pid = 63225, K = tensor([[    0.00150859,     0.51540184],
+        [    4.93415642,     1.02295697]]), BT = tensor([7.37539768, 1.08564591])
+2022-08-01 16:06:10,668 - DEBUG - child pid = 63225, finish training [0 0 1 1 1 0 0 0 1], loss = 29.99224472
+2022-08-01 16:06:10,670 - INFO - child pid = 63225, start training [0 0 1 1 1 1 0 1 1]
+2022-08-01 16:06:10,676 - DEBUG - child pid = 63221, epoch = 181, loss = 6.58854342
+2022-08-01 16:06:10,714 - DEBUG - child pid = 63221, K = tensor([[    6.72406149,     0.00000004],
+        [    0.33116519,     0.00003108]]), BT = tensor([4.91449594, 2.23029256])
+2022-08-01 16:06:10,723 - DEBUG - child pid = 63221, epoch = 182, loss = 4.00479984
+2022-08-01 16:06:10,726 - DEBUG - child pid = 63221, K = tensor([[    6.99300194,     0.00000001],
+        [    0.02904690,     0.05910050]]), BT = tensor([0.47072920, 1.78540850])
+2022-08-01 16:06:10,749 - DEBUG - child pid = 63218, finish training [0 0 0 1 1 0 1 1 1], loss = 0.01732652
+2022-08-01 16:06:10,734 - DEBUG - child pid = 63221, epoch = 183, loss = 4.33552265
+2022-08-01 16:06:10,750 - INFO - child pid = 63218, start training [0 0 1 1 1 1 1 0 0]
+2022-08-01 16:06:10,750 - DEBUG - child pid = 63221, K = tensor([[    7.19594383,     0.00000000],
+        [    0.83815408,     0.00629267]]), BT = tensor([0.69477147, 1.09531009])
+2022-08-01 16:06:10,759 - DEBUG - child pid = 63221, epoch = 184, loss = 18.04787445
+2022-08-01 16:06:10,762 - DEBUG - child pid = 63221, K = tensor([[    7.19207096,     0.00000000],
+        [    2.73837233,     0.05747417]]), BT = tensor([2.86784434, 0.60146487])
+2022-08-01 16:06:10,771 - DEBUG - child pid = 63232, finish training [0 0 1 1 0 1 1 1 1], loss = 0.06388647
+2022-08-01 16:06:10,774 - INFO - child pid = 63232, start training [0 0 1 1 1 1 1 0 1]
+2022-08-01 16:06:10,776 - DEBUG - child pid = 63221, epoch = 186, loss = 12.89188862
+2022-08-01 16:06:10,778 - DEBUG - child pid = 63221, K = tensor([[    3.92036080,     0.00000003],
+        [   13.58395672,     0.09226745]]), BT = tensor([8.13608932, 0.05009110])
+2022-08-01 16:06:10,784 - DEBUG - child pid = 63221, epoch = 187, loss = 948.49597168
+2022-08-01 16:06:10,786 - DEBUG - child pid = 63221, K = tensor([[    3.07877851,     0.00000005],
+        [   19.84703255,     0.11340315]]), BT = tensor([   12.34425449,     0.00000007])
+2022-08-01 16:06:10,792 - DEBUG - child pid = 63221, epoch = 188, loss = 64132202496.00000000
+2022-08-01 16:06:10,794 - DEBUG - child pid = 63221, K = tensor([[  333.97344971,     0.00000007],
+        [   28.62512589,     0.13428727]]), BT = tensor([11712.41113281,     0.04037048])
+2022-08-01 16:06:10,802 - DEBUG - child pid = 63221, epoch = 189, loss = inf
+2022-08-01 16:06:10,805 - DEBUG - child pid = 63221, K = tensor([[71435906111766528.00000000,     0.02147080],
+        [883688421640372224.00000000, 56125.24218750]]), BT = tensor([56182961120215040.00000000, 814822.56250000])
+2022-08-01 16:06:10,870 - DEBUG - child pid = 63209, finish training [0 0 1 1 1 1 0 0 0], loss = 0.15878409
+2022-08-01 16:06:10,873 - INFO - child pid = 63209, start training [0 0 1 1 1 1 1 1 0]
+2022-08-01 16:06:10,901 - DEBUG - child pid = 63226, finish training [0 0 1 1 1 0 1 0 0], loss = 0.22789584
+2022-08-01 16:06:10,905 - INFO - child pid = 63226, start training [0 0 1 1 1 1 1 1 1]
+2022-08-01 16:06:10,912 - DEBUG - child pid = 63233, finish training [0 0 1 1 0 1 1 1 0], loss = 0.01647312
+2022-08-01 16:06:10,914 - INFO - child pid = 63233, start training [0 1 0 1 0 0 0 0 0]
+2022-08-01 16:06:11,055 - DEBUG - child pid = 63220, finish training [0 0 0 1 1 1 1 1 1], loss = 0.00362612
+2022-08-01 16:06:11,058 - INFO - child pid = 63220, start training [0 1 0 1 0 0 0 0 1]
+2022-08-01 16:06:11,073 - DEBUG - child pid = 63230, epoch = 185, loss = 1.18444192
+2022-08-01 16:06:11,101 - DEBUG - child pid = 63230, K = tensor([[    1.74789715,     0.16618089],
+        [    0.28187081,     0.00000002]]), BT = tensor([3.46408010, 2.45602107])
+2022-08-01 16:06:11,102 - DEBUG - child pid = 63207, finish training [0 0 0 1 1 0 1 0 0], loss = 0.07512450
+2022-08-01 16:06:11,106 - INFO - child pid = 63207, start training [0 1 0 1 0 0 0 1 0]
+2022-08-01 16:06:11,106 - DEBUG - child pid = 63230, epoch = 186, loss = 1.48871231
+2022-08-01 16:06:11,108 - DEBUG - child pid = 63230, K = tensor([[    1.51213706,     0.41653198],
+        [    0.30289945,     0.00000000]]), BT = tensor([1.95853925, 2.60965753])
+2022-08-01 16:06:11,129 - DEBUG - child pid = 63211, epoch = 308, loss = 8.48967838
+2022-08-01 16:06:11,119 - DEBUG - child pid = 63217, finish training [0 0 1 0 1 1 1 1 1], loss = 0.03353678
+2022-08-01 16:06:11,134 - INFO - child pid = 63217, start training [0 1 0 1 0 0 0 1 1]
+2022-08-01 16:06:11,134 - DEBUG - child pid = 63212, finish training [0 0 1 0 1 0 1 1 1], loss = 0.43894601
+2022-08-01 16:06:11,138 - DEBUG - child pid = 63211, K = tensor([[5.70476151, 2.62581801],
+        [0.87877202, 0.11793676]]), BT = tensor([4.61632776, 2.24051929])
+2022-08-01 16:06:11,140 - INFO - child pid = 63212, start training [0 1 0 1 0 0 1 0 0]
+2022-08-01 16:06:11,140 - DEBUG - child pid = 63211, finish training [0 0 1 1 1 0 1 1 1], loss = 8.48967838
+2022-08-01 16:06:11,141 - INFO - child pid = 63211, start training [0 1 0 1 0 0 1 0 1]
+2022-08-01 16:06:11,245 - DEBUG - child pid = 63230, finish training [0 0 1 1 1 1 0 1 0], loss = 0.23733187
+2022-08-01 16:06:11,248 - INFO - child pid = 63230, start training [0 1 0 1 0 0 1 1 0]
+2022-08-01 16:06:11,261 - DEBUG - child pid = 63227, finish training [0 0 0 1 0 0 1 1 0], loss = 0.02102562
+2022-08-01 16:06:11,264 - INFO - child pid = 63227, start training [0 1 0 1 0 0 1 1 1]
+2022-08-01 16:06:11,437 - DEBUG - child pid = 63232, finish training [0 0 1 1 1 1 1 0 1], loss = 0.06472535
+2022-08-01 16:06:11,439 - INFO - child pid = 63232, start training [0 1 0 1 0 1 0 1 0]
+2022-08-01 16:06:11,530 - DEBUG - child pid = 63225, finish training [0 0 1 1 1 1 0 1 1], loss = 0.14799862
+2022-08-01 16:06:11,533 - INFO - child pid = 63225, start training [0 1 0 1 0 1 0 1 1]
+2022-08-01 16:06:11,553 - DEBUG - child pid = 63229, finish training [0 0 0 0 1 1 0 1 1], loss = 0.03266709
+2022-08-01 16:06:11,556 - INFO - child pid = 63229, start training [0 1 0 1 0 1 1 0 0]
+2022-08-01 16:06:11,622 - DEBUG - child pid = 63224, finish training [0 0 1 1 0 1 0 1 1], loss = 0.11378884
+2022-08-01 16:06:11,625 - INFO - child pid = 63224, start training [0 1 0 1 0 1 1 0 1]
+2022-08-01 16:06:11,626 - DEBUG - child pid = 63210, finish training [0 0 1 1 1 0 0 0 0], loss = 0.17279826
+2022-08-01 16:06:11,627 - INFO - child pid = 63210, start training [0 1 0 1 0 1 1 1 0]
+2022-08-01 16:06:11,634 - DEBUG - child pid = 63209, epoch = 231, loss = 1.74088371
+2022-08-01 16:06:11,637 - DEBUG - child pid = 63209, K = tensor([[    3.18564653,     0.54738075],
+        [    0.69611531,     0.00000000]]), BT = tensor([2.37179446, 2.38687396])
+2022-08-01 16:06:11,641 - DEBUG - child pid = 63209, finish training [0 0 1 1 1 1 1 1 0], loss = 0.69282389
+2022-08-01 16:06:11,643 - INFO - child pid = 63209, start training [0 1 0 1 0 1 1 1 1]
+2022-08-01 16:06:11,911 - DEBUG - child pid = 63220, finish training [0 1 0 1 0 0 0 0 1], loss = 0.22222736
+2022-08-01 16:06:11,915 - INFO - child pid = 63220, start training [0 1 0 1 1 0 0 0 0]
+2022-08-01 16:06:11,924 - DEBUG - child pid = 63212, finish training [0 1 0 1 0 0 1 0 0], loss = 0.14813894
+2022-08-01 16:06:11,927 - INFO - child pid = 63212, start training [0 1 0 1 1 0 0 0 1]
+2022-08-01 16:06:12,056 - DEBUG - child pid = 63231, finish training [0 0 1 1 1 0 1 0 1], loss = 0.23747608
+2022-08-01 16:06:12,059 - INFO - child pid = 63231, start training [0 1 0 1 1 0 0 1 0]
+2022-08-01 16:06:12,175 - DEBUG - child pid = 63234, finish training [0 0 1 1 1 1 0 0 1], loss = 0.12681741
+2022-08-01 16:06:12,177 - INFO - child pid = 63234, start training [0 1 0 1 1 0 0 1 1]
+2022-08-01 16:06:12,340 - DEBUG - child pid = 63207, epoch = 327, loss = 1.58255720
+2022-08-01 16:06:12,366 - DEBUG - child pid = 63215, finish training [0 0 0 1 1 1 0 1 0], loss = 0.56670833
+2022-08-01 16:06:12,370 - INFO - child pid = 63215, start training [0 1 0 1 1 0 1 0 0]
+2022-08-01 16:06:12,375 - DEBUG - child pid = 63207, K = tensor([[0.65298098, 3.90682673],
+        [0.53433341, 1.33684623]]), BT = tensor([3.74363279, 2.95306253])
+2022-08-01 16:06:12,400 - DEBUG - child pid = 63230, epoch = 387, loss = 6.85605907
+2022-08-01 16:06:12,404 - DEBUG - child pid = 63207, epoch = 328, loss = 2.76958752
+2022-08-01 16:06:12,403 - DEBUG - child pid = 63208, finish training [0 0 1 0 1 0 1 0 1], loss = 0.27190778
+2022-08-01 16:06:12,409 - DEBUG - child pid = 63207, K = tensor([[0.77389687, 3.87571597],
+        [0.21100168, 1.51087165]]), BT = tensor([2.27468538, 3.92859244])
+2022-08-01 16:06:12,409 - DEBUG - child pid = 63230, K = tensor([[6.32288122, 0.68736511],
+        [2.08287811, 0.98026806]]), BT = tensor([2.20188999, 4.16056108])
+2022-08-01 16:06:12,410 - INFO - child pid = 63208, start training [0 1 0 1 1 0 1 0 1]
+2022-08-01 16:06:12,431 - DEBUG - child pid = 63230, finish training [0 1 0 1 0 0 1 1 0], loss = 6.85605907
+2022-08-01 16:06:12,431 - DEBUG - child pid = 63207, finish training [0 1 0 1 0 0 0 1 0], loss = 2.76958752
+2022-08-01 16:06:12,433 - INFO - child pid = 63230, start training [0 1 0 1 1 0 1 1 0]
+2022-08-01 16:06:12,433 - INFO - child pid = 63207, start training [0 1 0 1 1 0 1 1 1]
+2022-08-01 16:06:12,496 - DEBUG - child pid = 63229, epoch = 304, loss = 1.33687675
+2022-08-01 16:06:12,500 - DEBUG - child pid = 63229, K = tensor([[    0.00001305,     2.46004176],
+        [    1.94116914,     3.46756792]]), BT = tensor([2.66487503, 2.23781323])
+2022-08-01 16:06:12,504 - DEBUG - child pid = 63229, epoch = 305, loss = 1.88539422
+2022-08-01 16:06:12,506 - DEBUG - child pid = 63229, K = tensor([[    0.00001558,     2.45866680],
+        [    1.68214083,     3.55536270]]), BT = tensor([1.47843242, 3.19294477])
+2022-08-01 16:06:12,509 - DEBUG - child pid = 63225, finish training [0 1 0 1 0 1 0 1 1], loss = 0.44452572
+2022-08-01 16:06:12,511 - INFO - child pid = 63225, start training [0 1 0 1 1 1 0 1 0]
+2022-08-01 16:06:12,513 - DEBUG - child pid = 63229, epoch = 307, loss = 1.06996751
+2022-08-01 16:06:12,515 - DEBUG - child pid = 63229, K = tensor([[    0.00000149,     2.65276074],
+        [    1.46303976,     3.13581157]]), BT = tensor([1.02868307, 0.79488277])
+2022-08-01 16:06:12,549 - DEBUG - child pid = 63229, finish training [0 1 0 1 0 1 1 0 0], loss = 0.33299100
+2022-08-01 16:06:12,552 - INFO - child pid = 63229, start training [0 1 0 1 1 1 0 1 1]
+2022-08-01 16:06:12,643 - DEBUG - child pid = 63223, finish training [0 0 0 1 1 1 1 0 0], loss = 0.14319682
+2022-08-01 16:06:12,647 - INFO - child pid = 63223, start training [0 1 0 1 1 1 1 0 0]
+2022-08-01 16:06:12,658 - DEBUG - child pid = 63232, finish training [0 1 0 1 0 1 0 1 0], loss = 0.24269128
+2022-08-01 16:06:12,662 - INFO - child pid = 63232, start training [0 1 0 1 1 1 1 0 1]
+2022-08-01 16:06:12,721 - DEBUG - child pid = 63209, finish training [0 1 0 1 0 1 1 1 1], loss = 0.14814813
+2022-08-01 16:06:12,724 - INFO - child pid = 63209, start training [0 1 0 1 1 1 1 1 0]
+2022-08-01 16:06:12,736 - DEBUG - child pid = 63212, finish training [0 1 0 1 1 0 0 0 1], loss = 0.24565803
+2022-08-01 16:06:12,738 - INFO - child pid = 63212, start training [0 1 0 1 1 1 1 1 1]
+2022-08-01 16:06:12,773 - DEBUG - child pid = 63206, finish training [0 0 0 1 0 0 0 1 0], loss = 0.10614676
+2022-08-01 16:06:12,792 - INFO - child pid = 63206, start training [0 1 1 1 0 0 1 0 0]
+2022-08-01 16:06:12,818 - DEBUG - child pid = 63231, finish training [0 1 0 1 1 0 0 1 0], loss = 0.16542998
+2022-08-01 16:06:12,822 - INFO - child pid = 63231, start training [0 1 1 1 0 0 1 0 1]
+2022-08-01 16:06:12,830 - DEBUG - child pid = 63226, finish training [0 0 1 1 1 1 1 1 1], loss = 0.12499939
+2022-08-01 16:06:12,834 - INFO - child pid = 63226, start training [0 1 1 1 0 0 1 1 0]
+2022-08-01 16:06:13,072 - DEBUG - child pid = 63230, finish training [0 1 0 1 1 0 1 1 0], loss = 0.13267826
+2022-08-01 16:06:13,075 - INFO - child pid = 63230, start training [0 1 1 1 0 0 1 1 1]
+2022-08-01 16:06:13,099 - DEBUG - child pid = 63222, finish training [0 0 0 1 1 0 0 0 1], loss = nan
+2022-08-01 16:06:13,101 - WARNING - child pid = 63222, [0 0 0 1 1 0 0 0 1] has loss nan
+2022-08-01 16:06:13,104 - INFO - child pid = 63222, start training [0 1 1 1 0 1 1 1 0]
+2022-08-01 16:06:13,119 - DEBUG - child pid = 63233, finish training [0 1 0 1 0 0 0 0 0], loss = 0.11397275
+2022-08-01 16:06:13,121 - INFO - child pid = 63233, start training [0 1 1 1 0 1 1 1 1]
+2022-08-01 16:06:13,400 - DEBUG - child pid = 63220, epoch = 403, loss = 2.07763958
+2022-08-01 16:06:13,432 - DEBUG - child pid = 63220, K = tensor([[1.68562877, 0.31700009],
+        [1.81751812, 0.31753659]]), BT = tensor([2.05186629, 3.34791064])
+2022-08-01 16:06:13,434 - DEBUG - child pid = 63220, finish training [0 1 0 1 1 0 0 0 0], loss = 2.07763958
+2022-08-01 16:06:13,437 - INFO - child pid = 63220, start training [0 1 1 1 1 0 1 0 0]
+2022-08-01 16:06:13,453 - DEBUG - child pid = 63211, finish training [0 1 0 1 0 0 1 0 1], loss = 0.19838616
+2022-08-01 16:06:13,455 - INFO - child pid = 63211, start training [0 1 1 1 1 0 1 0 1]
+2022-08-01 16:06:13,619 - DEBUG - child pid = 63226, epoch = 225, loss = 10.62210083
+2022-08-01 16:06:13,627 - DEBUG - child pid = 63226, K = tensor([[6.95606709, 0.70121402],
+        [0.74450129, 0.90180886]]), BT = tensor([3.36128306, 4.75522709])
+2022-08-01 16:06:13,627 - DEBUG - child pid = 63217, finish training [0 1 0 1 0 0 0 1 1], loss = 0.20033295
+2022-08-01 16:06:13,628 - DEBUG - child pid = 63226, finish training [0 1 1 1 0 0 1 1 0], loss = 10.62210083
+2022-08-01 16:06:13,631 - INFO - child pid = 63226, start training [0 1 1 1 1 0 1 1 0]
+2022-08-01 16:06:13,631 - INFO - child pid = 63217, start training [0 1 1 1 1 0 1 1 1]
+2022-08-01 16:06:13,648 - DEBUG - child pid = 63208, epoch = 246, loss = 1.01809561
+2022-08-01 16:06:13,650 - DEBUG - child pid = 63208, K = tensor([[0.80496794, 2.38725924],
+        [0.02232342, 1.03338134]]), BT = tensor([3.41804576, 3.15086651])
+2022-08-01 16:06:13,654 - DEBUG - child pid = 63208, epoch = 247, loss = 3.18197918
+2022-08-01 16:06:13,656 - DEBUG - child pid = 63208, K = tensor([[0.87423784, 2.34960508],
+        [0.38894871, 0.97075254]]), BT = tensor([3.63950825, 2.14145160])
+2022-08-01 16:06:13,658 - DEBUG - child pid = 63208, finish training [0 1 0 1 1 0 1 0 1], loss = 3.18197918
+2022-08-01 16:06:13,660 - INFO - child pid = 63208, start training [0 1 1 1 1 1 1 1 0]
+2022-08-01 16:06:13,663 - DEBUG - child pid = 63227, finish training [0 1 0 1 0 0 1 1 1], loss = 0.16345900
+2022-08-01 16:06:13,666 - INFO - child pid = 63227, start training [0 1 1 1 1 1 1 1 1]
+2022-08-01 16:06:13,734 - DEBUG - child pid = 63215, finish training [0 1 0 1 1 0 1 0 0], loss = 0.14519933
+2022-08-01 16:06:13,738 - INFO - child pid = 63215, start training [1 0 0 0 0 0 0 0 0]
+2022-08-01 16:06:13,759 - DEBUG - child pid = 63229, finish training [0 1 0 1 1 1 0 1 1], loss = 0.15575914
+2022-08-01 16:06:13,762 - INFO - child pid = 63229, start training [1 0 0 0 0 0 0 0 1]
+2022-08-01 16:06:13,813 - DEBUG - child pid = 63206, epoch = 189, loss = 1.08015895
+2022-08-01 16:06:13,817 - DEBUG - child pid = 63206, K = tensor([[    1.33728206,     3.42397952],
+        [    0.00000992,     6.29620934]]), BT = tensor([2.39754224, 3.91671586])
+2022-08-01 16:06:13,828 - DEBUG - child pid = 63206, epoch = 190, loss = 1.98229325
+2022-08-01 16:06:13,832 - DEBUG - child pid = 63206, K = tensor([[    1.39346862,     3.25724244],
+        [    0.00000000,     6.36124182]]), BT = tensor([2.71124363, 2.25648355])
+2022-08-01 16:06:13,840 - DEBUG - child pid = 63206, epoch = 192, loss = 1.01162732
+2022-08-01 16:06:13,842 - DEBUG - child pid = 63206, K = tensor([[    0.91916549,     3.31870341],
+        [    0.00003643,     6.37947416]]), BT = tensor([0.96735221, 2.88181734])
+2022-08-01 16:06:13,891 - DEBUG - child pid = 63206, finish training [0 1 1 1 0 0 1 0 0], loss = 0.27562305
+2022-08-01 16:06:13,893 - INFO - child pid = 63206, start training [1 0 0 0 0 0 0 1 0]
+2022-08-01 16:06:13,931 - DEBUG - child pid = 63207, epoch = 324, loss = 2.05160642
+2022-08-01 16:06:13,902 - DEBUG - child pid = 63231, finish training [0 1 1 1 0 0 1 0 1], loss = 0.24268776
+2022-08-01 16:06:13,917 - DEBUG - child pid = 63234, finish training [0 1 0 1 1 0 0 1 1], loss = 0.18078366
+2022-08-01 16:06:13,932 - DEBUG - child pid = 63207, K = tensor([[0.47104880, 1.57811022],
+        [0.01203875, 1.55998921]]), BT = tensor([3.23958731, 3.34410644])
+2022-08-01 16:06:13,932 - INFO - child pid = 63231, start training [1 0 0 0 0 0 0 1 1]
+2022-08-01 16:06:13,934 - DEBUG - child pid = 63207, finish training [0 1 0 1 1 0 1 1 1], loss = 2.05160642
+2022-08-01 16:06:13,934 - INFO - child pid = 63234, start training [1 0 0 0 0 0 1 0 0]
+2022-08-01 16:06:13,935 - DEBUG - child pid = 63209, epoch = 276, loss = 1.61530709
+2022-08-01 16:06:13,955 - INFO - child pid = 63207, start training [1 0 0 0 0 0 1 0 1]
+2022-08-01 16:06:13,956 - DEBUG - child pid = 63209, K = tensor([[    2.19685006,     0.00000000],
+        [    1.82853067,     0.30865917]]), BT = tensor([1.84523535, 2.85121918])
+2022-08-01 16:06:14,035 - DEBUG - child pid = 63209, finish training [0 1 0 1 1 1 1 1 0], loss = 0.23794556
+2022-08-01 16:06:14,038 - INFO - child pid = 63209, start training [1 0 0 0 0 0 1 1 0]
+2022-08-01 16:06:14,074 - DEBUG - child pid = 63228, finish training [0 0 1 1 0 0 1 1 0], loss = 0.12256885
+2022-08-01 16:06:14,078 - INFO - child pid = 63228, start training [1 0 0 0 0 0 1 1 1]
+2022-08-01 16:06:14,160 - DEBUG - child pid = 63229, epoch = 140, loss = 3.30758119
+2022-08-01 16:06:14,162 - DEBUG - child pid = 63229, K = tensor([[    0.46625686,     0.93374932],
+        [    0.00002958,     2.54039788]]), BT = tensor([3.12649179, 2.30891228])
+2022-08-01 16:06:14,167 - DEBUG - child pid = 63229, epoch = 141, loss = 1.88414931
+2022-08-01 16:06:14,169 - DEBUG - child pid = 63229, K = tensor([[    0.30803415,     1.16309798],
+        [    0.00006329,     2.51731896]]), BT = tensor([1.03515208, 3.58288527])
+2022-08-01 16:06:14,192 - DEBUG - child pid = 63229, epoch = 148, loss = 1.00193727
+2022-08-01 16:06:14,194 - DEBUG - child pid = 63229, K = tensor([[    0.16105692,     0.66732281],
+        [    0.00059852,     2.94863892]]), BT = tensor([2.02805138, 0.14584698])
+2022-08-01 16:06:14,284 - DEBUG - child pid = 63212, epoch = 411, loss = 1.26212692
+2022-08-01 16:06:14,286 - DEBUG - child pid = 63212, K = tensor([[5.46763563, 4.83932352],
+        [0.04225859, 2.24003744]]), BT = tensor([3.33192539, 3.53503513])
+2022-08-01 16:06:14,291 - DEBUG - child pid = 63212, epoch = 412, loss = 4.54598475
+2022-08-01 16:06:14,292 - DEBUG - child pid = 63212, K = tensor([[5.43504190, 4.82288647],
+        [0.24881332, 2.12131119]]), BT = tensor([3.36859417, 1.84879792])
+2022-08-01 16:06:14,294 - DEBUG - child pid = 63212, finish training [0 1 0 1 1 1 1 1 1], loss = 4.54598475
+2022-08-01 16:06:14,296 - INFO - child pid = 63212, start training [1 0 0 0 0 1 0 1 0]
+2022-08-01 16:06:14,341 - DEBUG - child pid = 63229, finish training [1 0 0 0 0 0 0 0 1], loss = 0.17303713
+2022-08-01 16:06:14,328 - DEBUG - child pid = 63208, epoch = 219, loss = 2.19343710
+2022-08-01 16:06:14,359 - INFO - child pid = 63229, start training [1 0 0 0 0 1 0 1 1]
+2022-08-01 16:06:14,359 - DEBUG - child pid = 63208, K = tensor([[    0.32261258,     1.29411948],
+        [    0.00000641,     4.08014059]]), BT = tensor([2.89080071, 2.54329991])
+2022-08-01 16:06:14,364 - DEBUG - child pid = 63220, finish training [0 1 1 1 1 0 1 0 0], loss = 0.22256351
+2022-08-01 16:06:14,365 - DEBUG - child pid = 63208, epoch = 220, loss = 1.33906531
+2022-08-01 16:06:14,366 - INFO - child pid = 63220, start training [1 0 0 0 0 1 1 0 0]
+2022-08-01 16:06:14,367 - DEBUG - child pid = 63208, K = tensor([[    0.15334898,     1.44858015],
+        [    0.00001235,     4.05933762]]), BT = tensor([1.43707681, 3.73761296])
+2022-08-01 16:06:14,426 - DEBUG - child pid = 63210, epoch = 623, loss = 4.91878939
+2022-08-01 16:06:14,428 - DEBUG - child pid = 63210, K = tensor([[0.48252124, 5.59057093],
+        [1.23999965, 4.55338240]]), BT = tensor([1.64635789, 4.16121578])
+2022-08-01 16:06:14,430 - DEBUG - child pid = 63210, finish training [0 1 0 1 0 1 1 1 0], loss = 4.91878939
+2022-08-01 16:06:14,432 - INFO - child pid = 63210, start training [1 0 0 0 0 1 1 0 1]
+2022-08-01 16:06:14,440 - DEBUG - child pid = 63228, epoch = 129, loss = 1.17027640
+2022-08-01 16:06:14,442 - DEBUG - child pid = 63228, K = tensor([[    1.44064558,     0.00780463],
+        [    1.96569777,     0.00004460]]), BT = tensor([2.41418242, 2.20186400])
+2022-08-01 16:06:14,490 - DEBUG - child pid = 63208, finish training [0 1 1 1 1 1 1 1 0], loss = 0.16618608
+2022-08-01 16:06:14,492 - INFO - child pid = 63208, start training [1 0 0 0 0 1 1 1 0]
+2022-08-01 16:06:14,499 - DEBUG - child pid = 63232, finish training [0 1 0 1 1 1 1 0 1], loss = 0.99600768
+2022-08-01 16:06:14,501 - INFO - child pid = 63232, start training [1 0 0 0 0 1 1 1 1]
+2022-08-01 16:06:14,668 - DEBUG - child pid = 63226, epoch = 344, loss = 4.07488108
+2022-08-01 16:06:14,670 - DEBUG - child pid = 63226, K = tensor([[4.97365284, 0.09737834],
+        [1.21614468, 0.02531019]]), BT = tensor([4.07920837, 2.35624504])
+2022-08-01 16:06:14,674 - DEBUG - child pid = 63226, epoch = 345, loss = 5.47862816
+2022-08-01 16:06:14,675 - DEBUG - child pid = 63228, finish training [1 0 0 0 0 0 1 1 1], loss = 0.10120836
+2022-08-01 16:06:14,676 - INFO - child pid = 63228, start training [1 0 0 0 1 0 0 0 0]
+2022-08-01 16:06:14,676 - DEBUG - child pid = 63226, K = tensor([[5.06500435, 0.18634136],
+        [0.76348484, 0.63363326]]), BT = tensor([0.83314544, 2.06436682])
+2022-08-01 16:06:14,677 - DEBUG - child pid = 63226, finish training [0 1 1 1 1 0 1 1 0], loss = 5.47862816
+2022-08-01 16:06:14,679 - INFO - child pid = 63226, start training [1 0 0 0 1 0 0 0 1]
+2022-08-01 16:06:14,688 - DEBUG - child pid = 63223, finish training [0 1 0 1 1 1 1 0 0], loss = 0.20499359
+2022-08-01 16:06:14,719 - INFO - child pid = 63223, start training [1 0 0 0 1 0 0 1 0]
+2022-08-01 16:06:14,807 - DEBUG - child pid = 63216, finish training [0 0 1 0 1 0 1 0 0], loss = nan
+2022-08-01 16:06:14,809 - WARNING - child pid = 63216, [0 0 1 0 1 0 1 0 0] has loss nan
+2022-08-01 16:06:14,811 - INFO - child pid = 63216, start training [1 0 0 0 1 0 0 1 1]
+2022-08-01 16:06:14,968 - DEBUG - child pid = 63225, finish training [0 1 0 1 1 1 0 1 0], loss = 0.13530782
+2022-08-01 16:06:14,971 - INFO - child pid = 63225, start training [1 0 0 0 1 0 1 0 0]
+2022-08-01 16:06:14,990 - DEBUG - child pid = 63226, epoch = 101, loss = 1.05047035
+2022-08-01 16:06:14,992 - DEBUG - child pid = 63226, K = tensor([[4.02393770, 4.95304155],
+        [0.01130971, 0.13334484]]), BT = tensor([1.70173395, 3.15159154])
+2022-08-01 16:06:15,176 - DEBUG - child pid = 63231, finish training [1 0 0 0 0 0 0 1 1], loss = 0.18371595
+2022-08-01 16:06:15,179 - INFO - child pid = 63231, start training [1 0 0 0 1 0 1 0 1]
+2022-08-01 16:06:15,200 - DEBUG - child pid = 63217, finish training [0 1 1 1 1 0 1 1 1], loss = 0.28473723
+2022-08-01 16:06:15,204 - INFO - child pid = 63217, start training [1 0 0 0 1 0 1 1 0]
+2022-08-01 16:06:15,209 - DEBUG - child pid = 63211, epoch = 423, loss = 1.40070009
+2022-08-01 16:06:15,213 - DEBUG - child pid = 63211, K = tensor([[0.08675605, 1.82742631],
+        [0.72339857, 3.45751619]]), BT = tensor([2.47981215, 4.17457962])
+2022-08-01 16:06:15,219 - DEBUG - child pid = 63211, epoch = 424, loss = 5.03698349
+2022-08-01 16:06:15,222 - DEBUG - child pid = 63211, K = tensor([[0.21534096, 1.73111057],
+        [0.81174475, 3.32733655]]), BT = tensor([3.03454065, 2.00941467])
+2022-08-01 16:06:15,224 - DEBUG - child pid = 63211, finish training [0 1 1 1 1 0 1 0 1], loss = 5.03698349
+2022-08-01 16:06:15,227 - INFO - child pid = 63211, start training [1 0 0 0 1 0 1 1 1]
+2022-08-01 16:06:15,296 - DEBUG - child pid = 63218, finish training [0 0 1 1 1 1 1 0 0], loss = 0.16146813
+2022-08-01 16:06:15,298 - INFO - child pid = 63218, start training [1 0 0 0 1 1 0 1 0]
+2022-08-01 16:06:15,425 - DEBUG - child pid = 63206, finish training [1 0 0 0 0 0 0 1 0], loss = 0.30333000
+2022-08-01 16:06:15,469 - INFO - child pid = 63206, start training [1 0 0 0 1 1 0 1 1]
+2022-08-01 16:06:15,481 - DEBUG - child pid = 63229, finish training [1 0 0 0 0 1 0 1 1], loss = 0.19817261
+2022-08-01 16:06:15,483 - INFO - child pid = 63229, start training [1 0 0 0 1 1 1 0 0]
+2022-08-01 16:06:15,491 - DEBUG - child pid = 63213, finish training [0 0 1 1 0 0 1 1 1], loss = 0.12243128
+2022-08-01 16:06:15,499 - INFO - child pid = 63213, start training [1 0 0 0 1 1 1 0 1]
+2022-08-01 16:06:15,659 - DEBUG - child pid = 63214, finish training [0 0 1 1 0 0 1 0 1], loss = nan
+2022-08-01 16:06:15,661 - WARNING - child pid = 63214, [0 0 1 1 0 0 1 0 1] has loss nan
+2022-08-01 16:06:15,663 - INFO - child pid = 63214, start training [1 0 0 0 1 1 1 1 0]
+2022-08-01 16:06:15,753 - DEBUG - child pid = 63209, finish training [1 0 0 0 0 0 1 1 0], loss = 0.08811703
+2022-08-01 16:06:15,756 - INFO - child pid = 63209, start training [1 0 0 0 1 1 1 1 1]
+2022-08-01 16:06:15,772 - DEBUG - child pid = 63225, epoch = 260, loss = 1.62016416
+2022-08-01 16:06:15,774 - DEBUG - child pid = 63225, K = tensor([[0.24189246, 0.72636479],
+        [1.36977482, 4.02010679]]), BT = tensor([4.15573740, 2.37825084])
+2022-08-01 16:06:15,778 - DEBUG - child pid = 63225, epoch = 261, loss = 2.25747848
+2022-08-01 16:06:15,780 - DEBUG - child pid = 63225, K = tensor([[0.00662987, 0.98876208],
+        [1.74607670, 3.92821336]]), BT = tensor([2.87915611, 3.02492523])
+2022-08-01 16:06:15,781 - DEBUG - child pid = 63225, finish training [1 0 0 0 1 0 1 0 0], loss = 2.25747848
+2022-08-01 16:06:15,784 - INFO - child pid = 63225, start training [1 0 0 1 0 0 0 0 0]
+2022-08-01 16:06:15,798 - DEBUG - child pid = 63207, finish training [1 0 0 0 0 0 1 0 1], loss = 0.12822670
+2022-08-01 16:06:15,800 - INFO - child pid = 63207, start training [1 0 0 1 0 0 0 0 1]
+2022-08-01 16:06:15,864 - DEBUG - child pid = 63227, finish training [0 1 1 1 1 1 1 1 1], loss = 0.03288319
+2022-08-01 16:06:15,868 - INFO - child pid = 63227, start training [1 0 0 1 0 0 0 1 0]
+2022-08-01 16:06:15,967 - DEBUG - child pid = 63212, epoch = 441, loss = 2.08182979
+2022-08-01 16:06:15,947 - DEBUG - child pid = 63223, finish training [1 0 0 0 1 0 0 1 0], loss = 0.17238043
+2022-08-01 16:06:15,989 - INFO - child pid = 63223, start training [1 0 0 1 0 0 0 1 1]
+2022-08-01 16:06:15,988 - DEBUG - child pid = 63212, K = tensor([[    1.22151411,     0.00000000],
+        [    5.74745417,     2.12466550]]), BT = tensor([2.91445017, 2.79085040])
+2022-08-01 16:06:15,994 - DEBUG - child pid = 63212, epoch = 442, loss = 12.39533901
+2022-08-01 16:06:15,997 - DEBUG - child pid = 63212, K = tensor([[    1.19010115,     0.00000000],
+        [    5.92311764,     1.79873872]]), BT = tensor([5.04706430, 1.14197564])
+2022-08-01 16:06:15,999 - DEBUG - child pid = 63212, finish training [1 0 0 0 0 1 0 1 0], loss = 12.39533901
+2022-08-01 16:06:16,002 - INFO - child pid = 63212, start training [1 0 0 1 0 0 1 0 0]
+2022-08-01 16:06:16,022 - DEBUG - child pid = 63235, finish training [0 0 1 1 1 0 0 1 1], loss = 0.15125459
+2022-08-01 16:06:16,024 - INFO - child pid = 63235, start training [1 0 0 1 0 0 1 0 1]
+2022-08-01 16:06:16,103 - DEBUG - child pid = 63220, finish training [1 0 0 0 0 1 1 0 0], loss = 0.98122692
+2022-08-01 16:06:16,106 - INFO - child pid = 63220, start training [1 0 0 1 0 0 1 1 0]
+2022-08-01 16:06:16,120 - DEBUG - child pid = 63226, finish training [1 0 0 0 1 0 0 0 1], loss = 0.88333255
+2022-08-01 16:06:16,122 - INFO - child pid = 63226, start training [1 0 0 1 0 0 1 1 1]
+2022-08-01 16:06:16,225 - DEBUG - child pid = 63232, finish training [1 0 0 0 0 1 1 1 1], loss = 0.14463989
+2022-08-01 16:06:16,228 - INFO - child pid = 63232, start training [1 0 0 1 0 1 0 0 0]
+2022-08-01 16:06:16,391 - DEBUG - child pid = 63227, epoch = 183, loss = 9.80777359
+2022-08-01 16:06:16,397 - DEBUG - child pid = 63227, K = tensor([[    0.53700513,     0.00014422],
+        [    3.69766903,     1.81040227]]), BT = tensor([4.81038713, 1.80779135])
+2022-08-01 16:06:16,402 - DEBUG - child pid = 63227, epoch = 184, loss = 28.06719017
+2022-08-01 16:06:16,404 - DEBUG - child pid = 63227, K = tensor([[    0.86538225,     0.00000269],
+        [    2.28957462,     2.09926271]]), BT = tensor([0.33314127, 3.75725698])
+2022-08-01 16:06:16,409 - DEBUG - child pid = 63227, epoch = 185, loss = 53.91618347
+2022-08-01 16:06:16,411 - DEBUG - child pid = 63227, K = tensor([[    1.30180383,     0.00000298],
+        [    1.27004623,     0.50683665]]), BT = tensor([9.69917011, 1.44696915])
+2022-08-01 16:06:16,417 - DEBUG - child pid = 63227, epoch = 186, loss = 4468.14648438
+2022-08-01 16:06:16,437 - DEBUG - child pid = 63216, finish training [1 0 0 0 1 0 0 1 1], loss = 0.24269353
+2022-08-01 16:06:16,471 - DEBUG - child pid = 63210, finish training [1 0 0 0 0 1 1 0 1], loss = 0.20499629
+2022-08-01 16:06:16,482 - INFO - child pid = 63216, start training [1 0 0 1 0 1 0 0 1]
+2022-08-01 16:06:16,480 - DEBUG - child pid = 63227, K = tensor([[   12.51749516,     0.00000092],
+        [   14.19526482,     0.49112532]]), BT = tensor([ 0.89085191, 31.39612770])
+2022-08-01 16:06:16,485 - INFO - child pid = 63210, start training [1 0 0 1 0 1 0 1 0]
+2022-08-01 16:06:16,491 - DEBUG - child pid = 63227, epoch = 187, loss = 345024654999552.00000000
+2022-08-01 16:06:16,494 - DEBUG - child pid = 63227, K = tensor([[   52.77975082,     1.74974322],
+        [   40.76730728, 352091.28125000]]), BT = tensor([ 4349.88818359, 88446.93750000])
+2022-08-01 16:06:16,498 - DEBUG - child pid = 63209, finish training [1 0 0 0 1 1 1 1 1], loss = 0.14795215
+2022-08-01 16:06:16,500 - INFO - child pid = 63209, start training [1 0 0 1 0 1 0 1 1]
+2022-08-01 16:06:16,501 - DEBUG - child pid = 63227, epoch = 188, loss = inf
+2022-08-01 16:06:16,503 - DEBUG - child pid = 63227, K = tensor([[1946085553384456192., 50421681303482007552.],
+        [2966511508797784064., 333689129009152.]]), BT = tensor([648605345198899200., 215511923904463461416960.])
+2022-08-01 16:06:16,538 - DEBUG - child pid = 63208, finish training [1 0 0 0 0 1 1 1 0], loss = 0.17968465
+2022-08-01 16:06:16,541 - INFO - child pid = 63208, start training [1 0 0 1 0 1 1 0 0]
+2022-08-01 16:06:16,545 - DEBUG - child pid = 63222, epoch = 1095, loss = 3.02999282
+2022-08-01 16:06:16,547 - DEBUG - child pid = 63222, K = tensor([[    0.00000000,     7.65487862],
+        [    2.15366745,     7.05784035]]), BT = tensor([1.93717039, 2.78258395])
+2022-08-01 16:06:16,548 - DEBUG - child pid = 63222, finish training [0 1 1 1 0 1 1 1 0], loss = 3.02999282
+2022-08-01 16:06:16,550 - INFO - child pid = 63222, start training [1 0 0 1 0 1 1 0 1]
+2022-08-01 16:06:16,561 - DEBUG - child pid = 63219, finish training [0 0 1 1 1 0 0 1 0], loss = nan
+2022-08-01 16:06:16,563 - WARNING - child pid = 63219, [0 0 1 1 1 0 0 1 0] has loss nan
+2022-08-01 16:06:16,565 - INFO - child pid = 63219, start training [1 0 0 1 0 1 1 1 0]
+2022-08-01 16:06:16,615 - DEBUG - child pid = 63228, finish training [1 0 0 0 1 0 0 0 0], loss = 0.15850769
+2022-08-01 16:06:16,617 - INFO - child pid = 63228, start training [1 0 0 1 0 1 1 1 1]
+2022-08-01 16:06:16,621 - DEBUG - child pid = 63221, finish training [0 0 1 1 1 0 1 1 0], loss = nan
+2022-08-01 16:06:16,623 - WARNING - child pid = 63221, [0 0 1 1 1 0 1 1 0] has loss nan
+2022-08-01 16:06:16,657 - INFO - child pid = 63221, start training [1 0 0 1 1 0 0 0 0]
+2022-08-01 16:06:16,716 - DEBUG - child pid = 63226, finish training [1 0 0 1 0 0 1 1 1], loss = 0.03012530
+2022-08-01 16:06:16,718 - INFO - child pid = 63226, start training [1 0 0 1 1 0 0 0 1]
+2022-08-01 16:06:16,898 - DEBUG - child pid = 63217, finish training [1 0 0 0 1 0 1 1 0], loss = 0.12265530
+2022-08-01 16:06:16,901 - INFO - child pid = 63217, start training [1 0 0 1 1 0 0 1 0]
+2022-08-01 16:06:16,949 - DEBUG - child pid = 63218, epoch = 545, loss = 1.29119051
+2022-08-01 16:06:16,951 - DEBUG - child pid = 63218, K = tensor([[    6.56666899,     4.57830763],
+        [    4.14292765,     0.00355997]]), BT = tensor([4.08381510, 1.59596193])
+2022-08-01 16:06:16,956 - DEBUG - child pid = 63218, epoch = 546, loss = 5.80618763
+2022-08-01 16:06:16,957 - DEBUG - child pid = 63218, K = tensor([[    6.41591263,     4.70654058],
+        [    4.14457941,     0.00367008]]), BT = tensor([1.99615097, 2.31961608])
+2022-08-01 16:06:16,959 - DEBUG - child pid = 63218, finish training [1 0 0 0 1 1 0 1 0], loss = 5.80618763
+2022-08-01 16:06:16,961 - INFO - child pid = 63218, start training [1 0 0 1 1 0 0 1 1]
+2022-08-01 16:06:17,034 - DEBUG - child pid = 63234, finish training [1 0 0 0 0 0 1 0 0], loss = 0.06305837
+2022-08-01 16:06:17,037 - INFO - child pid = 63234, start training [1 0 0 1 1 0 1 0 0]
+2022-08-01 16:06:17,130 - DEBUG - child pid = 63212, finish training [1 0 0 1 0 0 1 0 0], loss = 0.00000000
+2022-08-01 16:06:17,132 - INFO - child pid = 63212, start training [1 0 0 1 1 0 1 0 1]
+2022-08-01 16:06:17,166 - DEBUG - child pid = 63231, finish training [1 0 0 0 1 0 1 0 1], loss = 0.19878040
+2022-08-01 16:06:17,169 - INFO - child pid = 63231, start training [1 0 0 1 1 0 1 1 0]
+2022-08-01 16:06:17,183 - DEBUG - child pid = 63232, finish training [1 0 0 1 0 1 0 0 0], loss = 0.06460288
+2022-08-01 16:06:17,186 - INFO - child pid = 63232, start training [1 0 0 1 1 0 1 1 1]
+2022-08-01 16:06:17,186 - DEBUG - child pid = 63214, finish training [1 0 0 0 1 1 1 1 0], loss = 0.19492453
+2022-08-01 16:06:17,187 - INFO - child pid = 63214, start training [1 0 0 1 1 1 0 0 0]
+2022-08-01 16:06:17,218 - DEBUG - child pid = 63224, finish training [0 1 0 1 0 1 1 0 1], loss = 0.21388374
+2022-08-01 16:06:17,231 - INFO - child pid = 63224, start training [1 0 0 1 1 1 0 0 1]
+2022-08-01 16:06:17,342 - DEBUG - child pid = 63235, finish training [1 0 0 1 0 0 1 0 1], loss = 0.25531137
+2022-08-01 16:06:17,344 - INFO - child pid = 63235, start training [1 0 0 1 1 1 0 1 0]
+2022-08-01 16:06:17,547 - DEBUG - child pid = 63207, finish training [1 0 0 1 0 0 0 0 1], loss = 0.16107811
+2022-08-01 16:06:17,551 - INFO - child pid = 63207, start training [1 0 0 1 1 1 0 1 1]
+2022-08-01 16:06:17,654 - DEBUG - child pid = 63211, epoch = 761, loss = 2.90673304
+2022-08-01 16:06:17,667 - DEBUG - child pid = 63211, K = tensor([[0.92389637, 3.03575397],
+        [0.58177197, 6.55852747]]), BT = tensor([3.61863017, 2.00186944])
+2022-08-01 16:06:17,670 - DEBUG - child pid = 63211, finish training [1 0 0 0 1 0 1 1 1], loss = 2.90673304
+2022-08-01 16:06:17,676 - INFO - child pid = 63211, start training [1 0 0 1 1 1 1 0 0]
+2022-08-01 16:06:17,719 - DEBUG - child pid = 63210, epoch = 361, loss = 3.22011042
+2022-08-01 16:06:17,722 - DEBUG - child pid = 63210, K = tensor([[ 0.05536814,  0.38412806],
+        [12.81065941,  2.86987925]]), BT = tensor([4.26109743, 2.60136533])
+2022-08-01 16:06:17,724 - DEBUG - child pid = 63210, finish training [1 0 0 1 0 1 0 1 0], loss = 3.22011042
+2022-08-01 16:06:17,731 - INFO - child pid = 63210, start training [1 0 0 1 1 1 1 0 1]
+2022-08-01 16:06:17,764 - DEBUG - child pid = 63234, finish training [1 0 0 1 1 0 1 0 0], loss = 0.07405540
+2022-08-01 16:06:17,768 - INFO - child pid = 63234, start training [1 0 0 1 1 1 1 1 0]
+2022-08-01 16:06:17,803 - DEBUG - child pid = 63214, finish training [1 0 0 1 1 1 0 0 0], loss = 0.13346869
+2022-08-01 16:06:17,806 - INFO - child pid = 63214, start training [1 0 0 1 1 1 1 1 1]
+2022-08-01 16:06:17,851 - DEBUG - child pid = 63229, finish training [1 0 0 0 1 1 1 0 0], loss = 0.21885216
+2022-08-01 16:06:17,853 - INFO - child pid = 63229, start training [1 0 1 0 0 0 1 0 0]
+2022-08-01 16:06:17,878 - DEBUG - child pid = 63217, finish training [1 0 0 1 1 0 0 1 0], loss = 0.12552929
+2022-08-01 16:06:17,919 - INFO - child pid = 63217, start training [1 0 1 0 0 0 1 0 1]
+2022-08-01 16:06:17,921 - DEBUG - child pid = 63225, finish training [1 0 0 1 0 0 0 0 0], loss = 0.01608143
+2022-08-01 16:06:17,923 - INFO - child pid = 63225, start training [1 0 1 0 0 0 1 1 0]
+2022-08-01 16:06:18,155 - DEBUG - child pid = 63221, epoch = 466, loss = 1.28268433
+2022-08-01 16:06:18,158 - DEBUG - child pid = 63221, K = tensor([[0.61456054, 3.35598874],
+        [0.70787817, 0.18739790]]), BT = tensor([2.69792581, 3.62287545])
+2022-08-01 16:06:18,166 - DEBUG - child pid = 63221, epoch = 467, loss = 4.60054064
+2022-08-01 16:06:18,168 - DEBUG - child pid = 63221, K = tensor([[0.75387734, 3.20448947],
+        [0.78731632, 0.09968988]]), BT = tensor([3.92588925, 2.02533126])
+2022-08-01 16:06:18,170 - DEBUG - child pid = 63221, finish training [1 0 0 1 1 0 0 0 0], loss = 4.60054064
+2022-08-01 16:06:18,171 - INFO - child pid = 63221, start training [1 0 1 0 0 0 1 1 1]
+2022-08-01 16:06:18,199 - DEBUG - child pid = 63235, finish training [1 0 0 1 1 1 0 1 0], loss = 0.19911930
+2022-08-01 16:06:18,255 - INFO - child pid = 63235, start training [1 0 1 0 0 1 1 1 0]
+2022-08-01 16:06:18,371 - DEBUG - child pid = 63226, finish training [1 0 0 1 1 0 0 0 1], loss = 0.14233711
+2022-08-01 16:06:18,374 - INFO - child pid = 63226, start training [1 0 1 0 0 1 1 1 1]
+2022-08-01 16:06:18,387 - DEBUG - child pid = 63233, finish training [0 1 1 1 0 1 1 1 1], loss = 0.06352046
+2022-08-01 16:06:18,389 - INFO - child pid = 63233, start training [1 0 1 0 1 0 1 0 0]
+2022-08-01 16:06:18,570 - DEBUG - child pid = 63234, finish training [1 0 0 1 1 1 1 1 0], loss = 0.10339478
+2022-08-01 16:06:18,572 - INFO - child pid = 63234, start training [1 0 1 0 1 0 1 0 1]
+2022-08-01 16:06:18,625 - DEBUG - child pid = 63221, epoch = 142, loss = 1.36919236
+2022-08-01 16:06:18,627 - DEBUG - child pid = 63221, K = tensor([[    0.00000000,     0.05817654],
+        [    0.31405452,     0.35581371]]), BT = tensor([3.30756903, 2.46295738])
+2022-08-01 16:06:18,682 - DEBUG - child pid = 63235, epoch = 140, loss = 1.72446048
+2022-08-01 16:06:18,684 - DEBUG - child pid = 63235, K = tensor([[0.25374937, 0.27185476],
+        [0.42715243, 0.44966686]]), BT = tensor([2.53707719, 3.20733380])
+2022-08-01 16:06:18,792 - DEBUG - child pid = 63221, finish training [1 0 1 0 0 0 1 1 1], loss = 0.23438232
+2022-08-01 16:06:18,794 - INFO - child pid = 63221, start training [1 0 1 0 1 0 1 1 0]
+2022-08-01 16:06:18,863 - DEBUG - child pid = 63224, finish training [1 0 0 1 1 1 0 0 1], loss = 0.01700382
+2022-08-01 16:06:18,872 - INFO - child pid = 63224, start training [1 0 1 0 1 0 1 1 1]
+2022-08-01 16:06:18,880 - DEBUG - child pid = 63229, finish training [1 0 1 0 0 0 1 0 0], loss = 0.19148023
+2022-08-01 16:06:18,882 - INFO - child pid = 63229, start training [1 0 1 0 1 1 1 1 0]
+2022-08-01 16:06:18,897 - DEBUG - child pid = 63235, finish training [1 0 1 0 0 1 1 1 0], loss = 0.13493697
+2022-08-01 16:06:18,899 - INFO - child pid = 63235, start training [1 0 1 0 1 1 1 1 1]
+2022-08-01 16:06:19,034 - DEBUG - child pid = 63231, finish training [1 0 0 1 1 0 1 1 0], loss = 0.03208112
+2022-08-01 16:06:19,037 - INFO - child pid = 63231, start training [1 0 1 1 0 0 0 0 0]
+2022-08-01 16:06:19,138 - DEBUG - child pid = 63226, finish training [1 0 1 0 0 1 1 1 1], loss = 0.11420148
+2022-08-01 16:06:19,147 - DEBUG - child pid = 63213, finish training [1 0 0 0 1 1 1 0 1], loss = 0.21605000
+2022-08-01 16:06:19,149 - INFO - child pid = 63213, start training [1 0 1 1 0 0 0 1 0]
+2022-08-01 16:06:19,148 - INFO - child pid = 63226, start training [1 0 1 1 0 0 0 0 1]
+2022-08-01 16:06:19,169 - DEBUG - child pid = 63225, finish training [1 0 1 0 0 0 1 1 0], loss = 0.11030725
+2022-08-01 16:06:19,171 - INFO - child pid = 63225, start training [1 0 1 1 0 0 0 1 1]
+2022-08-01 16:06:19,186 - DEBUG - child pid = 63230, finish training [0 1 1 1 0 0 1 1 1], loss = 0.14879352
+2022-08-01 16:06:19,191 - DEBUG - child pid = 63217, finish training [1 0 1 0 0 0 1 0 1], loss = 0.23363866
+2022-08-01 16:06:19,193 - INFO - child pid = 63230, start training [1 0 1 1 0 0 1 0 0]
+2022-08-01 16:06:19,193 - INFO - child pid = 63217, start training [1 0 1 1 0 0 1 0 1]
+2022-08-01 16:06:19,250 - DEBUG - child pid = 63215, finish training [1 0 0 0 0 0 0 0 0], loss = 0.00839003
+2022-08-01 16:06:19,257 - INFO - child pid = 63215, start training [1 0 1 1 0 0 1 1 0]
+2022-08-01 16:06:19,394 - DEBUG - child pid = 63219, finish training [1 0 0 1 0 1 1 1 0], loss = 0.10780214
+2022-08-01 16:06:19,397 - INFO - child pid = 63219, start training [1 0 1 1 0 0 1 1 1]
+2022-08-01 16:06:19,470 - DEBUG - child pid = 63221, finish training [1 0 1 0 1 0 1 1 0], loss = 0.20174430
+2022-08-01 16:06:19,472 - INFO - child pid = 63221, start training [1 0 1 1 0 1 0 0 0]
+2022-08-01 16:06:19,507 - DEBUG - child pid = 63218, finish training [1 0 0 1 1 0 0 1 1], loss = 0.02786423
+2022-08-01 16:06:19,511 - INFO - child pid = 63218, start training [1 0 1 1 0 1 0 0 1]
+2022-08-01 16:06:19,540 - DEBUG - child pid = 63234, finish training [1 0 1 0 1 0 1 0 1], loss = 0.22222222
+2022-08-01 16:06:19,543 - INFO - child pid = 63234, start training [1 0 1 1 0 1 0 1 0]
+2022-08-01 16:06:19,703 - DEBUG - child pid = 63229, epoch = 278, loss = 2.98741007
+2022-08-01 16:06:19,703 - DEBUG - child pid = 63220, finish training [1 0 0 1 0 0 1 1 0], loss = 0.01733039
+2022-08-01 16:06:19,706 - INFO - child pid = 63220, start training [1 0 1 1 0 1 0 1 1]
+2022-08-01 16:06:19,706 - DEBUG - child pid = 63229, K = tensor([[0.25542712, 0.16758811],
+        [0.17975242, 0.24221501]]), BT = tensor([3.12242627, 2.86824274])
+2022-08-01 16:06:19,710 - DEBUG - child pid = 63229, epoch = 279, loss = 1.49295485
+2022-08-01 16:06:19,712 - DEBUG - child pid = 63229, K = tensor([[0.00231312, 0.70024210],
+        [0.69292551, 0.00100392]]), BT = tensor([1.91809881, 1.78798795])
+2022-08-01 16:06:19,733 - DEBUG - child pid = 63229, finish training [1 0 1 0 1 1 1 1 0], loss = 0.27295139
+2022-08-01 16:06:19,735 - INFO - child pid = 63229, start training [1 0 1 1 0 1 1 0 0]
+2022-08-01 16:06:19,768 - DEBUG - child pid = 63235, finish training [1 0 1 0 1 1 1 1 1], loss = 0.11618897
+2022-08-01 16:06:19,771 - INFO - child pid = 63235, start training [1 0 1 1 0 1 1 0 1]
+2022-08-01 16:06:19,849 - DEBUG - child pid = 63211, finish training [1 0 0 1 1 1 1 0 0], loss = 0.13049661
+2022-08-01 16:06:19,851 - INFO - child pid = 63211, start training [1 0 1 1 0 1 1 1 0]
+2022-08-01 16:06:19,861 - DEBUG - child pid = 63218, epoch = 113, loss = 3.12416601
+2022-08-01 16:06:19,863 - DEBUG - child pid = 63218, K = tensor([[    0.00000001,     0.02231941],
+        [    0.61212397,     1.53360200]]), BT = tensor([3.04347873, 1.92620254])
+2022-08-01 16:06:19,911 - DEBUG - child pid = 63218, epoch = 114, loss = 1.23215818
+2022-08-01 16:06:19,915 - DEBUG - child pid = 63218, K = tensor([[    0.00000001,     0.07791691],
+        [    0.58581764,     1.68905032]]), BT = tensor([0.95980901, 2.71231508])
+2022-08-01 16:06:19,946 - DEBUG - child pid = 63218, epoch = 121, loss = 1.14008355
+2022-08-01 16:06:19,949 - DEBUG - child pid = 63218, K = tensor([[    0.00000000,     0.40768299],
+        [    0.90375853,     1.78373790]]), BT = tensor([1.88401890, 0.00397765])
+2022-08-01 16:06:20,005 - DEBUG - child pid = 63219, finish training [1 0 1 1 0 0 1 1 1], loss = 0.10262999
+2022-08-01 16:06:20,007 - INFO - child pid = 63219, start training [1 0 1 1 0 1 1 1 1]
+2022-08-01 16:06:20,017 - DEBUG - child pid = 63207, finish training [1 0 0 1 1 1 0 1 1], loss = 0.07707441
+2022-08-01 16:06:20,020 - INFO - child pid = 63207, start training [1 0 1 1 1 0 0 0 0]
+2022-08-01 16:06:20,021 - DEBUG - child pid = 63225, epoch = 277, loss = 3.05034280
+2022-08-01 16:06:20,024 - DEBUG - child pid = 63225, K = tensor([[    0.00497319,     0.22036850],
+        [    0.00000000,     6.41890001]]), BT = tensor([2.42262578, 4.42140341])
+2022-08-01 16:06:20,028 - DEBUG - child pid = 63225, epoch = 278, loss = 5.55595493
+2022-08-01 16:06:20,030 - DEBUG - child pid = 63225, K = tensor([[    0.94325167,     0.00789225],
+        [    0.00000000,     6.67197990]]), BT = tensor([2.18255210, 1.88041496])
+2022-08-01 16:06:20,032 - DEBUG - child pid = 63225, finish training [1 0 1 1 0 0 0 1 1], loss = 5.55595493
+2022-08-01 16:06:20,034 - INFO - child pid = 63225, start training [1 0 1 1 1 0 0 0 1]
+2022-08-01 16:06:20,237 - DEBUG - child pid = 63218, finish training [1 0 1 1 0 1 0 0 1], loss = 0.12616405
+2022-08-01 16:06:20,240 - INFO - child pid = 63218, start training [1 0 1 1 1 0 0 1 0]
+2022-08-01 16:06:20,318 - DEBUG - child pid = 63233, finish training [1 0 1 0 1 0 1 0 0], loss = 0.22322480
+2022-08-01 16:06:20,324 - INFO - child pid = 63233, start training [1 0 1 1 1 0 0 1 1]
+2022-08-01 16:06:20,422 - DEBUG - child pid = 63224, finish training [1 0 1 0 1 0 1 1 1], loss = 0.17262220
+2022-08-01 16:06:20,424 - INFO - child pid = 63224, start training [1 0 1 1 1 0 1 0 0]
+2022-08-01 16:06:20,489 - DEBUG - child pid = 63219, epoch = 149, loss = 1.45051432
+2022-08-01 16:06:20,531 - DEBUG - child pid = 63235, finish training [1 0 1 1 0 1 1 0 1], loss = 0.18333688
+2022-08-01 16:06:20,492 - DEBUG - child pid = 63219, K = tensor([[1.09199572, 0.09573186],
+        [2.89095998, 0.01472758]]), BT = tensor([2.26502490, 3.94007087])
+2022-08-01 16:06:20,534 - INFO - child pid = 63235, start training [1 0 1 1 1 0 1 0 1]
+2022-08-01 16:06:20,541 - DEBUG - child pid = 63219, epoch = 150, loss = 1.12676811
+2022-08-01 16:06:20,600 - DEBUG - child pid = 63219, K = tensor([[1.18761671, 0.03158883],
+        [2.71594834, 0.39897633]]), BT = tensor([1.37735367, 3.55245209])
+2022-08-01 16:06:20,748 - DEBUG - child pid = 63234, epoch = 420, loss = 2.70977473
+2022-08-01 16:06:20,751 - DEBUG - child pid = 63234, K = tensor([[0.56273228, 0.18307312],
+        [0.95722890, 0.30581385]]), BT = tensor([1.65877903, 3.83381367])
+2022-08-01 16:06:20,752 - DEBUG - child pid = 63234, finish training [1 0 1 1 0 1 0 1 0], loss = 2.70977473
+2022-08-01 16:06:20,754 - INFO - child pid = 63234, start training [1 0 1 1 1 0 1 1 0]
+2022-08-01 16:06:20,756 - DEBUG - child pid = 63219, finish training [1 0 1 1 0 1 1 1 1], loss = 0.15761633
+2022-08-01 16:06:20,758 - INFO - child pid = 63219, start training [1 0 1 1 1 0 1 1 1]
+2022-08-01 16:06:20,867 - DEBUG - child pid = 63220, finish training [1 0 1 1 0 1 0 1 1], loss = 0.18257612
+2022-08-01 16:06:20,870 - INFO - child pid = 63220, start training [1 0 1 1 1 1 0 0 0]
+2022-08-01 16:06:20,999 - DEBUG - child pid = 63217, finish training [1 0 1 1 0 0 1 0 1], loss = 0.07402499
+2022-08-01 16:06:21,008 - INFO - child pid = 63217, start training [1 0 1 1 1 1 0 0 1]
+2022-08-01 16:06:21,027 - DEBUG - child pid = 63222, finish training [1 0 0 1 0 1 1 0 1], loss = 0.14311755
+2022-08-01 16:06:21,030 - INFO - child pid = 63222, start training [1 0 1 1 1 1 0 1 0]
+2022-08-01 16:06:21,083 - DEBUG - child pid = 63233, finish training [1 0 1 1 1 0 0 1 1], loss = 0.21986334
+2022-08-01 16:06:21,085 - INFO - child pid = 63233, start training [1 0 1 1 1 1 0 1 1]
+2022-08-01 16:06:21,106 - DEBUG - child pid = 63229, finish training [1 0 1 1 0 1 1 0 0], loss = 0.00209966
+2022-08-01 16:06:21,109 - INFO - child pid = 63229, start training [1 0 1 1 1 1 1 0 0]
+2022-08-01 16:06:21,200 - DEBUG - child pid = 63225, finish training [1 0 1 1 1 0 0 0 1], loss = 0.13917744
+2022-08-01 16:06:21,203 - INFO - child pid = 63225, start training [1 0 1 1 1 1 1 0 1]
+2022-08-01 16:06:21,249 - DEBUG - child pid = 63228, finish training [1 0 0 1 0 1 1 1 1], loss = 0.10056387
+2022-08-01 16:06:21,257 - INFO - child pid = 63228, start training [1 0 1 1 1 1 1 1 0]
+2022-08-01 16:06:21,283 - DEBUG - child pid = 63231, finish training [1 0 1 1 0 0 0 0 0], loss = 0.11850638
+2022-08-01 16:06:21,286 - INFO - child pid = 63231, start training [1 0 1 1 1 1 1 1 1]
+2022-08-01 16:06:21,567 - DEBUG - child pid = 63220, finish training [1 0 1 1 1 1 0 0 0], loss = 0.11829940
+2022-08-01 16:06:21,569 - INFO - child pid = 63220, start training [1 1 0 1 0 0 0 0 0]
+2022-08-01 16:06:21,607 - DEBUG - child pid = 63216, finish training [1 0 0 1 0 1 0 0 1], loss = 0.16030964
+2022-08-01 16:06:21,611 - INFO - child pid = 63216, start training [1 1 0 1 0 0 0 0 1]
+2022-08-01 16:06:21,613 - DEBUG - child pid = 63224, finish training [1 0 1 1 1 0 1 0 0], loss = 0.11903007
+2022-08-01 16:06:21,615 - INFO - child pid = 63224, start training [1 1 0 1 0 0 0 1 0]
+2022-08-01 16:06:21,619 - DEBUG - child pid = 63221, finish training [1 0 1 1 0 1 0 0 0], loss = 0.13862470
+2022-08-01 16:06:21,622 - INFO - child pid = 63221, start training [1 1 0 1 0 0 0 1 1]
+2022-08-01 16:06:21,830 - DEBUG - child pid = 63226, finish training [1 0 1 1 0 0 0 0 1], loss = 0.20549919
+2022-08-01 16:06:21,833 - INFO - child pid = 63226, start training [1 1 0 1 0 0 1 0 0]
+2022-08-01 16:06:21,892 - DEBUG - child pid = 63228, finish training [1 0 1 1 1 1 1 1 0], loss = 0.14167961
+2022-08-01 16:06:21,895 - INFO - child pid = 63228, start training [1 1 0 1 0 0 1 0 1]
+2022-08-01 16:06:21,902 - DEBUG - child pid = 63206, finish training [1 0 0 0 1 1 0 1 1], loss = 0.20589256
+2022-08-01 16:06:21,905 - INFO - child pid = 63206, start training [1 1 0 1 0 0 1 1 0]
+2022-08-01 16:06:22,000 - DEBUG - child pid = 63218, finish training [1 0 1 1 1 0 0 1 0], loss = 0.34033787
+2022-08-01 16:06:22,003 - INFO - child pid = 63218, start training [1 1 0 1 0 0 1 1 1]
+2022-08-01 16:06:22,036 - DEBUG - child pid = 63209, finish training [1 0 0 1 0 1 0 1 1], loss = 0.20439078
+2022-08-01 16:06:22,051 - INFO - child pid = 63209, start training [1 1 0 1 0 1 0 1 0]
+2022-08-01 16:06:22,219 - DEBUG - child pid = 63223, finish training [1 0 0 1 0 0 0 1 1], loss = nan
+2022-08-01 16:06:22,221 - WARNING - child pid = 63223, [1 0 0 1 0 0 0 1 1] has loss nan
+2022-08-01 16:06:22,221 - DEBUG - child pid = 63216, epoch = 172, loss = 1.79720116
+2022-08-01 16:06:22,223 - INFO - child pid = 63223, start training [1 1 0 1 0 1 0 1 1]
+2022-08-01 16:06:22,223 - DEBUG - child pid = 63216, K = tensor([[    0.73822999,     0.00037966],
+        [    0.39617065,     0.00979775]]), BT = tensor([3.44199514, 3.51554060])
+2022-08-01 16:06:22,227 - DEBUG - child pid = 63216, epoch = 173, loss = 3.73288774
+2022-08-01 16:06:22,229 - DEBUG - child pid = 63216, K = tensor([[0.79855949, 0.00504901],
+        [0.08972886, 0.46735036]]), BT = tensor([1.77129781, 3.39114785])
+2022-08-01 16:06:22,247 - DEBUG - child pid = 63227, finish training [1 0 0 1 0 0 0 1 0], loss = nan
+2022-08-01 16:06:22,250 - WARNING - child pid = 63227, [1 0 0 1 0 0 0 1 0] has loss nan
+2022-08-01 16:06:22,252 - INFO - child pid = 63227, start training [1 1 0 1 0 1 1 0 0]
+2022-08-01 16:06:22,308 - DEBUG - child pid = 63229, finish training [1 0 1 1 1 1 1 0 0], loss = 0.12817830
+2022-08-01 16:06:22,340 - INFO - child pid = 63229, start training [1 1 0 1 0 1 1 0 1]
+2022-08-01 16:06:22,333 - DEBUG - child pid = 63216, finish training [1 1 0 1 0 0 0 0 1], loss = 0.25213394
+2022-08-01 16:06:22,344 - INFO - child pid = 63216, start training [1 1 0 1 0 1 1 1 0]
+2022-08-01 16:06:22,358 - DEBUG - child pid = 63225, finish training [1 0 1 1 1 1 1 0 1], loss = 0.15879022
+2022-08-01 16:06:22,360 - INFO - child pid = 63225, start training [1 1 0 1 0 1 1 1 1]
+2022-08-01 16:06:22,371 - DEBUG - child pid = 63217, finish training [1 0 1 1 1 1 0 0 1], loss = 0.06897250
+2022-08-01 16:06:22,373 - INFO - child pid = 63217, start training [1 1 0 1 1 0 0 0 0]
+2022-08-01 16:06:22,410 - DEBUG - child pid = 63208, finish training [1 0 0 1 0 1 1 0 0], loss = 0.10635645
+2022-08-01 16:06:22,413 - INFO - child pid = 63208, start training [1 1 0 1 1 0 0 0 1]
+2022-08-01 16:06:22,424 - DEBUG - child pid = 63233, finish training [1 0 1 1 1 1 0 1 1], loss = 0.09946569
+2022-08-01 16:06:22,426 - INFO - child pid = 63233, start training [1 1 0 1 1 0 0 1 0]
+2022-08-01 16:06:22,428 - DEBUG - child pid = 63222, finish training [1 0 1 1 1 1 0 1 0], loss = 0.18189365
+2022-08-01 16:06:22,437 - INFO - child pid = 63222, start training [1 1 0 1 1 0 0 1 1]
+2022-08-01 16:06:22,808 - DEBUG - child pid = 63235, finish training [1 0 1 1 1 0 1 0 1], loss = 0.20636889
+2022-08-01 16:06:22,811 - INFO - child pid = 63235, start training [1 1 0 1 1 0 1 0 0]
+2022-08-01 16:06:22,826 - DEBUG - child pid = 63221, finish training [1 1 0 1 0 0 0 1 1], loss = 0.22476310
+2022-08-01 16:06:22,828 - INFO - child pid = 63221, start training [1 1 0 1 1 0 1 0 1]
+2022-08-01 16:06:22,863 - DEBUG - child pid = 63225, epoch = 177, loss = 3.81055737
+2022-08-01 16:06:22,866 - DEBUG - child pid = 63225, K = tensor([[    2.19798398,     0.89975965],
+        [    0.21511494,     0.00000001]]), BT = tensor([3.95747590, 1.99652791])
+2022-08-01 16:06:22,870 - DEBUG - child pid = 63225, epoch = 178, loss = 14.74826527
+2022-08-01 16:06:22,872 - DEBUG - child pid = 63225, K = tensor([[    1.55685425,     1.23757470],
+        [    0.27122673,     0.00000000]]), BT = tensor([0.59324002, 3.63358450])
+2022-08-01 16:06:22,881 - DEBUG - child pid = 63225, epoch = 180, loss = 7.05468321
+2022-08-01 16:06:22,884 - DEBUG - child pid = 63225, K = tensor([[    0.84082431,     0.13111475],
+        [    0.46255597,     0.00000057]]), BT = tensor([0.11125413, 5.62145472])
+2022-08-01 16:06:22,883 - DEBUG - child pid = 63206, finish training [1 1 0 1 0 0 1 1 0], loss = 0.06728467
+2022-08-01 16:06:22,885 - INFO - child pid = 63206, start training [1 1 0 1 1 0 1 1 0]
+2022-08-01 16:06:22,888 - DEBUG - child pid = 63225, epoch = 181, loss = 127.44644165
+2022-08-01 16:06:22,890 - DEBUG - child pid = 63225, K = tensor([[    0.61319476,     4.93892288],
+        [    0.54780620,     0.00000313]]), BT = tensor([0.68328756, 9.62882900])
+2022-08-01 16:06:22,924 - DEBUG - child pid = 63225, epoch = 182, loss = 2929129.00000000
+2022-08-01 16:06:22,928 - DEBUG - child pid = 63225, K = tensor([[    1.31415641,     3.38037729],
+        [    0.16397658,     0.00034252]]), BT = tensor([  3.17965555, 156.24382019])
+2022-08-01 16:06:22,940 - DEBUG - child pid = 63225, epoch = 183, loss = 96436380975244633098638327808.00000000
+2022-08-01 16:06:22,943 - DEBUG - child pid = 63225, K = tensor([[175968.14062500, 6992402432.00000000],
+        [115069.67187500, 124355208.00000000]]), BT = tensor([1289678.75000000, 8733734912.00000000])
+2022-08-01 16:06:23,099 - DEBUG - child pid = 63233, finish training [1 1 0 1 1 0 0 1 0], loss = 0.06517155
+2022-08-01 16:06:23,101 - INFO - child pid = 63233, start training [1 1 0 1 1 0 1 1 1]
+2022-08-01 16:06:23,102 - DEBUG - child pid = 63210, finish training [1 0 0 1 1 1 1 0 1], loss = 0.17463753
+2022-08-01 16:06:23,103 - INFO - child pid = 63210, start training [1 1 0 1 1 1 0 1 0]
+2022-08-01 16:06:23,198 - DEBUG - child pid = 63208, epoch = 219, loss = 1.07804883
+2022-08-01 16:06:23,204 - DEBUG - child pid = 63208, K = tensor([[0.45324335, 0.07005601],
+        [0.06523607, 0.47063416]]), BT = tensor([2.90501666, 2.53999949])
+2022-08-01 16:06:23,208 - DEBUG - child pid = 63208, epoch = 220, loss = 1.47722578
+2022-08-01 16:06:23,210 - DEBUG - child pid = 63208, K = tensor([[0.32934052, 0.46574515],
+        [0.38916805, 0.37493616]]), BT = tensor([2.49463606, 2.29554749])
+2022-08-01 16:06:23,253 - DEBUG - child pid = 63208, finish training [1 1 0 1 1 0 0 0 1], loss = 0.23527543
+2022-08-01 16:06:23,258 - INFO - child pid = 63208, start training [1 1 0 1 1 1 0 1 1]
+2022-08-01 16:06:23,262 - DEBUG - child pid = 63214, finish training [1 0 0 1 1 1 1 1 1], loss = 0.04287629
+2022-08-01 16:06:23,265 - INFO - child pid = 63214, start training [1 1 0 1 1 1 1 0 0]
+2022-08-01 16:06:23,271 - DEBUG - child pid = 63215, finish training [1 0 1 1 0 0 1 1 0], loss = 0.00387291
+2022-08-01 16:06:23,274 - INFO - child pid = 63215, start training [1 1 0 1 1 1 1 0 1]
+2022-08-01 16:06:23,387 - DEBUG - child pid = 63222, finish training [1 1 0 1 1 0 0 1 1], loss = 0.11704925
+2022-08-01 16:06:23,389 - DEBUG - child pid = 63212, finish training [1 0 0 1 1 0 1 0 1], loss = 0.11841849
+2022-08-01 16:06:23,389 - INFO - child pid = 63222, start training [1 1 0 1 1 1 1 1 0]
+2022-08-01 16:06:23,390 - INFO - child pid = 63212, start training [1 1 0 1 1 1 1 1 1]
+2022-08-01 16:06:23,426 - DEBUG - child pid = 63223, finish training [1 1 0 1 0 1 0 1 1], loss = 0.36589515
+2022-08-01 16:06:23,430 - INFO - child pid = 63223, start training [1 1 1 1 0 0 1 0 0]
+2022-08-01 16:06:23,477 - DEBUG - child pid = 63213, finish training [1 0 1 1 0 0 0 1 0], loss = 0.07601330
+2022-08-01 16:06:23,479 - INFO - child pid = 63213, start training [1 1 1 1 0 0 1 0 1]
+2022-08-01 16:06:23,627 - DEBUG - child pid = 63206, finish training [1 1 0 1 1 0 1 1 0], loss = 0.00435970
+2022-08-01 16:06:23,631 - INFO - child pid = 63206, start training [1 1 1 1 0 0 1 1 0]
+2022-08-01 16:06:23,783 - DEBUG - child pid = 63207, finish training [1 0 1 1 1 0 0 0 0], loss = 0.11406612
+2022-08-01 16:06:23,786 - INFO - child pid = 63207, start training [1 1 1 1 0 0 1 1 1]
+2022-08-01 16:06:23,789 - DEBUG - child pid = 63210, finish training [1 1 0 1 1 1 0 1 0], loss = 0.18667081
+2022-08-01 16:06:23,808 - INFO - child pid = 63210, start training [1 1 1 1 0 1 1 1 0]
+2022-08-01 16:06:24,069 - DEBUG - child pid = 63221, finish training [1 1 0 1 1 0 1 0 1], loss = 0.09584821
+2022-08-01 16:06:24,071 - INFO - child pid = 63221, start training [1 1 1 1 0 1 1 1 1]
+2022-08-01 16:06:24,077 - DEBUG - child pid = 63231, finish training [1 0 1 1 1 1 1 1 1], loss = 0.06218123
+2022-08-01 16:06:24,079 - INFO - child pid = 63231, start training [1 1 1 1 1 0 1 0 0]
+2022-08-01 16:06:24,128 - DEBUG - child pid = 63233, finish training [1 1 0 1 1 0 1 1 1], loss = 0.06787647
+2022-08-01 16:06:24,131 - INFO - child pid = 63233, start training [1 1 1 1 1 0 1 0 1]
+2022-08-01 16:06:24,159 - DEBUG - child pid = 63229, epoch = 632, loss = 1.33643246
+2022-08-01 16:06:24,164 - DEBUG - child pid = 63229, K = tensor([[0.02357435, 0.14392650],
+        [9.41134930, 2.05735254]]), BT = tensor([2.19724512, 1.69827807])
+2022-08-01 16:06:24,165 - DEBUG - child pid = 63229, finish training [1 1 0 1 0 1 1 0 1], loss = 1.33643246
+2022-08-01 16:06:24,167 - INFO - child pid = 63229, start training [1 1 1 1 1 0 1 1 0]
+2022-08-01 16:06:24,220 - DEBUG - child pid = 63217, finish training [1 1 0 1 1 0 0 0 0], loss = 0.07368849
+2022-08-01 16:06:24,187 - DEBUG - child pid = 63230, finish training [1 0 1 1 0 0 1 0 0], loss = 0.21577071
+2022-08-01 16:06:24,238 - INFO - child pid = 63217, start training [1 1 1 1 1 0 1 1 1]
+2022-08-01 16:06:24,239 - INFO - child pid = 63230, start training [1 1 1 1 1 1 1 1 0]
+2022-08-01 16:06:24,294 - DEBUG - child pid = 63213, finish training [1 1 1 1 0 0 1 0 1], loss = 0.22204164
+2022-08-01 16:06:24,297 - INFO - child pid = 63213, start training [1 1 1 1 1 1 1 1 1]
+2022-08-01 16:06:24,376 - DEBUG - child pid = 63227, finish training [1 1 0 1 0 1 1 0 0], loss = 0.38635316
+2022-08-01 16:06:24,456 - DEBUG - child pid = 63218, finish training [1 1 0 1 0 0 1 1 1], loss = 0.05159322
+2022-08-01 16:06:24,462 - DEBUG - child pid = 63214, epoch = 401, loss = 1.13969004
+2022-08-01 16:06:24,464 - DEBUG - child pid = 63214, K = tensor([[    0.00000000,     0.30256400],
+        [    0.90178323,     1.74988568]]), BT = tensor([2.23230696, 2.66153669])
+2022-08-01 16:06:24,468 - DEBUG - child pid = 63214, epoch = 402, loss = 6.62858963
+2022-08-01 16:06:24,470 - DEBUG - child pid = 63214, K = tensor([[    0.00000000,     0.41484156],
+        [    1.17069411,     1.43345010]]), BT = tensor([3.54062676, 1.19401801])
+2022-08-01 16:06:24,471 - DEBUG - child pid = 63214, finish training [1 1 0 1 1 1 1 0 0], loss = 6.62858963
+2022-08-01 16:06:24,537 - DEBUG - child pid = 63222, finish training [1 1 0 1 1 1 1 1 0], loss = 0.07509806
+2022-08-01 16:06:24,565 - DEBUG - child pid = 63208, finish training [1 1 0 1 1 1 0 1 1], loss = 0.16863149
+2022-08-01 16:06:24,634 - DEBUG - child pid = 63211, finish training [1 0 1 1 0 1 1 1 0], loss = 0.17463806
+2022-08-01 16:06:24,634 - DEBUG - child pid = 63228, finish training [1 1 0 1 0 0 1 0 1], loss = 0.14583176
+2022-08-01 16:06:24,647 - DEBUG - child pid = 63215, epoch = 442, loss = 6.15336657
+2022-08-01 16:06:24,649 - DEBUG - child pid = 63215, K = tensor([[    0.00000000,     0.23773310],
+        [    2.32192206,     3.45539212]]), BT = tensor([1.48382330, 3.27370214])
+2022-08-01 16:06:24,650 - DEBUG - child pid = 63215, finish training [1 1 0 1 1 1 1 0 1], loss = 6.15336657
+2022-08-01 16:06:24,681 - DEBUG - child pid = 63232, finish training [1 0 0 1 1 0 1 1 1], loss = 0.00804208
+2022-08-01 16:06:24,812 - DEBUG - child pid = 63212, finish training [1 1 0 1 1 1 1 1 1], loss = 0.14184809
+2022-08-01 16:06:24,901 - DEBUG - child pid = 63234, finish training [1 0 1 1 1 0 1 1 0], loss = 0.13424629
+2022-08-01 16:06:24,923 - DEBUG - child pid = 63231, finish training [1 1 1 1 1 0 1 0 0], loss = 0.11862627
+2022-08-01 16:06:24,929 - DEBUG - child pid = 63230, finish training [1 1 1 1 1 1 1 1 0], loss = 0.09334096
+2022-08-01 16:06:24,930 - DEBUG - child pid = 63220, finish training [1 1 0 1 0 0 0 0 0], loss = 0.03353757
+2022-08-01 16:06:24,937 - DEBUG - child pid = 63206, finish training [1 1 1 1 0 0 1 1 0], loss = 0.54990268
+2022-08-01 16:06:25,042 - DEBUG - child pid = 63235, finish training [1 1 0 1 1 0 1 0 0], loss = 0.04895890
+2022-08-01 16:06:25,079 - DEBUG - child pid = 63233, finish training [1 1 1 1 1 0 1 0 1], loss = 0.13953792
+2022-08-01 16:06:25,105 - DEBUG - child pid = 63207, finish training [1 1 1 1 0 0 1 1 1], loss = 0.67598540
+2022-08-01 16:06:25,127 - DEBUG - child pid = 63213, finish training [1 1 1 1 1 1 1 1 1], loss = 0.00000537
+2022-08-01 16:06:25,239 - DEBUG - child pid = 63229, finish training [1 1 1 1 1 0 1 1 0], loss = 0.07510150
+2022-08-01 16:06:25,446 - DEBUG - child pid = 63226, finish training [1 1 0 1 0 0 1 0 0], loss = 0.03295677
+2022-08-01 16:06:25,586 - DEBUG - child pid = 63217, epoch = 424, loss = 1.02443457
+2022-08-01 16:06:25,588 - DEBUG - child pid = 63217, K = tensor([[    2.22249460,     2.40926504],
+        [    0.23326497,     0.00000000]]), BT = tensor([2.81831741, 2.72837639])
+2022-08-01 16:06:25,592 - DEBUG - child pid = 63217, epoch = 425, loss = 7.39259768
+2022-08-01 16:06:25,594 - DEBUG - child pid = 63217, K = tensor([[    1.92610395,     2.59221864],
+        [    0.32914770,     0.00000000]]), BT = tensor([1.30931580, 4.04136419])
+2022-08-01 16:06:25,596 - DEBUG - child pid = 63217, finish training [1 1 1 1 1 0 1 1 1], loss = 7.39259768
+2022-08-01 16:06:25,902 - DEBUG - child pid = 63216, finish training [1 1 0 1 0 1 1 1 0], loss = 0.18542790
+2022-08-01 16:06:26,062 - DEBUG - child pid = 63219, finish training [1 0 1 1 1 0 1 1 1], loss = 0.10612102
+2022-08-01 16:06:26,385 - DEBUG - child pid = 63209, finish training [1 1 0 1 0 1 0 1 0], loss = 0.33723587
+2022-08-01 16:06:26,765 - DEBUG - child pid = 63210, finish training [1 1 1 1 0 1 1 1 0], loss = 0.14746426
+2022-08-01 16:06:27,522 - DEBUG - child pid = 63224, finish training [1 1 0 1 0 0 0 1 0], loss = 0.09596107
+2022-08-01 16:06:28,223 - DEBUG - child pid = 63221, finish training [1 1 1 1 0 1 1 1 1], loss = 0.06479760
+2022-08-01 16:06:28,331 - DEBUG - child pid = 63225, finish training [1 1 0 1 0 1 1 1 1], loss = nan
+2022-08-01 16:06:28,334 - WARNING - child pid = 63225, [1 1 0 1 0 1 1 1 1] has loss nan
+2022-08-01 16:06:29,229 - DEBUG - child pid = 63223, finish training [1 1 1 1 0 0 1 0 0], loss = 0.03329981
+2022-08-01 16:06:50,285 - INFO - parent pid = 63172, finish task 2_2_fixA_square_0

@@ -1,0 +1,581 @@
+2022-08-01 17:06:48,004 - INFO - running /home/hxcai/competitive_network/0728_train_BT.py
+2022-08-01 17:06:48,004 - INFO - parent pid = 65206, start task 2_2_fixA_square_0
+2022-08-01 17:06:48,088 - DEBUG - {'data_dir': 'data', 'figure_dir': 'figures', 'output_dir': 'results/temp', 'log_dir': 'logs', 'seed': 0, 'nA': 2, 'nB': 2, 'nY': 1, 'max_epochs': 2000, 'log_epochs': 100, 'tol': 0.0001, 'model': {'type': 'CompetitiveNetwork', 'args': {'reparam': 'square', 'mode': 'fixA'}}, 'logger': {'version': 1, 'formatters': {'default': {'format': '%(asctime)s - %(levelname)s - %(message)s'}}, 'handlers': {'stream_handler': {'class': 'logging.StreamHandler', 'level': 'INFO', 'formatter': 'default', 'stream': 'ext://sys.stdout'}, 'file_handler': {'class': 'logging.handlers.RotatingFileHandler', 'level': 'DEBUG', 'formatter': 'default', 'filename': 'logs/20220801_170648_2_2_fixA_square_0.log', 'maxBytes': 10485760, 'backupCount': 5, 'encoding': 'utf-8'}}, 'root': {'level': 'DEBUG', 'handlers': ['stream_handler', 'file_handler']}}, 'data_loader': {'type': 'DataLoader', 'args': {'batch_size': 9, 'shuffle': False}}, 'optimizer': {'type': 'SGD', 'args': {'lr': 0.1, 'momentum': 0.9, 'weight_decay': 0}}, 'loss': {'type': 'MSELoss()'}}
+2022-08-01 17:06:48,304 - INFO - child pid = 65240, start training [0 0 0 0 0 0 0 0 0]
+2022-08-01 17:06:48,305 - INFO - child pid = 65241, start training [0 0 0 0 0 0 0 0 1]
+2022-08-01 17:06:48,305 - INFO - child pid = 65242, start training [0 0 0 0 0 0 0 1 0]
+2022-08-01 17:06:48,306 - INFO - child pid = 65247, start training [0 0 0 0 0 0 1 1 1]
+2022-08-01 17:06:48,305 - INFO - child pid = 65243, start training [0 0 0 0 0 0 0 1 1]
+2022-08-01 17:06:48,305 - INFO - child pid = 65244, start training [0 0 0 0 0 0 1 0 0]
+2022-08-01 17:06:48,305 - INFO - child pid = 65245, start training [0 0 0 0 0 0 1 0 1]
+2022-08-01 17:06:48,306 - INFO - child pid = 65246, start training [0 0 0 0 0 0 1 1 0]
+2022-08-01 17:06:48,306 - INFO - child pid = 65249, start training [0 0 0 0 0 1 0 1 1]
+2022-08-01 17:06:48,307 - INFO - child pid = 65253, start training [0 0 0 0 0 1 1 1 1]
+2022-08-01 17:06:48,308 - INFO - child pid = 65252, start training [0 0 0 0 0 1 1 1 0]
+2022-08-01 17:06:48,308 - INFO - child pid = 65254, start training [0 0 0 0 1 0 0 0 0]
+2022-08-01 17:06:48,306 - INFO - child pid = 65248, start training [0 0 0 0 0 1 0 1 0]
+2022-08-01 17:06:48,307 - INFO - child pid = 65250, start training [0 0 0 0 0 1 1 0 0]
+2022-08-01 17:06:48,309 - INFO - child pid = 65260, start training [0 0 0 0 1 0 1 1 0]
+2022-08-01 17:06:48,308 - INFO - child pid = 65257, start training [0 0 0 0 1 0 0 1 1]
+2022-08-01 17:06:48,307 - INFO - child pid = 65251, start training [0 0 0 0 0 1 1 0 1]
+2022-08-01 17:06:48,308 - INFO - child pid = 65255, start training [0 0 0 0 1 0 0 0 1]
+2022-08-01 17:06:48,310 - INFO - child pid = 65267, start training [0 0 0 0 1 1 1 1 0]
+2022-08-01 17:06:48,310 - INFO - child pid = 65262, start training [0 0 0 0 1 1 0 1 0]
+2022-08-01 17:06:48,310 - INFO - child pid = 65263, start training [0 0 0 0 1 1 0 1 1]
+2022-08-01 17:06:48,309 - INFO - child pid = 65261, start training [0 0 0 0 1 0 1 1 1]
+2022-08-01 17:06:48,309 - INFO - child pid = 65259, start training [0 0 0 0 1 0 1 0 1]
+2022-08-01 17:06:48,309 - INFO - child pid = 65258, start training [0 0 0 0 1 0 1 0 0]
+2022-08-01 17:06:48,311 - INFO - child pid = 65270, start training [0 0 0 1 0 0 0 0 1]
+2022-08-01 17:06:48,310 - INFO - child pid = 65264, start training [0 0 0 0 1 1 1 0 0]
+2022-08-01 17:06:48,310 - INFO - child pid = 65266, start training [0 0 0 0 1 1 1 0 1]
+2022-08-01 17:06:48,308 - INFO - child pid = 65256, start training [0 0 0 0 1 0 0 1 0]
+2022-08-01 17:06:48,311 - INFO - child pid = 65268, start training [0 0 0 0 1 1 1 1 1]
+2022-08-01 17:06:48,311 - INFO - child pid = 65269, start training [0 0 0 1 0 0 0 0 0]
+2022-08-01 17:06:48,795 - DEBUG - child pid = 65253, finish training [0 0 0 0 0 1 1 1 1], loss = 0.04398046
+2022-08-01 17:06:48,796 - DEBUG - child pid = 65261, finish training [0 0 0 0 1 0 1 1 1], loss = 0.06724152
+2022-08-01 17:06:48,798 - INFO - child pid = 65261, start training [0 0 0 1 0 0 0 1 1]
+2022-08-01 17:06:48,798 - INFO - child pid = 65253, start training [0 0 0 1 0 0 0 1 0]
+2022-08-01 17:06:48,825 - DEBUG - child pid = 65260, finish training [0 0 0 0 1 0 1 1 0], loss = 0.05187821
+2022-08-01 17:06:48,801 - DEBUG - child pid = 65252, finish training [0 0 0 0 0 1 1 1 0], loss = 0.09467439
+2022-08-01 17:06:48,801 - DEBUG - child pid = 65268, finish training [0 0 0 0 1 1 1 1 1], loss = 0.07410310
+2022-08-01 17:06:48,808 - DEBUG - child pid = 65264, finish training [0 0 0 0 1 1 1 0 0], loss = 0.14816177
+2022-08-01 17:06:48,854 - INFO - child pid = 65260, start training [0 0 0 1 0 0 1 0 0]
+2022-08-01 17:06:48,854 - INFO - child pid = 65268, start training [0 0 0 1 0 0 1 0 1]
+2022-08-01 17:06:48,854 - INFO - child pid = 65264, start training [0 0 0 1 0 0 1 1 0]
+2022-08-01 17:06:48,854 - INFO - child pid = 65252, start training [0 0 0 1 0 0 1 1 1]
+2022-08-01 17:06:48,867 - DEBUG - child pid = 65249, finish training [0 0 0 0 0 1 0 1 1], loss = 0.07407738
+2022-08-01 17:06:48,869 - INFO - child pid = 65249, start training [0 0 0 1 0 1 0 0 0]
+2022-08-01 17:06:48,875 - DEBUG - child pid = 65241, finish training [0 0 0 0 0 0 0 0 1], loss = 0.05232834
+2022-08-01 17:06:48,877 - INFO - child pid = 65241, start training [0 0 0 1 0 1 0 0 1]
+2022-08-01 17:06:48,888 - DEBUG - child pid = 65270, finish training [0 0 0 1 0 0 0 0 1], loss = 0.05197948
+2022-08-01 17:06:48,908 - INFO - child pid = 65270, start training [0 0 0 1 0 1 0 1 0]
+2022-08-01 17:06:48,926 - DEBUG - child pid = 65269, finish training [0 0 0 1 0 0 0 0 0], loss = 0.00894316
+2022-08-01 17:06:48,929 - INFO - child pid = 65269, start training [0 0 0 1 0 1 0 1 1]
+2022-08-01 17:06:49,073 - DEBUG - child pid = 65240, finish training [0 0 0 0 0 0 0 0 0], loss = 0.00001535
+2022-08-01 17:06:49,076 - INFO - child pid = 65240, start training [0 0 0 1 0 1 1 0 0]
+2022-08-01 17:06:49,082 - DEBUG - child pid = 65262, finish training [0 0 0 0 1 1 0 1 0], loss = 0.13516746
+2022-08-01 17:06:49,085 - INFO - child pid = 65262, start training [0 0 0 1 0 1 1 0 1]
+2022-08-01 17:06:49,205 - DEBUG - child pid = 65255, finish training [0 0 0 0 1 0 0 0 1], loss = 0.02533912
+2022-08-01 17:06:49,208 - INFO - child pid = 65255, start training [0 0 0 1 0 1 1 1 0]
+2022-08-01 17:06:49,265 - DEBUG - child pid = 65247, finish training [0 0 0 0 0 0 1 1 1], loss = 0.00231564
+2022-08-01 17:06:49,268 - INFO - child pid = 65247, start training [0 0 0 1 0 1 1 1 1]
+2022-08-01 17:06:49,269 - DEBUG - child pid = 65250, finish training [0 0 0 0 0 1 1 0 0], loss = 0.09203544
+2022-08-01 17:06:49,270 - INFO - child pid = 65250, start training [0 0 0 1 1 0 0 0 0]
+2022-08-01 17:06:49,278 - DEBUG - child pid = 65253, finish training [0 0 0 1 0 0 0 1 0], loss = 0.08423258
+2022-08-01 17:06:49,280 - INFO - child pid = 65253, start training [0 0 0 1 1 0 0 0 1]
+2022-08-01 17:06:49,323 - DEBUG - child pid = 65270, finish training [0 0 0 1 0 1 0 1 0], loss = 0.15120505
+2022-08-01 17:06:49,327 - INFO - child pid = 65270, start training [0 0 0 1 1 0 0 1 0]
+2022-08-01 17:06:49,333 - DEBUG - child pid = 65258, finish training [0 0 0 0 1 0 1 0 0], loss = 0.07093363
+2022-08-01 17:06:49,335 - INFO - child pid = 65258, start training [0 0 0 1 1 0 0 1 1]
+2022-08-01 17:06:49,340 - DEBUG - child pid = 65264, finish training [0 0 0 1 0 0 1 1 0], loss = 0.01200012
+2022-08-01 17:06:49,342 - INFO - child pid = 65264, start training [0 0 0 1 1 0 1 0 0]
+2022-08-01 17:06:49,561 - DEBUG - child pid = 65253, finish training [0 0 0 1 1 0 0 0 1], loss = 0.02440404
+2022-08-01 17:06:49,548 - DEBUG - child pid = 65260, finish training [0 0 0 1 0 0 1 0 0], loss = 0.00753554
+2022-08-01 17:06:49,549 - DEBUG - child pid = 65250, finish training [0 0 0 1 1 0 0 0 0], loss = 0.02512194
+2022-08-01 17:06:49,346 - DEBUG - child pid = 65256, finish training [0 0 0 0 1 0 0 1 0], loss = 0.12209352
+2022-08-01 17:06:49,422 - DEBUG - child pid = 65242, finish training [0 0 0 0 0 0 0 1 0], loss = 0.01155556
+2022-08-01 17:06:49,426 - DEBUG - child pid = 65254, finish training [0 0 0 0 1 0 0 0 0], loss = 0.06339708
+2022-08-01 17:06:49,530 - DEBUG - child pid = 65259, finish training [0 0 0 0 1 0 1 0 1], loss = 0.14409523
+2022-08-01 17:06:49,475 - DEBUG - child pid = 65244, finish training [0 0 0 0 0 0 1 0 0], loss = 0.00058889
+2022-08-01 17:06:49,498 - DEBUG - child pid = 65251, finish training [0 0 0 0 0 1 1 0 1], loss = 0.09881856
+2022-08-01 17:06:49,563 - INFO - child pid = 65253, start training [0 0 0 1 1 0 1 0 1]
+2022-08-01 17:06:49,563 - INFO - child pid = 65250, start training [0 0 0 1 1 0 1 1 0]
+2022-08-01 17:06:49,564 - INFO - child pid = 65256, start training [0 0 0 1 1 1 0 0 1]
+2022-08-01 17:06:49,563 - INFO - child pid = 65260, start training [0 0 0 1 1 0 1 1 1]
+2022-08-01 17:06:49,564 - INFO - child pid = 65251, start training [0 0 0 1 1 1 0 1 0]
+2022-08-01 17:06:49,564 - INFO - child pid = 65259, start training [0 0 0 1 1 1 0 0 0]
+2022-08-01 17:06:49,564 - INFO - child pid = 65242, start training [0 0 0 1 1 1 1 0 1]
+2022-08-01 17:06:49,564 - INFO - child pid = 65244, start training [0 0 0 1 1 1 1 0 0]
+2022-08-01 17:06:49,564 - INFO - child pid = 65254, start training [0 0 0 1 1 1 0 1 1]
+2022-08-01 17:06:49,789 - DEBUG - child pid = 65248, finish training [0 0 0 0 0 1 0 1 0], loss = 0.12912261
+2022-08-01 17:06:49,792 - INFO - child pid = 65248, start training [0 0 0 1 1 1 1 1 0]
+2022-08-01 17:06:49,836 - DEBUG - child pid = 65246, finish training [0 0 0 0 0 0 1 1 0], loss = 0.00862796
+2022-08-01 17:06:49,839 - INFO - child pid = 65246, start training [0 0 0 1 1 1 1 1 1]
+2022-08-01 17:06:49,935 - DEBUG - child pid = 65251, finish training [0 0 0 1 1 1 0 1 0], loss = 0.22224744
+2022-08-01 17:06:49,938 - INFO - child pid = 65251, start training [0 0 1 0 0 0 1 0 0]
+2022-08-01 17:06:49,969 - DEBUG - child pid = 65250, finish training [0 0 0 1 1 0 1 1 0], loss = 0.00335643
+2022-08-01 17:06:49,972 - INFO - child pid = 65250, start training [0 0 1 0 0 0 1 0 1]
+2022-08-01 17:06:49,973 - DEBUG - child pid = 65245, finish training [0 0 0 0 0 0 1 0 1], loss = 0.07072648
+2022-08-01 17:06:49,974 - INFO - child pid = 65245, start training [0 0 1 0 0 0 1 1 0]
+2022-08-01 17:06:49,980 - DEBUG - child pid = 65243, finish training [0 0 0 0 0 0 0 1 1], loss = 0.05303533
+2022-08-01 17:06:49,982 - INFO - child pid = 65243, start training [0 0 1 0 0 0 1 1 1]
+2022-08-01 17:06:50,089 - DEBUG - child pid = 65257, finish training [0 0 0 0 1 0 0 1 1], loss = 0.14473496
+2022-08-01 17:06:50,092 - INFO - child pid = 65257, start training [0 0 1 0 0 1 1 1 0]
+2022-08-01 17:06:50,174 - DEBUG - child pid = 65254, finish training [0 0 0 1 1 1 0 1 1], loss = 0.01044118
+2022-08-01 17:06:50,177 - INFO - child pid = 65254, start training [0 0 1 0 0 1 1 1 1]
+2022-08-01 17:06:50,232 - DEBUG - child pid = 65241, finish training [0 0 0 1 0 1 0 0 1], loss = 0.17281359
+2022-08-01 17:06:50,235 - INFO - child pid = 65241, start training [0 0 1 0 1 0 1 0 0]
+2022-08-01 17:06:50,304 - DEBUG - child pid = 65259, finish training [0 0 0 1 1 1 0 0 0], loss = 0.18310964
+2022-08-01 17:06:50,307 - INFO - child pid = 65259, start training [0 0 1 0 1 0 1 0 1]
+2022-08-01 17:06:50,343 - DEBUG - child pid = 65250, finish training [0 0 1 0 0 0 1 0 1], loss = 0.09887239
+2022-08-01 17:06:50,346 - INFO - child pid = 65250, start training [0 0 1 0 1 0 1 1 0]
+2022-08-01 17:06:50,417 - DEBUG - child pid = 65251, finish training [0 0 1 0 0 0 1 0 0], loss = 0.06579322
+2022-08-01 17:06:50,420 - INFO - child pid = 65251, start training [0 0 1 0 1 0 1 1 1]
+2022-08-01 17:06:50,492 - DEBUG - child pid = 65254, finish training [0 0 1 0 0 1 1 1 1], loss = 0.01484485
+2022-08-01 17:06:50,494 - INFO - child pid = 65254, start training [0 0 1 0 1 1 1 1 0]
+2022-08-01 17:06:50,661 - DEBUG - child pid = 65245, finish training [0 0 1 0 0 0 1 1 0], loss = 0.00383258
+2022-08-01 17:06:50,666 - INFO - child pid = 65245, start training [0 0 1 0 1 1 1 1 1]
+2022-08-01 17:06:50,700 - DEBUG - child pid = 65249, finish training [0 0 0 1 0 1 0 0 0], loss = 0.15094018
+2022-08-01 17:06:50,703 - INFO - child pid = 65249, start training [0 0 1 1 0 0 0 0 0]
+2022-08-01 17:06:50,733 - DEBUG - child pid = 65241, finish training [0 0 1 0 1 0 1 0 0], loss = 0.22222264
+2022-08-01 17:06:50,737 - INFO - child pid = 65241, start training [0 0 1 1 0 0 0 0 1]
+2022-08-01 17:06:50,871 - DEBUG - child pid = 65257, finish training [0 0 1 0 0 1 1 1 0], loss = 0.11117428
+2022-08-01 17:06:50,875 - INFO - child pid = 65257, start training [0 0 1 1 0 0 0 1 0]
+2022-08-01 17:06:50,986 - DEBUG - child pid = 65243, finish training [0 0 1 0 0 0 1 1 1], loss = 0.06336309
+2022-08-01 17:06:50,989 - INFO - child pid = 65243, start training [0 0 1 1 0 0 0 1 1]
+2022-08-01 17:06:51,081 - DEBUG - child pid = 65241, finish training [0 0 1 1 0 0 0 0 1], loss = 0.17411466
+2022-08-01 17:06:51,084 - DEBUG - child pid = 65247, finish training [0 0 0 1 0 1 1 1 1], loss = 0.06894856
+2022-08-01 17:06:51,089 - INFO - child pid = 65247, start training [0 0 1 1 0 0 1 0 1]
+2022-08-01 17:06:51,088 - INFO - child pid = 65241, start training [0 0 1 1 0 0 1 0 0]
+2022-08-01 17:06:51,129 - DEBUG - child pid = 65266, finish training [0 0 0 0 1 1 1 0 1], loss = 0.08539835
+2022-08-01 17:06:51,136 - INFO - child pid = 65266, start training [0 0 1 1 0 0 1 1 0]
+2022-08-01 17:06:51,201 - DEBUG - child pid = 65254, finish training [0 0 1 0 1 1 1 1 0], loss = 0.06002996
+2022-08-01 17:06:51,203 - DEBUG - child pid = 65259, finish training [0 0 1 0 1 0 1 0 1], loss = 0.18846287
+2022-08-01 17:06:51,205 - INFO - child pid = 65259, start training [0 0 1 1 0 0 1 1 1]
+2022-08-01 17:06:51,205 - INFO - child pid = 65254, start training [0 0 1 1 0 1 0 0 0]
+2022-08-01 17:06:51,334 - DEBUG - child pid = 65243, finish training [0 0 1 1 0 0 0 1 1], loss = 0.20013605
+2022-08-01 17:06:51,337 - INFO - child pid = 65243, start training [0 0 1 1 0 1 0 0 1]
+2022-08-01 17:06:51,378 - DEBUG - child pid = 65241, finish training [0 0 1 1 0 0 1 0 0], loss = 0.22222535
+2022-08-01 17:06:51,380 - INFO - child pid = 65241, start training [0 0 1 1 0 1 0 1 0]
+2022-08-01 17:06:51,499 - DEBUG - child pid = 65254, finish training [0 0 1 1 0 1 0 0 0], loss = 0.06378571
+2022-08-01 17:06:51,502 - INFO - child pid = 65254, start training [0 0 1 1 0 1 0 1 1]
+2022-08-01 17:06:51,627 - DEBUG - child pid = 65256, finish training [0 0 0 1 1 1 0 0 1], loss = 0.12718631
+2022-08-01 17:06:51,632 - INFO - child pid = 65256, start training [0 0 1 1 0 1 1 0 0]
+2022-08-01 17:06:51,644 - DEBUG - child pid = 65262, finish training [0 0 0 1 0 1 1 0 1], loss = 0.15023839
+2022-08-01 17:06:51,647 - INFO - child pid = 65262, start training [0 0 1 1 0 1 1 0 1]
+2022-08-01 17:06:51,859 - DEBUG - child pid = 65250, finish training [0 0 1 0 1 0 1 1 0], loss = 0.15108669
+2022-08-01 17:06:51,862 - INFO - child pid = 65250, start training [0 0 1 1 0 1 1 1 0]
+2022-08-01 17:06:51,877 - DEBUG - child pid = 65243, finish training [0 0 1 1 0 1 0 0 1], loss = 0.10164062
+2022-08-01 17:06:51,880 - INFO - child pid = 65243, start training [0 0 1 1 0 1 1 1 1]
+2022-08-01 17:06:51,899 - DEBUG - child pid = 65257, finish training [0 0 1 1 0 0 0 1 0], loss = 0.12595330
+2022-08-01 17:06:51,904 - INFO - child pid = 65257, start training [0 0 1 1 1 0 0 0 0]
+2022-08-01 17:06:52,011 - DEBUG - child pid = 65249, finish training [0 0 1 1 0 0 0 0 0], loss = 0.09171771
+2022-08-01 17:06:52,012 - INFO - child pid = 65249, start training [0 0 1 1 1 0 0 0 1]
+2022-08-01 17:06:52,024 - DEBUG - child pid = 65259, finish training [0 0 1 1 0 0 1 1 1], loss = 0.07073768
+2022-08-01 17:06:52,037 - INFO - child pid = 65259, start training [0 0 1 1 1 0 0 1 0]
+2022-08-01 17:06:52,234 - DEBUG - child pid = 65266, finish training [0 0 1 1 0 0 1 1 0], loss = 0.00559646
+2022-08-01 17:06:52,237 - INFO - child pid = 65266, start training [0 0 1 1 1 0 0 1 1]
+2022-08-01 17:06:52,246 - DEBUG - child pid = 65250, finish training [0 0 1 1 0 1 1 1 0], loss = 0.01831438
+2022-08-01 17:06:52,249 - INFO - child pid = 65250, start training [0 0 1 1 1 0 1 0 0]
+2022-08-01 17:06:52,310 - DEBUG - child pid = 65243, finish training [0 0 1 1 0 1 1 1 1], loss = 0.14815570
+2022-08-01 17:06:52,321 - INFO - child pid = 65243, start training [0 0 1 1 1 0 1 0 1]
+2022-08-01 17:06:52,323 - DEBUG - child pid = 65241, finish training [0 0 1 1 0 1 0 1 0], loss = 0.13963968
+2022-08-01 17:06:52,325 - INFO - child pid = 65241, start training [0 0 1 1 1 0 1 1 0]
+2022-08-01 17:06:52,326 - DEBUG - child pid = 65247, finish training [0 0 1 1 0 0 1 0 1], loss = 0.13181444
+2022-08-01 17:06:52,352 - INFO - child pid = 65247, start training [0 0 1 1 1 0 1 1 1]
+2022-08-01 17:06:52,347 - DEBUG - child pid = 65267, finish training [0 0 0 0 1 1 1 1 0], loss = 0.11550467
+2022-08-01 17:06:52,365 - INFO - child pid = 65267, start training [0 0 1 1 1 1 0 0 0]
+2022-08-01 17:06:52,418 - DEBUG - child pid = 65249, finish training [0 0 1 1 1 0 0 0 1], loss = 0.09395891
+2022-08-01 17:06:52,421 - INFO - child pid = 65249, start training [0 0 1 1 1 1 0 0 1]
+2022-08-01 17:06:52,458 - DEBUG - child pid = 65256, finish training [0 0 1 1 0 1 1 0 0], loss = 0.14057671
+2022-08-01 17:06:52,462 - INFO - child pid = 65256, start training [0 0 1 1 1 1 0 1 0]
+2022-08-01 17:06:52,509 - DEBUG - child pid = 65269, finish training [0 0 0 1 0 1 0 1 1], loss = 0.11282203
+2022-08-01 17:06:52,518 - INFO - child pid = 65269, start training [0 0 1 1 1 1 0 1 1]
+2022-08-01 17:06:52,592 - DEBUG - child pid = 65262, finish training [0 0 1 1 0 1 1 0 1], loss = 0.12433003
+2022-08-01 17:06:52,599 - INFO - child pid = 65262, start training [0 0 1 1 1 1 1 0 0]
+2022-08-01 17:06:52,698 - DEBUG - child pid = 65267, finish training [0 0 1 1 1 1 0 0 0], loss = 0.13996042
+2022-08-01 17:06:52,745 - DEBUG - child pid = 65258, finish training [0 0 0 1 1 0 0 1 1], loss = 0.00384393
+2022-08-01 17:06:52,810 - INFO - child pid = 65267, start training [0 0 1 1 1 1 1 0 1]
+2022-08-01 17:06:52,812 - INFO - child pid = 65258, start training [0 0 1 1 1 1 1 1 0]
+2022-08-01 17:06:52,812 - DEBUG - child pid = 65264, finish training [0 0 0 1 1 0 1 0 0], loss = 0.07011466
+2022-08-01 17:06:52,815 - INFO - child pid = 65264, start training [0 0 1 1 1 1 1 1 1]
+2022-08-01 17:06:52,888 - DEBUG - child pid = 65268, finish training [0 0 0 1 0 0 1 0 1], loss = 0.10056253
+2022-08-01 17:06:52,894 - INFO - child pid = 65268, start training [0 1 0 1 0 0 0 0 0]
+2022-08-01 17:06:52,950 - DEBUG - child pid = 65269, finish training [0 0 1 1 1 1 0 1 1], loss = 0.01326203
+2022-08-01 17:06:52,953 - INFO - child pid = 65269, start training [0 1 0 1 0 0 0 0 1]
+2022-08-01 17:06:53,054 - DEBUG - child pid = 65257, finish training [0 0 1 1 1 0 0 0 0], loss = 0.17289990
+2022-08-01 17:06:53,056 - INFO - child pid = 65257, start training [0 1 0 1 0 0 0 1 0]
+2022-08-01 17:06:53,244 - DEBUG - child pid = 65259, finish training [0 0 1 1 1 0 0 1 0], loss = 0.08662286
+2022-08-01 17:06:53,247 - INFO - child pid = 65259, start training [0 1 0 1 0 0 0 1 1]
+2022-08-01 17:06:53,269 - DEBUG - child pid = 65262, finish training [0 0 1 1 1 1 1 0 0], loss = 0.08107161
+2022-08-01 17:06:53,267 - DEBUG - child pid = 65241, finish training [0 0 1 1 1 0 1 1 0], loss = 0.01993880
+2022-08-01 17:06:53,271 - INFO - child pid = 65262, start training [0 1 0 1 0 0 1 0 0]
+2022-08-01 17:06:53,275 - INFO - child pid = 65241, start training [0 1 0 1 0 0 1 0 1]
+2022-08-01 17:06:53,557 - DEBUG - child pid = 65259, finish training [0 1 0 1 0 0 0 1 1], loss = 0.14764036
+2022-08-01 17:06:53,559 - INFO - child pid = 65259, start training [0 1 0 1 0 0 1 1 0]
+2022-08-01 17:06:53,563 - DEBUG - child pid = 65269, finish training [0 1 0 1 0 0 0 0 1], loss = 0.13729675
+2022-08-01 17:06:53,565 - INFO - child pid = 65269, start training [0 1 0 1 0 0 1 1 1]
+2022-08-01 17:06:53,573 - DEBUG - child pid = 65262, finish training [0 1 0 1 0 0 1 0 0], loss = 0.14815126
+2022-08-01 17:06:53,578 - INFO - child pid = 65262, start training [0 1 0 1 0 1 0 1 0]
+2022-08-01 17:06:53,610 - DEBUG - child pid = 65267, finish training [0 0 1 1 1 1 1 0 1], loss = 0.06780413
+2022-08-01 17:06:53,613 - INFO - child pid = 65267, start training [0 1 0 1 0 1 0 1 1]
+2022-08-01 17:06:53,649 - DEBUG - child pid = 65260, finish training [0 0 0 1 1 0 1 1 1], loss = 0.01724836
+2022-08-01 17:06:53,653 - INFO - child pid = 65260, start training [0 1 0 1 0 1 1 0 0]
+2022-08-01 17:06:53,941 - DEBUG - child pid = 65243, finish training [0 0 1 1 1 0 1 0 1], loss = 0.14001819
+2022-08-01 17:06:53,944 - INFO - child pid = 65243, start training [0 1 0 1 0 1 1 0 1]
+2022-08-01 17:06:53,976 - DEBUG - child pid = 65252, finish training [0 0 0 1 0 0 1 1 1], loss = 0.04005115
+2022-08-01 17:06:53,980 - INFO - child pid = 65252, start training [0 1 0 1 0 1 1 1 0]
+2022-08-01 17:06:54,033 - DEBUG - child pid = 65250, finish training [0 0 1 1 1 0 1 0 0], loss = 0.24269302
+2022-08-01 17:06:54,035 - INFO - child pid = 65250, start training [0 1 0 1 0 1 1 1 1]
+2022-08-01 17:06:54,057 - DEBUG - child pid = 65258, finish training [0 0 1 1 1 1 1 1 0], loss = 0.05816073
+2022-08-01 17:06:54,060 - INFO - child pid = 65258, start training [0 1 0 1 1 0 0 0 0]
+2022-08-01 17:06:54,063 - DEBUG - child pid = 65268, finish training [0 1 0 1 0 0 0 0 0], loss = 0.06573726
+2022-08-01 17:06:54,065 - INFO - child pid = 65268, start training [0 1 0 1 1 0 0 0 1]
+2022-08-01 17:06:54,071 - DEBUG - child pid = 65246, finish training [0 0 0 1 1 1 1 1 1], loss = 0.00362637
+2022-08-01 17:06:54,075 - INFO - child pid = 65246, start training [0 1 0 1 1 0 0 1 0]
+2022-08-01 17:06:54,116 - DEBUG - child pid = 65242, finish training [0 0 0 1 1 1 1 0 1], loss = 0.09898588
+2022-08-01 17:06:54,118 - INFO - child pid = 65242, start training [0 1 0 1 1 0 0 1 1]
+2022-08-01 17:06:54,194 - DEBUG - child pid = 65245, finish training [0 0 1 0 1 1 1 1 1], loss = 0.03353855
+2022-08-01 17:06:54,198 - INFO - child pid = 65245, start training [0 1 0 1 1 0 1 0 0]
+2022-08-01 17:06:54,252 - DEBUG - child pid = 65249, finish training [0 0 1 1 1 1 0 0 1], loss = 0.12789054
+2022-08-01 17:06:54,255 - INFO - child pid = 65249, start training [0 1 0 1 1 0 1 0 1]
+2022-08-01 17:06:54,357 - DEBUG - child pid = 65250, finish training [0 1 0 1 0 1 1 1 1], loss = 0.14816187
+2022-08-01 17:06:54,359 - INFO - child pid = 65250, start training [0 1 0 1 1 0 1 1 0]
+2022-08-01 17:06:54,382 - DEBUG - child pid = 65260, finish training [0 1 0 1 0 1 1 0 0], loss = 0.11467832
+2022-08-01 17:06:54,385 - INFO - child pid = 65260, start training [0 1 0 1 1 0 1 1 1]
+2022-08-01 17:06:54,389 - DEBUG - child pid = 65268, finish training [0 1 0 1 1 0 0 0 1], loss = 0.08895692
+2022-08-01 17:06:54,391 - INFO - child pid = 65268, start training [0 1 0 1 1 1 0 1 0]
+2022-08-01 17:06:54,408 - DEBUG - child pid = 65267, finish training [0 1 0 1 0 1 0 1 1], loss = 0.15763319
+2022-08-01 17:06:54,410 - INFO - child pid = 65267, start training [0 1 0 1 1 1 0 1 1]
+2022-08-01 17:06:54,520 - DEBUG - child pid = 65263, finish training [0 0 0 0 1 1 0 1 1], loss = 0.03266709
+2022-08-01 17:06:54,528 - INFO - child pid = 65263, start training [0 1 0 1 1 1 1 0 0]
+2022-08-01 17:06:54,537 - DEBUG - child pid = 65270, finish training [0 0 0 1 1 0 0 1 0], loss = 0.14626831
+2022-08-01 17:06:54,540 - INFO - child pid = 65270, start training [0 1 0 1 1 1 1 0 1]
+2022-08-01 17:06:54,612 - DEBUG - child pid = 65245, finish training [0 1 0 1 1 0 1 0 0], loss = 0.14136767
+2022-08-01 17:06:54,615 - INFO - child pid = 65245, start training [0 1 0 1 1 1 1 1 0]
+2022-08-01 17:06:54,617 - DEBUG - child pid = 65258, finish training [0 1 0 1 1 0 0 0 0], loss = 0.08331530
+2022-08-01 17:06:54,619 - INFO - child pid = 65258, start training [0 1 0 1 1 1 1 1 1]
+2022-08-01 17:06:54,699 - DEBUG - child pid = 65243, finish training [0 1 0 1 0 1 1 0 1], loss = 0.16709644
+2022-08-01 17:06:54,697 - DEBUG - child pid = 65257, finish training [0 1 0 1 0 0 0 1 0], loss = 0.17261249
+2022-08-01 17:06:54,700 - INFO - child pid = 65257, start training [0 1 1 1 0 0 1 0 1]
+2022-08-01 17:06:54,699 - INFO - child pid = 65243, start training [0 1 1 1 0 0 1 0 0]
+2022-08-01 17:06:54,730 - DEBUG - child pid = 65246, finish training [0 1 0 1 1 0 0 1 0], loss = 0.15704364
+2022-08-01 17:06:54,732 - DEBUG - child pid = 65264, finish training [0 0 1 1 1 1 1 1 1], loss = 0.00488946
+2022-08-01 17:06:54,734 - INFO - child pid = 65264, start training [0 1 1 1 0 0 1 1 1]
+2022-08-01 17:06:54,734 - INFO - child pid = 65246, start training [0 1 1 1 0 0 1 1 0]
+2022-08-01 17:06:54,744 - DEBUG - child pid = 65250, finish training [0 1 0 1 1 0 1 1 0], loss = 0.09403969
+2022-08-01 17:06:54,746 - INFO - child pid = 65250, start training [0 1 1 1 0 1 1 1 0]
+2022-08-01 17:06:54,799 - DEBUG - child pid = 65254, finish training [0 0 1 1 0 1 0 1 1], loss = 0.11407844
+2022-08-01 17:06:54,801 - INFO - child pid = 65254, start training [0 1 1 1 0 1 1 1 1]
+2022-08-01 17:06:54,838 - DEBUG - child pid = 65259, finish training [0 1 0 1 0 0 1 1 0], loss = 0.03976224
+2022-08-01 17:06:54,841 - INFO - child pid = 65259, start training [0 1 1 1 1 0 1 0 0]
+2022-08-01 17:06:54,846 - DEBUG - child pid = 65262, finish training [0 1 0 1 0 1 0 1 0], loss = 0.20739548
+2022-08-01 17:06:54,848 - INFO - child pid = 65262, start training [0 1 1 1 1 0 1 0 1]
+2022-08-01 17:06:54,859 - DEBUG - child pid = 65253, finish training [0 0 0 1 1 0 1 0 1], loss = 0.11815621
+2022-08-01 17:06:54,862 - INFO - child pid = 65253, start training [0 1 1 1 1 0 1 1 0]
+2022-08-01 17:06:54,865 - DEBUG - child pid = 65261, finish training [0 0 0 1 0 0 0 1 1], loss = nan
+2022-08-01 17:06:54,867 - WARNING - child pid = 65261, [0 0 0 1 0 0 0 1 1] has loss nan
+2022-08-01 17:06:54,867 - DEBUG - child pid = 65269, finish training [0 1 0 1 0 0 1 1 1], loss = 0.11770300
+2022-08-01 17:06:54,869 - INFO - child pid = 65261, start training [0 1 1 1 1 1 1 1 0]
+2022-08-01 17:06:54,869 - INFO - child pid = 65269, start training [0 1 1 1 1 0 1 1 1]
+2022-08-01 17:06:54,919 - DEBUG - child pid = 65255, finish training [0 0 0 1 0 1 1 1 0], loss = 0.11841437
+2022-08-01 17:06:54,922 - INFO - child pid = 65255, start training [0 1 1 1 1 1 1 1 1]
+2022-08-01 17:06:55,022 - DEBUG - child pid = 65270, finish training [0 1 0 1 1 1 1 0 1], loss = 0.12554611
+2022-08-01 17:06:55,029 - DEBUG - child pid = 65264, finish training [0 1 1 1 0 0 1 1 1], loss = 0.17368767
+2022-08-01 17:06:55,027 - INFO - child pid = 65270, start training [1 0 0 0 0 0 0 0 0]
+2022-08-01 17:06:55,034 - INFO - child pid = 65264, start training [1 0 0 0 0 0 0 0 1]
+2022-08-01 17:06:55,179 - DEBUG - child pid = 65253, finish training [0 1 1 1 1 0 1 1 0], loss = 0.04682203
+2022-08-01 17:06:55,182 - INFO - child pid = 65253, start training [1 0 0 0 0 0 0 1 0]
+2022-08-01 17:06:55,215 - DEBUG - child pid = 65266, finish training [0 0 1 1 1 0 0 1 1], loss = 0.07593636
+2022-08-01 17:06:55,230 - INFO - child pid = 65266, start training [1 0 0 0 0 0 0 1 1]
+2022-08-01 17:06:55,246 - DEBUG - child pid = 65250, finish training [0 1 1 1 0 1 1 1 0], loss = 0.04315163
+2022-08-01 17:06:55,266 - INFO - child pid = 65250, start training [1 0 0 0 0 0 1 0 0]
+2022-08-01 17:06:55,323 - DEBUG - child pid = 65268, finish training [0 1 0 1 1 1 0 1 0], loss = 0.21233708
+2022-08-01 17:06:55,325 - INFO - child pid = 65268, start training [1 0 0 0 0 0 1 0 1]
+2022-08-01 17:06:55,331 - DEBUG - child pid = 65248, finish training [0 0 0 1 1 1 1 1 0], loss = 0.10586803
+2022-08-01 17:06:55,335 - INFO - child pid = 65248, start training [1 0 0 0 0 0 1 1 0]
+2022-08-01 17:06:55,455 - DEBUG - child pid = 65257, finish training [0 1 1 1 0 0 1 0 1], loss = 0.24677259
+2022-08-01 17:06:55,459 - INFO - child pid = 65257, start training [1 0 0 0 0 0 1 1 1]
+2022-08-01 17:06:55,562 - DEBUG - child pid = 65243, finish training [0 1 1 1 0 0 1 0 0], loss = 0.07351373
+2022-08-01 17:06:55,565 - INFO - child pid = 65243, start training [1 0 0 0 0 1 0 1 0]
+2022-08-01 17:06:55,568 - DEBUG - child pid = 65261, finish training [0 1 1 1 1 1 1 1 0], loss = 0.01247528
+2022-08-01 17:06:55,570 - INFO - child pid = 65261, start training [1 0 0 0 0 1 0 1 1]
+2022-08-01 17:06:55,571 - DEBUG - child pid = 65246, finish training [0 1 1 1 0 0 1 1 0], loss = 0.03416781
+2022-08-01 17:06:55,572 - INFO - child pid = 65246, start training [1 0 0 0 0 1 1 0 0]
+2022-08-01 17:06:55,673 - DEBUG - child pid = 65256, finish training [0 0 1 1 1 1 0 1 0], loss = 0.20549662
+2022-08-01 17:06:55,702 - INFO - child pid = 65256, start training [1 0 0 0 0 1 1 0 1]
+2022-08-01 17:06:55,786 - DEBUG - child pid = 65267, finish training [0 1 0 1 1 1 0 1 1], loss = 0.04806719
+2022-08-01 17:06:55,789 - INFO - child pid = 65267, start training [1 0 0 0 0 1 1 1 0]
+2022-08-01 17:06:55,796 - DEBUG - child pid = 65266, finish training [1 0 0 0 0 0 0 1 1], loss = 0.04803823
+2022-08-01 17:06:55,809 - INFO - child pid = 65266, start training [1 0 0 0 0 1 1 1 1]
+2022-08-01 17:06:55,825 - DEBUG - child pid = 65259, finish training [0 1 1 1 1 0 1 0 0], loss = 0.22259930
+2022-08-01 17:06:55,867 - INFO - child pid = 65259, start training [1 0 0 0 1 0 0 0 0]
+2022-08-01 17:06:55,900 - DEBUG - child pid = 65257, finish training [1 0 0 0 0 0 1 1 1], loss = 0.09420434
+2022-08-01 17:06:55,903 - INFO - child pid = 65257, start training [1 0 0 0 1 0 0 0 1]
+2022-08-01 17:06:55,915 - DEBUG - child pid = 65264, finish training [1 0 0 0 0 0 0 0 1], loss = 0.01130987
+2022-08-01 17:06:55,917 - INFO - child pid = 65264, start training [1 0 0 0 1 0 0 1 0]
+2022-08-01 17:06:55,940 - DEBUG - child pid = 65268, finish training [1 0 0 0 0 0 1 0 1], loss = 0.07789727
+2022-08-01 17:06:55,942 - INFO - child pid = 65268, start training [1 0 0 0 1 0 0 1 1]
+2022-08-01 17:06:55,945 - DEBUG - child pid = 65247, finish training [0 0 1 1 1 0 1 1 1], loss = 0.08731958
+2022-08-01 17:06:55,948 - INFO - child pid = 65247, start training [1 0 0 0 1 0 1 0 0]
+2022-08-01 17:06:56,173 - DEBUG - child pid = 65249, finish training [0 1 0 1 1 0 1 0 1], loss = 0.17875259
+2022-08-01 17:06:56,177 - INFO - child pid = 65249, start training [1 0 0 0 1 0 1 0 1]
+2022-08-01 17:06:56,342 - DEBUG - child pid = 65257, finish training [1 0 0 0 1 0 0 0 1], loss = 0.05381555
+2022-08-01 17:06:56,378 - INFO - child pid = 65257, start training [1 0 0 0 1 0 1 1 0]
+2022-08-01 17:06:56,455 - DEBUG - child pid = 65246, finish training [1 0 0 0 0 1 1 0 0], loss = 0.13412112
+2022-08-01 17:06:56,464 - INFO - child pid = 65246, start training [1 0 0 0 1 0 1 1 1]
+2022-08-01 17:06:56,474 - DEBUG - child pid = 65267, finish training [1 0 0 0 0 1 1 1 0], loss = 0.14840114
+2022-08-01 17:06:56,476 - INFO - child pid = 65267, start training [1 0 0 0 1 1 0 1 0]
+2022-08-01 17:06:56,484 - DEBUG - child pid = 65260, finish training [0 1 0 1 1 0 1 1 1], loss = 0.02499367
+2022-08-01 17:06:56,487 - INFO - child pid = 65260, start training [1 0 0 0 1 1 0 1 1]
+2022-08-01 17:06:56,527 - DEBUG - child pid = 65263, finish training [0 1 0 1 1 1 1 0 0], loss = 0.20499532
+2022-08-01 17:06:56,530 - INFO - child pid = 65263, start training [1 0 0 0 1 1 1 0 0]
+2022-08-01 17:06:56,585 - DEBUG - child pid = 65241, finish training [0 1 0 1 0 0 1 0 1], loss = 0.19485895
+2022-08-01 17:06:56,588 - INFO - child pid = 65241, start training [1 0 0 0 1 1 1 0 1]
+2022-08-01 17:06:56,641 - DEBUG - child pid = 65247, finish training [1 0 0 0 1 0 1 0 0], loss = 0.14770649
+2022-08-01 17:06:56,644 - INFO - child pid = 65247, start training [1 0 0 0 1 1 1 1 0]
+2022-08-01 17:06:56,671 - DEBUG - child pid = 65244, finish training [0 0 0 1 1 1 1 0 0], loss = 0.14202239
+2022-08-01 17:06:56,674 - INFO - child pid = 65244, start training [1 0 0 0 1 1 1 1 1]
+2022-08-01 17:06:56,737 - DEBUG - child pid = 65262, finish training [0 1 1 1 1 0 1 0 1], loss = 0.13311566
+2022-08-01 17:06:56,741 - INFO - child pid = 65262, start training [1 0 0 1 0 0 0 0 0]
+2022-08-01 17:06:56,904 - DEBUG - child pid = 65245, finish training [0 1 0 1 1 1 1 1 0], loss = 0.17281526
+2022-08-01 17:06:56,907 - INFO - child pid = 65245, start training [1 0 0 1 0 0 0 0 1]
+2022-08-01 17:06:56,940 - DEBUG - child pid = 65242, finish training [0 1 0 1 1 0 0 1 1], loss = 0.18078141
+2022-08-01 17:06:56,943 - INFO - child pid = 65242, start training [1 0 0 1 0 0 0 1 0]
+2022-08-01 17:06:56,948 - DEBUG - child pid = 65253, finish training [1 0 0 0 0 0 0 1 0], loss = 0.06660379
+2022-08-01 17:06:56,951 - INFO - child pid = 65253, start training [1 0 0 1 0 0 0 1 1]
+2022-08-01 17:06:56,994 - DEBUG - child pid = 65255, finish training [0 1 1 1 1 1 1 1 1], loss = 0.00067723
+2022-08-01 17:06:56,996 - INFO - child pid = 65255, start training [1 0 0 1 0 0 1 0 0]
+2022-08-01 17:06:57,029 - DEBUG - child pid = 65261, finish training [1 0 0 0 0 1 0 1 1], loss = 0.19816524
+2022-08-01 17:06:57,027 - DEBUG - child pid = 65240, finish training [0 0 0 1 0 1 1 0 0], loss = 0.12189468
+2022-08-01 17:06:57,030 - INFO - child pid = 65261, start training [1 0 0 1 0 0 1 0 1]
+2022-08-01 17:06:57,031 - INFO - child pid = 65240, start training [1 0 0 1 0 0 1 1 0]
+2022-08-01 17:06:57,063 - DEBUG - child pid = 65268, finish training [1 0 0 0 1 0 0 1 1], loss = 0.03397976
+2022-08-01 17:06:57,065 - INFO - child pid = 65268, start training [1 0 0 1 0 0 1 1 1]
+2022-08-01 17:06:57,240 - DEBUG - child pid = 65266, finish training [1 0 0 0 0 1 1 1 1], loss = 0.14463155
+2022-08-01 17:06:57,257 - INFO - child pid = 65266, start training [1 0 0 1 0 1 0 0 0]
+2022-08-01 17:06:57,576 - DEBUG - child pid = 65268, finish training [1 0 0 1 0 0 1 1 1], loss = 0.00875605
+2022-08-01 17:06:57,578 - INFO - child pid = 65268, start training [1 0 0 1 0 1 0 0 1]
+2022-08-01 17:06:57,580 - DEBUG - child pid = 65242, finish training [1 0 0 1 0 0 0 1 0], loss = 0.11822837
+2022-08-01 17:06:57,583 - INFO - child pid = 65242, start training [1 0 0 1 0 1 0 1 0]
+2022-08-01 17:06:57,645 - DEBUG - child pid = 65251, finish training [0 0 1 0 1 0 1 1 1], loss = 0.09285167
+2022-08-01 17:06:57,648 - INFO - child pid = 65251, start training [1 0 0 1 0 1 0 1 1]
+2022-08-01 17:06:57,815 - DEBUG - child pid = 65249, finish training [1 0 0 0 1 0 1 0 1], loss = 0.12747732
+2022-08-01 17:06:57,818 - INFO - child pid = 65249, start training [1 0 0 1 0 1 1 0 0]
+2022-08-01 17:06:57,818 - DEBUG - child pid = 65260, finish training [1 0 0 0 1 1 0 1 1], loss = 0.07404861
+2022-08-01 17:06:57,820 - INFO - child pid = 65260, start training [1 0 0 1 0 1 1 0 1]
+2022-08-01 17:06:57,826 - DEBUG - child pid = 65256, finish training [1 0 0 0 0 1 1 0 1], loss = 0.22942887
+2022-08-01 17:06:57,828 - INFO - child pid = 65256, start training [1 0 0 1 0 1 1 1 0]
+2022-08-01 17:06:57,872 - DEBUG - child pid = 65268, finish training [1 0 0 1 0 1 0 0 1], loss = 0.20903087
+2022-08-01 17:06:57,874 - INFO - child pid = 65268, start training [1 0 0 1 0 1 1 1 1]
+2022-08-01 17:06:58,016 - DEBUG - child pid = 65259, finish training [1 0 0 0 1 0 0 0 0], loss = 0.06546236
+2022-08-01 17:06:58,019 - INFO - child pid = 65259, start training [1 0 0 1 1 0 0 0 0]
+2022-08-01 17:06:58,028 - DEBUG - child pid = 65245, finish training [1 0 0 1 0 0 0 0 1], loss = 0.05231379
+2022-08-01 17:06:58,037 - INFO - child pid = 65245, start training [1 0 0 1 1 0 0 0 1]
+2022-08-01 17:06:58,090 - DEBUG - child pid = 65258, finish training [0 1 0 1 1 1 1 1 1], loss = 0.06306640
+2022-08-01 17:06:58,092 - INFO - child pid = 65258, start training [1 0 0 1 1 0 0 1 0]
+2022-08-01 17:06:58,316 - DEBUG - child pid = 65259, finish training [1 0 0 1 1 0 0 0 0], loss = 0.06496314
+2022-08-01 17:06:58,306 - DEBUG - child pid = 65257, finish training [1 0 0 0 1 0 1 1 0], loss = 0.11935529
+2022-08-01 17:06:58,320 - INFO - child pid = 65257, start training [1 0 0 1 1 0 1 0 0]
+2022-08-01 17:06:58,319 - INFO - child pid = 65259, start training [1 0 0 1 1 0 0 1 1]
+2022-08-01 17:06:58,345 - DEBUG - child pid = 65245, finish training [1 0 0 1 1 0 0 0 1], loss = 0.01697507
+2022-08-01 17:06:58,348 - INFO - child pid = 65245, start training [1 0 0 1 1 0 1 0 1]
+2022-08-01 17:06:58,396 - DEBUG - child pid = 65258, finish training [1 0 0 1 1 0 0 1 0], loss = 0.12555626
+2022-08-01 17:06:58,399 - INFO - child pid = 65258, start training [1 0 0 1 1 0 1 1 0]
+2022-08-01 17:06:58,446 - DEBUG - child pid = 65240, finish training [1 0 0 1 0 0 1 1 0], loss = 0.00931248
+2022-08-01 17:06:58,449 - INFO - child pid = 65240, start training [1 0 0 1 1 0 1 1 1]
+2022-08-01 17:06:58,681 - DEBUG - child pid = 65257, finish training [1 0 0 1 1 0 1 0 0], loss = 0.07407413
+2022-08-01 17:06:58,684 - INFO - child pid = 65257, start training [1 0 0 1 1 1 0 0 0]
+2022-08-01 17:06:58,708 - DEBUG - child pid = 65246, finish training [1 0 0 0 1 0 1 1 1], loss = 0.11824605
+2022-08-01 17:06:58,711 - INFO - child pid = 65246, start training [1 0 0 1 1 1 0 0 1]
+2022-08-01 17:06:58,712 - DEBUG - child pid = 65267, finish training [1 0 0 0 1 1 0 1 0], loss = 0.15762959
+2022-08-01 17:06:58,715 - INFO - child pid = 65267, start training [1 0 0 1 1 1 0 1 0]
+2022-08-01 17:06:58,731 - DEBUG - child pid = 65248, finish training [1 0 0 0 0 0 1 1 0], loss = 0.08814761
+2022-08-01 17:06:58,734 - INFO - child pid = 65248, start training [1 0 0 1 1 1 0 1 1]
+2022-08-01 17:06:58,983 - DEBUG - child pid = 65257, finish training [1 0 0 1 1 1 0 0 0], loss = 0.13595356
+2022-08-01 17:06:58,986 - INFO - child pid = 65257, start training [1 0 0 1 1 1 1 0 0]
+2022-08-01 17:06:59,036 - DEBUG - child pid = 65262, finish training [1 0 0 1 0 0 0 0 0], loss = 0.00460447
+2022-08-01 17:06:59,038 - INFO - child pid = 65262, start training [1 0 0 1 1 1 1 0 1]
+2022-08-01 17:06:59,186 - DEBUG - child pid = 65248, finish training [1 0 0 1 1 1 0 1 1], loss = 0.09921930
+2022-08-01 17:06:59,190 - INFO - child pid = 65248, start training [1 0 0 1 1 1 1 1 0]
+2022-08-01 17:06:59,247 - DEBUG - child pid = 65247, finish training [1 0 0 0 1 1 1 1 0], loss = 0.19482738
+2022-08-01 17:06:59,249 - INFO - child pid = 65247, start training [1 0 0 1 1 1 1 1 1]
+2022-08-01 17:06:59,296 - DEBUG - child pid = 65254, finish training [0 1 1 1 0 1 1 1 1], loss = 0.06510288
+2022-08-01 17:06:59,300 - INFO - child pid = 65254, start training [1 0 1 0 0 0 1 0 0]
+2022-08-01 17:06:59,346 - DEBUG - child pid = 65266, finish training [1 0 0 1 0 1 0 0 0], loss = 0.10291512
+2022-08-01 17:06:59,349 - INFO - child pid = 65266, start training [1 0 1 0 0 0 1 0 1]
+2022-08-01 17:06:59,660 - DEBUG - child pid = 65241, finish training [1 0 0 0 1 1 1 0 1], loss = 0.22322641
+2022-08-01 17:06:59,663 - INFO - child pid = 65241, start training [1 0 1 0 0 0 1 1 0]
+2022-08-01 17:06:59,725 - DEBUG - child pid = 65260, finish training [1 0 0 1 0 1 1 0 1], loss = 0.13910092
+2022-08-01 17:06:59,733 - INFO - child pid = 65260, start training [1 0 1 0 0 0 1 1 1]
+2022-08-01 17:06:59,786 - DEBUG - child pid = 65262, finish training [1 0 0 1 1 1 1 0 1], loss = 0.11371175
+2022-08-01 17:06:59,789 - INFO - child pid = 65262, start training [1 0 1 0 0 1 1 1 0]
+2022-08-01 17:06:59,845 - DEBUG - child pid = 65250, finish training [1 0 0 0 0 0 1 0 0], loss = 0.06302352
+2022-08-01 17:06:59,848 - INFO - child pid = 65250, start training [1 0 1 0 0 1 1 1 1]
+2022-08-01 17:06:59,849 - DEBUG - child pid = 65270, finish training [1 0 0 0 0 0 0 0 0], loss = 0.00827151
+2022-08-01 17:06:59,848 - DEBUG - child pid = 65267, finish training [1 0 0 1 1 1 0 1 0], loss = 0.16468015
+2022-08-01 17:06:59,850 - INFO - child pid = 65267, start training [1 0 1 0 1 0 1 0 0]
+2022-08-01 17:06:59,850 - INFO - child pid = 65270, start training [1 0 1 0 1 0 1 0 1]
+2022-08-01 17:06:59,979 - DEBUG - child pid = 65249, finish training [1 0 0 1 0 1 1 0 0], loss = 0.06169078
+2022-08-01 17:06:59,982 - INFO - child pid = 65249, start training [1 0 1 0 1 0 1 1 0]
+2022-08-01 17:07:00,013 - DEBUG - child pid = 65258, finish training [1 0 0 1 1 0 1 1 0], loss = 0.05152120
+2022-08-01 17:07:00,017 - INFO - child pid = 65258, start training [1 0 1 0 1 0 1 1 1]
+2022-08-01 17:07:00,018 - DEBUG - child pid = 65263, finish training [1 0 0 0 1 1 1 0 0], loss = 0.20497316
+2022-08-01 17:07:00,019 - INFO - child pid = 65263, start training [1 0 1 0 1 1 1 1 0]
+2022-08-01 17:07:00,043 - DEBUG - child pid = 65260, finish training [1 0 1 0 0 0 1 1 1], loss = 0.15916245
+2022-08-01 17:07:00,045 - INFO - child pid = 65260, start training [1 0 1 0 1 1 1 1 1]
+2022-08-01 17:07:00,144 - DEBUG - child pid = 65262, finish training [1 0 1 0 0 1 1 1 0], loss = 0.12604600
+2022-08-01 17:07:00,146 - INFO - child pid = 65262, start training [1 0 1 1 0 0 0 0 0]
+2022-08-01 17:07:00,289 - DEBUG - child pid = 65251, finish training [1 0 0 1 0 1 0 1 1], loss = 0.22316538
+2022-08-01 17:07:00,292 - INFO - child pid = 65251, start training [1 0 1 1 0 0 0 0 1]
+2022-08-01 17:07:00,441 - DEBUG - child pid = 65262, finish training [1 0 1 1 0 0 0 0 0], loss = 0.24761993
+2022-08-01 17:07:00,440 - DEBUG - child pid = 65250, finish training [1 0 1 0 0 1 1 1 1], loss = 0.08440963
+2022-08-01 17:07:00,443 - INFO - child pid = 65262, start training [1 0 1 1 0 0 0 1 1]
+2022-08-01 17:07:00,443 - INFO - child pid = 65250, start training [1 0 1 1 0 0 0 1 0]
+2022-08-01 17:07:00,445 - DEBUG - child pid = 65269, finish training [0 1 1 1 1 0 1 1 1], loss = 0.09785791
+2022-08-01 17:07:00,475 - INFO - child pid = 65269, start training [1 0 1 1 0 0 1 0 0]
+2022-08-01 17:07:00,525 - DEBUG - child pid = 65255, finish training [1 0 0 1 0 0 1 0 0], loss = 0.00362603
+2022-08-01 17:07:00,528 - INFO - child pid = 65255, start training [1 0 1 1 0 0 1 0 1]
+2022-08-01 17:07:00,583 - DEBUG - child pid = 65251, finish training [1 0 1 1 0 0 0 0 1], loss = 0.08205016
+2022-08-01 17:07:00,585 - INFO - child pid = 65251, start training [1 0 1 1 0 0 1 1 0]
+2022-08-01 17:07:00,616 - DEBUG - child pid = 65258, finish training [1 0 1 0 1 0 1 1 1], loss = 0.12383415
+2022-08-01 17:07:00,619 - INFO - child pid = 65258, start training [1 0 1 1 0 0 1 1 1]
+2022-08-01 17:07:00,741 - DEBUG - child pid = 65259, finish training [1 0 0 1 1 0 0 1 1], loss = 0.00482689
+2022-08-01 17:07:00,744 - INFO - child pid = 65259, start training [1 0 1 1 0 1 0 0 0]
+2022-08-01 17:07:00,749 - DEBUG - child pid = 65242, finish training [1 0 0 1 0 1 0 1 0], loss = 0.17049736
+2022-08-01 17:07:00,757 - INFO - child pid = 65242, start training [1 0 1 1 0 1 0 0 1]
+2022-08-01 17:07:00,773 - DEBUG - child pid = 65249, finish training [1 0 1 0 1 0 1 1 0], loss = 0.14842279
+2022-08-01 17:07:00,775 - INFO - child pid = 65249, start training [1 0 1 1 0 1 0 1 0]
+2022-08-01 17:07:00,814 - DEBUG - child pid = 65266, finish training [1 0 1 0 0 0 1 0 1], loss = 0.21201938
+2022-08-01 17:07:00,818 - INFO - child pid = 65266, start training [1 0 1 1 0 1 0 1 1]
+2022-08-01 17:07:00,900 - DEBUG - child pid = 65269, finish training [1 0 1 1 0 0 1 0 0], loss = 0.00980487
+2022-08-01 17:07:00,903 - INFO - child pid = 65269, start training [1 0 1 1 0 1 1 0 0]
+2022-08-01 17:07:00,908 - DEBUG - child pid = 65241, finish training [1 0 1 0 0 0 1 1 0], loss = 0.07338657
+2022-08-01 17:07:00,910 - INFO - child pid = 65241, start training [1 0 1 1 0 1 1 0 1]
+2022-08-01 17:07:00,917 - DEBUG - child pid = 65268, finish training [1 0 0 1 0 1 1 1 1], loss = 0.08401559
+2022-08-01 17:07:00,919 - INFO - child pid = 65268, start training [1 0 1 1 0 1 1 1 0]
+2022-08-01 17:07:00,963 - DEBUG - child pid = 65250, finish training [1 0 1 1 0 0 0 1 0], loss = 0.07740168
+2022-08-01 17:07:00,965 - INFO - child pid = 65250, start training [1 0 1 1 0 1 1 1 1]
+2022-08-01 17:07:00,967 - DEBUG - child pid = 65255, finish training [1 0 1 1 0 0 1 0 1], loss = 0.07619070
+2022-08-01 17:07:00,969 - INFO - child pid = 65255, start training [1 0 1 1 1 0 0 0 0]
+2022-08-01 17:07:00,980 - DEBUG - child pid = 65258, finish training [1 0 1 1 0 0 1 1 1], loss = 0.06749477
+2022-08-01 17:07:00,982 - INFO - child pid = 65258, start training [1 0 1 1 1 0 0 0 1]
+2022-08-01 17:07:00,997 - DEBUG - child pid = 65246, finish training [1 0 0 1 1 1 0 0 1], loss = 0.16110151
+2022-08-01 17:07:01,000 - INFO - child pid = 65246, start training [1 0 1 1 1 0 0 1 0]
+2022-08-01 17:07:01,063 - DEBUG - child pid = 65249, finish training [1 0 1 1 0 1 0 1 0], loss = 0.28021374
+2022-08-01 17:07:01,065 - INFO - child pid = 65249, start training [1 0 1 1 1 0 0 1 1]
+2022-08-01 17:07:01,074 - DEBUG - child pid = 65252, finish training [0 1 0 1 0 1 1 1 0], loss = 0.17158419
+2022-08-01 17:07:01,076 - INFO - child pid = 65252, start training [1 0 1 1 1 0 1 0 0]
+2022-08-01 17:07:01,106 - DEBUG - child pid = 65266, finish training [1 0 1 1 0 1 0 1 1], loss = 0.17385918
+2022-08-01 17:07:01,109 - INFO - child pid = 65266, start training [1 0 1 1 1 0 1 0 1]
+2022-08-01 17:07:01,154 - DEBUG - child pid = 65242, finish training [1 0 1 1 0 1 0 0 1], loss = 0.10999238
+2022-08-01 17:07:01,156 - INFO - child pid = 65242, start training [1 0 1 1 1 0 1 1 0]
+2022-08-01 17:07:01,235 - DEBUG - child pid = 65262, finish training [1 0 1 1 0 0 0 1 1], loss = 0.10189658
+2022-08-01 17:07:01,237 - INFO - child pid = 65262, start training [1 0 1 1 1 0 1 1 1]
+2022-08-01 17:07:01,273 - DEBUG - child pid = 65250, finish training [1 0 1 1 0 1 1 1 1], loss = 0.01362172
+2022-08-01 17:07:01,276 - INFO - child pid = 65250, start training [1 0 1 1 1 1 0 0 0]
+2022-08-01 17:07:01,413 - DEBUG - child pid = 65244, finish training [1 0 0 0 1 1 1 1 1], loss = 0.13264449
+2022-08-01 17:07:01,417 - INFO - child pid = 65244, start training [1 0 1 1 1 1 0 0 1]
+2022-08-01 17:07:01,458 - DEBUG - child pid = 65251, finish training [1 0 1 1 0 0 1 1 0], loss = 0.09752344
+2022-08-01 17:07:01,462 - INFO - child pid = 65251, start training [1 0 1 1 1 1 0 1 0]
+2022-08-01 17:07:01,464 - DEBUG - child pid = 65246, finish training [1 0 1 1 1 0 0 1 0], loss = 0.11386495
+2022-08-01 17:07:01,466 - INFO - child pid = 65246, start training [1 0 1 1 1 1 0 1 1]
+2022-08-01 17:07:01,499 - DEBUG - child pid = 65249, finish training [1 0 1 1 1 0 0 1 1], loss = 0.12737030
+2022-08-01 17:07:01,501 - INFO - child pid = 65249, start training [1 0 1 1 1 1 1 0 0]
+2022-08-01 17:07:01,580 - DEBUG - child pid = 65250, finish training [1 0 1 1 1 1 0 0 0], loss = 0.13524467
+2022-08-01 17:07:01,582 - INFO - child pid = 65250, start training [1 0 1 1 1 1 1 0 1]
+2022-08-01 17:07:01,628 - DEBUG - child pid = 65264, finish training [1 0 0 0 1 0 0 1 0], loss = 0.14821470
+2022-08-01 17:07:01,631 - INFO - child pid = 65264, start training [1 0 1 1 1 1 1 1 0]
+2022-08-01 17:07:01,682 - DEBUG - child pid = 65263, finish training [1 0 1 0 1 1 1 1 0], loss = 0.19945879
+2022-08-01 17:07:01,685 - INFO - child pid = 65263, start training [1 0 1 1 1 1 1 1 1]
+2022-08-01 17:07:01,725 - DEBUG - child pid = 65241, finish training [1 0 1 1 0 1 1 0 1], loss = 0.18312952
+2022-08-01 17:07:01,734 - INFO - child pid = 65241, start training [1 1 0 1 0 0 0 0 0]
+2022-08-01 17:07:01,801 - DEBUG - child pid = 65267, finish training [1 0 1 0 1 0 1 0 0], loss = 0.22322617
+2022-08-01 17:07:01,803 - INFO - child pid = 65267, start training [1 1 0 1 0 0 0 0 1]
+2022-08-01 17:07:01,825 - DEBUG - child pid = 65244, finish training [1 0 1 1 1 1 0 0 1], loss = 0.11095878
+2022-08-01 17:07:01,828 - INFO - child pid = 65244, start training [1 1 0 1 0 0 0 1 0]
+2022-08-01 17:07:01,857 - DEBUG - child pid = 65257, finish training [1 0 0 1 1 1 1 0 0], loss = 0.15003343
+2022-08-01 17:07:01,861 - INFO - child pid = 65257, start training [1 1 0 1 0 0 0 1 1]
+2022-08-01 17:07:01,873 - DEBUG - child pid = 65246, finish training [1 0 1 1 1 1 0 1 1], loss = 0.03802301
+2022-08-01 17:07:01,876 - INFO - child pid = 65246, start training [1 1 0 1 0 0 1 0 0]
+2022-08-01 17:07:01,900 - DEBUG - child pid = 65261, finish training [1 0 0 1 0 0 1 0 1], loss = 0.13411283
+2022-08-01 17:07:01,904 - INFO - child pid = 65261, start training [1 1 0 1 0 0 1 0 1]
+2022-08-01 17:07:02,078 - DEBUG - child pid = 65270, finish training [1 0 1 0 1 0 1 0 1], loss = 0.23854692
+2022-08-01 17:07:02,081 - INFO - child pid = 65270, start training [1 1 0 1 0 0 1 1 0]
+2022-08-01 17:07:02,155 - DEBUG - child pid = 65264, finish training [1 0 1 1 1 1 1 1 0], loss = 0.05080226
+2022-08-01 17:07:02,158 - INFO - child pid = 65264, start training [1 1 0 1 0 0 1 1 1]
+2022-08-01 17:07:02,279 - DEBUG - child pid = 65267, finish training [1 1 0 1 0 0 0 0 1], loss = 0.06122852
+2022-08-01 17:07:02,282 - INFO - child pid = 65267, start training [1 1 0 1 0 1 0 1 0]
+2022-08-01 17:07:02,657 - DEBUG - child pid = 65264, finish training [1 1 0 1 0 0 1 1 1], loss = 0.05113655
+2022-08-01 17:07:02,660 - INFO - child pid = 65264, start training [1 1 0 1 0 1 0 1 1]
+2022-08-01 17:07:02,682 - DEBUG - child pid = 65260, finish training [1 0 1 0 1 1 1 1 1], loss = 0.11301526
+2022-08-01 17:07:02,685 - INFO - child pid = 65260, start training [1 1 0 1 0 1 1 0 0]
+2022-08-01 17:07:02,692 - DEBUG - child pid = 65259, finish training [1 0 1 1 0 1 0 0 0], loss = 0.12743264
+2022-08-01 17:07:02,694 - INFO - child pid = 65259, start training [1 1 0 1 0 1 1 0 1]
+2022-08-01 17:07:02,769 - DEBUG - child pid = 65269, finish training [1 0 1 1 0 1 1 0 0], loss = 0.20210235
+2022-08-01 17:07:02,771 - INFO - child pid = 65269, start training [1 1 0 1 0 1 1 1 0]
+2022-08-01 17:07:02,772 - DEBUG - child pid = 65251, finish training [1 0 1 1 1 1 0 1 0], loss = 0.17282060
+2022-08-01 17:07:02,773 - INFO - child pid = 65251, start training [1 1 0 1 0 1 1 1 1]
+2022-08-01 17:07:02,783 - DEBUG - child pid = 65253, finish training [1 0 0 1 0 0 0 1 1], loss = 0.14268474
+2022-08-01 17:07:02,808 - INFO - child pid = 65253, start training [1 1 0 1 1 0 0 0 0]
+2022-08-01 17:07:02,833 - DEBUG - child pid = 65249, finish training [1 0 1 1 1 1 1 0 0], loss = 0.13053206
+2022-08-01 17:07:02,836 - INFO - child pid = 65249, start training [1 1 0 1 1 0 0 0 1]
+2022-08-01 17:07:02,850 - DEBUG - child pid = 65258, finish training [1 0 1 1 1 0 0 0 1], loss = 0.13925907
+2022-08-01 17:07:02,852 - INFO - child pid = 65258, start training [1 1 0 1 1 0 0 1 0]
+2022-08-01 17:07:02,900 - DEBUG - child pid = 65256, finish training [1 0 0 1 0 1 1 1 0], loss = 0.11815955
+2022-08-01 17:07:02,903 - INFO - child pid = 65256, start training [1 1 0 1 1 0 0 1 1]
+2022-08-01 17:07:02,938 - DEBUG - child pid = 65247, finish training [1 0 0 1 1 1 1 1 1], loss = 0.05024331
+2022-08-01 17:07:02,942 - INFO - child pid = 65247, start training [1 1 0 1 1 0 1 0 0]
+2022-08-01 17:07:03,130 - DEBUG - child pid = 65264, finish training [1 1 0 1 0 1 0 1 1], loss = 0.12262866
+2022-08-01 17:07:03,132 - INFO - child pid = 65264, start training [1 1 0 1 1 0 1 0 1]
+2022-08-01 17:07:03,146 - DEBUG - child pid = 65259, finish training [1 1 0 1 0 1 1 0 1], loss = 0.13237657
+2022-08-01 17:07:03,148 - INFO - child pid = 65259, start training [1 1 0 1 1 0 1 1 0]
+2022-08-01 17:07:03,173 - DEBUG - child pid = 65270, finish training [1 1 0 1 0 0 1 1 0], loss = 0.02149035
+2022-08-01 17:07:03,176 - INFO - child pid = 65270, start training [1 1 0 1 1 0 1 1 1]
+2022-08-01 17:07:03,271 - DEBUG - child pid = 65256, finish training [1 1 0 1 1 0 0 1 1], loss = 0.09717342
+2022-08-01 17:07:03,337 - INFO - child pid = 65256, start training [1 1 0 1 1 1 0 1 0]
+2022-08-01 17:07:03,472 - DEBUG - child pid = 65249, finish training [1 1 0 1 1 0 0 0 1], loss = 0.01221156
+2022-08-01 17:07:03,473 - DEBUG - child pid = 65247, finish training [1 1 0 1 1 0 1 0 0], loss = 0.04430770
+2022-08-01 17:07:03,474 - INFO - child pid = 65249, start training [1 1 0 1 1 1 1 0 0]
+2022-08-01 17:07:03,474 - INFO - child pid = 65247, start training [1 1 0 1 1 1 0 1 1]
+2022-08-01 17:07:03,498 - DEBUG - child pid = 65259, finish training [1 1 0 1 1 0 1 1 0], loss = 0.00486324
+2022-08-01 17:07:03,500 - INFO - child pid = 65259, start training [1 1 0 1 1 1 1 0 1]
+2022-08-01 17:07:03,661 - DEBUG - child pid = 65254, finish training [1 0 1 0 0 0 1 0 0], loss = 0.16216269
+2022-08-01 17:07:03,664 - INFO - child pid = 65254, start training [1 1 0 1 1 1 1 1 0]
+2022-08-01 17:07:03,680 - DEBUG - child pid = 65264, finish training [1 1 0 1 1 0 1 0 1], loss = 0.07626455
+2022-08-01 17:07:03,682 - INFO - child pid = 65264, start training [1 1 0 1 1 1 1 1 1]
+2022-08-01 17:07:03,729 - DEBUG - child pid = 65269, finish training [1 1 0 1 0 1 1 1 0], loss = 0.14399599
+2022-08-01 17:07:03,731 - INFO - child pid = 65269, start training [1 1 1 1 0 0 1 0 0]
+2022-08-01 17:07:03,784 - DEBUG - child pid = 65240, finish training [1 0 0 1 1 0 1 1 1], loss = 0.01374624
+2022-08-01 17:07:03,786 - INFO - child pid = 65240, start training [1 1 1 1 0 0 1 0 1]
+2022-08-01 17:07:03,793 - DEBUG - child pid = 65257, finish training [1 1 0 1 0 0 0 1 1], loss = 0.09745964
+2022-08-01 17:07:03,795 - INFO - child pid = 65257, start training [1 1 1 1 0 0 1 1 0]
+2022-08-01 17:07:03,895 - DEBUG - child pid = 65259, finish training [1 1 0 1 1 1 1 0 1], loss = 0.06364379
+2022-08-01 17:07:03,897 - INFO - child pid = 65259, start training [1 1 1 1 0 0 1 1 1]
+2022-08-01 17:07:03,929 - DEBUG - child pid = 65258, finish training [1 1 0 1 1 0 0 1 0], loss = 0.06317298
+2022-08-01 17:07:03,932 - INFO - child pid = 65258, start training [1 1 1 1 0 1 1 1 0]
+2022-08-01 17:07:03,959 - DEBUG - child pid = 65251, finish training [1 1 0 1 0 1 1 1 1], loss = 0.14847690
+2022-08-01 17:07:03,963 - INFO - child pid = 65251, start training [1 1 1 1 0 1 1 1 1]
+2022-08-01 17:07:04,083 - DEBUG - child pid = 65250, finish training [1 0 1 1 1 1 1 0 1], loss = 0.15097076
+2022-08-01 17:07:04,087 - INFO - child pid = 65250, start training [1 1 1 1 1 0 1 0 0]
+2022-08-01 17:07:04,093 - DEBUG - child pid = 65270, finish training [1 1 0 1 1 0 1 1 1], loss = 0.00376312
+2022-08-01 17:07:04,115 - INFO - child pid = 65270, start training [1 1 1 1 1 0 1 0 1]
+2022-08-01 17:07:04,125 - DEBUG - child pid = 65253, finish training [1 1 0 1 1 0 0 0 0], loss = 0.00369365
+2022-08-01 17:07:04,127 - INFO - child pid = 65253, start training [1 1 1 1 1 0 1 1 0]
+2022-08-01 17:07:04,148 - DEBUG - child pid = 65255, finish training [1 0 1 1 1 0 0 0 0], loss = 0.11407629
+2022-08-01 17:07:04,151 - INFO - child pid = 65255, start training [1 1 1 1 1 0 1 1 1]
+2022-08-01 17:07:04,183 - DEBUG - child pid = 65243, finish training [1 0 0 0 0 1 0 1 0], loss = 0.18958253
+2022-08-01 17:07:04,187 - INFO - child pid = 65243, start training [1 1 1 1 1 1 1 1 0]
+2022-08-01 17:07:04,497 - DEBUG - child pid = 65255, finish training [1 1 1 1 1 0 1 1 1], loss = 0.06678370
+2022-08-01 17:07:04,472 - DEBUG - child pid = 65250, finish training [1 1 1 1 1 0 1 0 0], loss = 0.09113976
+2022-08-01 17:07:04,425 - DEBUG - child pid = 65256, finish training [1 1 0 1 1 1 0 1 0], loss = 0.12244423
+2022-08-01 17:07:04,498 - INFO - child pid = 65255, start training [1 1 1 1 1 1 1 1 1]
+2022-08-01 17:07:04,569 - DEBUG - child pid = 65254, finish training [1 1 0 1 1 1 1 1 0], loss = 0.07207946
+2022-08-01 17:07:04,619 - DEBUG - child pid = 65252, finish training [1 0 1 1 1 0 1 0 0], loss = 0.12577754
+2022-08-01 17:07:04,665 - DEBUG - child pid = 65249, finish training [1 1 0 1 1 1 1 0 0], loss = 0.09882232
+2022-08-01 17:07:04,773 - DEBUG - child pid = 65263, finish training [1 0 1 1 1 1 1 1 1], loss = 0.06218958
+2022-08-01 17:07:04,817 - DEBUG - child pid = 65255, finish training [1 1 1 1 1 1 1 1 1], loss = 0.00001758
+2022-08-01 17:07:04,821 - DEBUG - child pid = 65264, finish training [1 1 0 1 1 1 1 1 1], loss = 0.00424263
+2022-08-01 17:07:04,842 - DEBUG - child pid = 65248, finish training [1 0 0 1 1 1 1 1 0], loss = 0.13019250
+2022-08-01 17:07:04,860 - DEBUG - child pid = 65260, finish training [1 1 0 1 0 1 1 0 0], loss = 0.08635454
+2022-08-01 17:07:04,973 - DEBUG - child pid = 65247, finish training [1 1 0 1 1 1 0 1 1], loss = 0.16861960
+2022-08-01 17:07:05,053 - DEBUG - child pid = 65251, finish training [1 1 1 1 0 1 1 1 1], loss = 0.08972694
+2022-08-01 17:07:05,167 - DEBUG - child pid = 65266, finish training [1 0 1 1 1 0 1 0 1], loss = 0.17463745
+2022-08-01 17:07:05,191 - DEBUG - child pid = 65244, finish training [1 1 0 1 0 0 0 1 0], loss = 0.09374882
+2022-08-01 17:07:05,327 - DEBUG - child pid = 65257, finish training [1 1 1 1 0 0 1 1 0], loss = 0.03404989
+2022-08-01 17:07:05,346 - DEBUG - child pid = 65243, finish training [1 1 1 1 1 1 1 1 0], loss = 0.07441285
+2022-08-01 17:07:05,626 - DEBUG - child pid = 65246, finish training [1 1 0 1 0 0 1 0 0], loss = 0.04179716
+2022-08-01 17:07:05,687 - DEBUG - child pid = 65253, finish training [1 1 1 1 1 0 1 1 0], loss = 0.05175128
+2022-08-01 17:07:05,785 - DEBUG - child pid = 65268, finish training [1 0 1 1 0 1 1 1 0], loss = 0.16344753
+2022-08-01 17:07:05,788 - DEBUG - child pid = 65245, finish training [1 0 0 1 1 0 1 0 1], loss = 0.10610747
+2022-08-01 17:07:05,795 - DEBUG - child pid = 65241, finish training [1 1 0 1 0 0 0 0 0], loss = 0.03354031
+2022-08-01 17:07:05,821 - DEBUG - child pid = 65242, finish training [1 0 1 1 1 0 1 1 0], loss = 0.03160979
+2022-08-01 17:07:05,822 - DEBUG - child pid = 65262, finish training [1 0 1 1 1 0 1 1 1], loss = 0.02712059
+2022-08-01 17:07:05,931 - DEBUG - child pid = 65259, finish training [1 1 1 1 0 0 1 1 1], loss = 0.12373356
+2022-08-01 17:07:06,062 - DEBUG - child pid = 65261, finish training [1 1 0 1 0 0 1 0 1], loss = 0.11405582
+2022-08-01 17:07:06,287 - DEBUG - child pid = 65267, finish training [1 1 0 1 0 1 0 1 0], loss = 0.17319494
+2022-08-01 17:07:06,311 - DEBUG - child pid = 65269, finish training [1 1 1 1 0 0 1 0 0], loss = 0.02889773
+2022-08-01 17:07:06,320 - DEBUG - child pid = 65258, finish training [1 1 1 1 0 1 1 1 0], loss = 0.08296269
+2022-08-01 17:07:08,006 - DEBUG - child pid = 65270, finish training [1 1 1 1 1 0 1 0 1], loss = 0.12513164
+2022-08-01 17:07:08,358 - DEBUG - child pid = 65240, finish training [1 1 1 1 0 0 1 0 1], loss = 0.12080325
+2022-08-01 17:07:28,971 - INFO - parent pid = 65206, finish task 2_2_fixA_square_0
