@@ -1,0 +1,80 @@
+task_name: 3_input_boolean
+data_dir: data/
+results_dir: results/
+log_dir: logs/
+x_filename: 3_input_boolean_x.npy
+y_filename: 3_input_boolean_y.npy
+
+device: cpu
+train_times: 100
+max_epoch_num: 100
+valid_epoch_num: 1
+process_num: 30
+num_func: 256
+func_index_list: 
+
+
+logger:
+  version: 1
+  formatters:
+    default:
+      format: '%(asctime)s - %(levelname)s - %(process)d - %(message)s'
+  handlers:
+    stream_handler:
+      class: logging.StreamHandler
+      level: INFO
+      formatter: default
+      stream: ext://sys.stdout
+    file_handler:
+      class: logging.handlers.RotatingFileHandler
+      level: DEBUG
+      formatter: default
+      filename: test.log
+      maxBytes: 10485760 # 10MB
+      backupCount: 5
+      encoding: utf-8
+  root:
+    level: DEBUG
+    handlers:
+      - stream_handler
+      - file_handler
+
+model:
+  type: CompetitiveNetwork
+  args:
+    nA: 3
+    nB: 2
+    nY: 1
+    mode: comp
+    output: ABC
+    comp_constrain: exp
+    linear_constrain: none
+    last_layer: sigmoid
+
+optimizer:
+  type: Adam
+  args:
+    lr: 1.0e-1
+
+data_loader:
+  type: DataLoader
+  args:
+    batch_size: 1
+    shuffle: False
+    drop_last: False
+    num_workers: 0
+
+early_stopping:
+  type: EarlyStopping
+  args:
+    patience: 3
+    delta: 1.0e-3
+
+loss_func:
+  type: BCELoss
+
+reg_loss_func:
+  type: RegularizationLossCompetition
+  args:
+    weight: 0
+    p: 0
