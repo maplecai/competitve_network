@@ -1,8 +1,14 @@
 # Competitive_network
 
-Code for the paper "Efficient computation by molecular competition networks".
+This is the code for the paper "Efficient computation by molecular competition networks".
 
 ## Introduction
+
+Most biomolecular systems exhibit computation abilities, which are often achieved through complex networks such as signal transduction networks. Particularly, molecular competition in these networks can introduce crosstalk and serve as a hidden layer for cellular information processing. Despite the increasing evidence of competition contributing to efficient cellular computation, how this occurs and the extent of computational capacity it confers remain elusive. In this study, we introduced a mathematical model for Molecular Competition Networks (MCNs) and employed a machine learning-based optimization method to explore their computational capacity. Our findings revealed that MCNs, when compared to their non-competitive counterparts, demonstrate superior performance in both discrete decision-making and analog computation tasks. Furthermore, we examined how real biological constraints influence the computational capacity of MCNs, and highlighted the nonnegligible role of weak interactions. The study suggested the potential of MCNs as efficient computational structures in both *in vivo* and *in silico* scenarios, providing new insights into the understanding and application of cellular information processing.
+
+![1](fig1_0818.jpg)
+
+![2](fig2_0821.jpg)
 
 
 ## Install
@@ -21,11 +27,13 @@ pip install -r requirements.txt
    python generate_data.py
    ```
 2. Train the model.
-   Modify configs/xxx.yaml content run the desired expriment with appropriate hyperparameters. After running, the results will be saved in `results_dir`.
+   Modify configs/xxx.yaml content run the desired expriment with appropriate hyperparameters.
 
    ```
    python train.py -c configs/xxx.yaml
    ```
+
+   After running, the results will be saved in `results_dir`.
 3. Visualize the result.
 
    Change the `file_path` in plot_demo.py to the path generated in the previous step, then
