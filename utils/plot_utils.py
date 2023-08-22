@@ -8,10 +8,9 @@ from torch.utils.data import DataLoader, TensorDataset
 from tqdm import tqdm
 import pickle
 
-import models
 from utils import *
 
-# color_list = np.delete(plt.cm.Accent(np.arange(9)), 3, axis=0)
+
 color_list = np.delete(plt.cm.get_cmap('Set3')(np.arange(12)), 1, axis=0)
 
 # params={'font.serif':'Times New Roman', # 'Arial',
@@ -25,18 +24,17 @@ color_list = np.delete(plt.cm.get_cmap('Set3')(np.arange(12)), 1, axis=0)
 font_kwargs = {'family': 'sans-serif',
                'sans-serif': 'Arial',
                'size': 10}
-plt.rc('font', **font_kwargs)
 mathtext_kwargs = {'fontset': 'custom',
                    'bf': 'Arial:bold',
                    'cal': 'Arial:italic',
                    'it': 'Arial:italic',
                    'rm': 'Arial'}
-plt.rc('mathtext', **mathtext_kwargs)
-plt.rcParams['figure.dpi'] = 400
 savefig_kwargs = {'dpi': 400,
                   'bbox_inches': 'tight',
                   'transparent': True}
-plt.rc('savefig_kwargs', **mathtext_kwargs)
+plt.rc('font', **font_kwargs)
+plt.rc('mathtext', **mathtext_kwargs)
+
 
 
 
@@ -187,78 +185,81 @@ def MSELoss(y_pred, y_true):
     return loss.mean(-1)
 
 
-def generate_2_2(num=2):
-    np.random.seed(0)
-    index = np.array(list(itertools.product(np.linspace(0, 1, num), repeat=2)))
-    X = np.power(10, 2*index-1)
+# def generate_2_2(num=2):
+#     np.random.seed(0)
+#     index = np.array(list(itertools.product(np.linspace(0, 1, num), repeat=2)))
+#     X = np.power(10, 2*index-1)
 
-    truth_table_list = np.array(list(itertools.product([0, 1], repeat=4))).reshape(16, 2, 2)
-    index_digital = (index > 0.5).astype(int)
-    Y_list = truth_table_list[:, index_digital[:,0], index_digital[:,1]]
+#     truth_table_list = np.array(list(itertools.product([0, 1], repeat=4))).reshape(16, 2, 2)
+#     index_digital = (index > 0.5).astype(int)
+#     Y_list = truth_table_list[:, index_digital[:,0], index_digital[:,1]]
 
-    return X, Y_list
-
-
-
-
-def bin2dec(b):
-    d = 0
-    l = len(b)
-    for i in range(l):
-        d += b[i] * (2 ** (l-i-1))
-    return d
-
-
-def get_min_index(Ys, dim=3):
-    indice = []
-    for perm_index in list(itertools.permutations(np.arange(dim))):
-        indice.append(bin2dec(Ys.transpose(perm_index).reshape(-1)))
-    return np.min(indice)
-
-
-def get_no_repeat_truth_table_list(truth_table_list):
-    no_repeat_index_list = []
-    no_repeat_truth_table_list = []
-    for i in range(len(truth_table_list)):
-        index = get_min_index(truth_table_list[i])
-        if index not in no_repeat_index_list:
-            no_repeat_index_list.append(index)
-            no_repeat_truth_table_list.append(truth_table_list[i])
-    no_repeat_truth_table_list = np.array(no_repeat_truth_table_list)
-    return no_repeat_truth_table_list
-
-
-def generate_2_3():
-    truth_table_list = np.array(list(itertools.product([0, 1], repeat=8))).reshape(256, 2, 2, 2)
-    # truth_table_list = get_no_repeat_truth_table_list(truth_table_list)
-
-    np.random.seed(0)
-    index = np.array(list(itertools.product([0,1], repeat=3)))
-    X = np.power(10.0, 2*index-1)
-    index = index.astype(int)
-    Y_list = truth_table_list[:, index[:,0], index[:,1], index[:,2]]
-
-    return X, Y_list
+#     return X, Y_list
 
 
 
-def generate_3_2():
-    truth_table_list = np.array(list(itertools.product([0, 1], repeat=9))).reshape(512, 3, 3)
 
-    # no_repeat_list = []
-    # for i in range(len(truth_table_list)):
-    #     repeat_flag = False
-    #     for j in range(len(no_repeat_list)):
-    #         if (truth_table_list[i].T == no_repeat_list[j]).all():
-    #             repeat_flag = True
-    #             break
-    #     if repeat_flag is False:
-    #         no_repeat_list.append(truth_table_list[i])
-    # no_repeat_list = np.array(no_repeat_list)
+# def bin2dec(b):
+#     d = 0
+#     l = len(b)
+#     for i in range(l):
+#         d += b[i] * (2 ** (l-i-1))
+#     return d
 
-    np.random.seed(0)
-    index = np.array(list(itertools.product([0,1,2], repeat=2))).astype(int)
-    X = np.power(10.0, index-1)
-    Y_list = truth_table_list[:, index[:,0], index[:,1]]
 
-    return X, Y_list
+# def get_min_index(Ys, dim=3):
+#     indice = []
+#     for perm_index in list(itertools.permutations(np.arange(dim))):
+#         indice.append(bin2dec(Ys.transpose(perm_index).reshape(-1)))
+#     return np.min(indice)
+
+
+# def get_no_repeat_truth_table_list(truth_table_list):
+#     no_repeat_index_list = []
+#     no_repeat_truth_table_list = []
+#     for i in range(len(truth_table_list)):
+#         index = get_min_index(truth_table_list[i])
+#         if index not in no_repeat_index_list:
+#             no_repeat_index_list.append(index)
+#             no_repeat_truth_table_list.append(truth_table_list[i])
+#     no_repeat_truth_table_list = np.array(no_repeat_truth_table_list)
+#     return no_repeat_truth_table_list
+
+
+# def generate_2_3():
+#     truth_table_list = np.array(list(itertools.product([0, 1], repeat=8))).reshape(256, 2, 2, 2)
+#     # truth_table_list = get_no_repeat_truth_table_list(truth_table_list)
+
+#     np.random.seed(0)
+#     index = np.array(list(itertools.product([0,1], repeat=3)))
+#     X = np.power(10.0, 2*index-1)
+#     index = index.astype(int)
+#     Y_list = truth_table_list[:, index[:,0], index[:,1], index[:,2]]
+
+#     return X, Y_list
+
+
+
+# def generate_3_2():
+#     truth_table_list = np.array(list(itertools.product([0, 1], repeat=9))).reshape(512, 3, 3)
+
+#     # no_repeat_list = []
+#     # for i in range(len(truth_table_list)):
+#     #     repeat_flag = False
+#     #     for j in range(len(no_repeat_list)):
+#     #         if (truth_table_list[i].T == no_repeat_list[j]).all():
+#     #             repeat_flag = True
+#     #             break
+#     #     if repeat_flag is False:
+#     #         no_repeat_list.append(truth_table_list[i])
+#     # no_repeat_list = np.array(no_repeat_list)
+
+#     np.random.seed(0)
+#     index = np.array(list(itertools.product([0,1,2], repeat=2))).astype(int)
+#     X = np.power(10.0, index-1)
+#     Y_list = truth_table_list[:, index[:,0], index[:,1]]
+
+#     return X, Y_list
+
+
+

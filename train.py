@@ -160,17 +160,23 @@ if __name__ == '__main__':
     args = args.parse_args()
     config = parse_config(args.config)
 
-    for (config['model']['args']['nB'], 
-            config['model']['args']['mode'], 
-            config['model']['args']['output'], 
-            config['model']['args']['linear_constrain']) \
-        in itertools.product(
-            [1,2,3,4],
-            ['comp'],
-            ['ABC'],
-            ['none']):
-        results = main(config)
 
+    results = main(config)
+
+
+
+
+
+    # for (config['model']['args']['nB'], 
+    #         config['model']['args']['mode'], 
+    #         config['model']['args']['output'], 
+    #         config['model']['args']['linear_constrain']) \
+    #     in itertools.product(
+    #         [1,2,3,4],
+    #         ['comp'],
+    #         ['ABC'],
+    #         ['none']):
+    #     results = main(config)
 
     # for (config['model']['args']['nB'], 
     #         config['model']['args']['mode'], 
@@ -205,10 +211,3 @@ if __name__ == '__main__':
     #         ['positive']):
     #     results = main(config)
 
-
-# config = parse_config('configs/config_0404_2^2.yaml')
-# results = main(config)
-
-
-# config = parse_config('configs/config_0404_10^2_analog.yaml')
-# results = main(config)
